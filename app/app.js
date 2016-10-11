@@ -8,8 +8,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $locationProvider.hashPrefix('!');
 
   $routeProvider.
-    when('/main', {
-      template: '<main></main>'
+    when('/', {
+      template: '<main-page></main-page>'
     }).
     when('/schedule', {
       template: '<schedule></schedule>'
