@@ -1,0 +1,4 @@
+For run: 
+```
+npm start
+```
