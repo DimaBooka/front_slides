@@ -1,0 +1,17 @@
+<div ng-controller="NewPresentation">
+  <h3>You could add new presentation:</h3>
+
+  <label for="name">Enter the name of presentation:
+    <input type="text" name="name" ng-model="name" required>
+  </label><br>
+  <label for="description">And description:
+    <input type="text" name="description" ng-model="description" required>
+  </label><br>
+  <label for="slides">Upload markdown file:
+    <input type="file" name="slides" ng-model="slides"  accept=".md" required/><br>
+  </label><br>
+  <label for="thumbnail">Upload thumbnail:
+    <input type="file" name="thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" required/><br>
+  </label><br>
+  <button ng-click="createNewPresentation()">Create</button>
+</div>
