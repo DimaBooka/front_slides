@@ -1,5 +1,10 @@
-<div ng-repeat="pres in $ctrl.presentatoins">
-  {{ pres.name}}
-  {{ pres.creator}}
-  <img src="{{ pres.thumbnail }}" alt="thumbnail">
+<h1>Public presentations</h1>
+<div ng-repeat="presentation in $ctrl.public_presentations" class="presentation-block-left"> 
+	<img class="presentation-image" src="{{presentation.thumbnail}}" alt="Presentation thumbnail" style="float: left;">
+	<div class="presentation-right">
+		<h3 class="presentation-name">{{presentation.name}}</h3>
+		<p class="presentation-author-date">{{presentation.creator}} | {{presentation.date_created}}</p>
+		<p class="presentation-description">{{presentation.description}}</p>
+		<a href="presentation/{{presentation.id}}" class="presentation-button">Watch presentation</a>
+	</div>
 </div>
