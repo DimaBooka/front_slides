@@ -15,12 +15,29 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
+  <ul>
+    <li><a href="#!/">Main</a></li>
+    <li><a href="#!/schedule">Schedule</a></li>
+    <li><a href="#!/presentations">Presentations</a></li>
+    <li><a href="#!/registration">Log In</a></li>
+    <li><a href="#!/login">Sign In</a></li>
+    <li><a href="#!/profile">Profile</a></li>
+  </ul>
 
   <div ng-view></div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/jquery-1.12.0.min.js"></script>
 
+  <script src="app.js"></script>
+  <script src="services/uploadService.js"></script>
+  <script src="services/usersServices/authorizationService.js"></script>
+  <script src="components/main/main.component.js"></script>
+  <script src="components/presentation-list/presentation-list.component.js"></script>
+  <script src="components/profile-page/profile-page.component.js"></script>
+  <script src="controller/createNewPresentation.js"></script>
+  <script src="services/presentation-list.service.js"></script>
 </body>
 </html>
