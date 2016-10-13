@@ -1,18 +1,32 @@
 <div ng-controller="NewPresentation">
-  <h1 class="page-header">Profile</h1>
-  <h3>You could add new presentation:</h3>
+  <h1 class="page-header">Add presentation</h1>
+  <form class="col-md-4">
+    <div class="form-group">
+      <label for="presentation-name" class="control-label">Presentation name</label>
+      <input  class="form-control" class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
+    </div>
+    <div class="form-group">
+      <label for="presentation-file" class="control-label">Markdown file</label><br>
+      <label class="btn btn-default btn-file">
+        Browse <input type="file" name="slides" ng-model="slides" id="presentation-file" accept=".md" required>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="presentation-file" class="control-label">Thumbnail</label><br>
+      <label class="btn btn-default btn-file">
+        Browse <input type="file" name="thumbnail" name="thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb" required>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="presentation-desc" class="control-label">Description</label>
+      <textarea class="form-control" name="desc" ng-model="description" id="presentation-desc" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="presentation-private" class="control-label">Private  
+      <input type="checkbox"></label>
+    </div>
 
-  <label for="name">Enter the name of presentation:
-    <input type="text" name="name" ng-model="name" required>
-  </label><br>
-  <label for="description">And description:
-    <input type="text" name="description" ng-model="description" required>
-  </label><br>
-  <label for="slides">Upload markdown file:
-    <input type="file" name="slides" ng-model="slides"  accept=".md" required/><br>
-  </label><br>
-  <label for="thumbnail">Upload thumbnail:
-    <input type="file" name="thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" required/><br>
-  </label><br>
-  <button ng-click="createNewPresentation()">Create</button>
-</div>
+    <div class="form-group">
+      <button ng-click="createNewPresentation()" class="btn btn-primary">Create</button>
+    </div>  
+  </form>
