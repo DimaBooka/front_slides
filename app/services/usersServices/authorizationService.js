@@ -7,6 +7,6 @@ angular.module('AuthorizationService', ['ngResource'])
      })
      .factory('AuthorizService', ['$resource',
         function($resource) {
-          return $resource('http://127.0.0.1:7700/api/api-auth/login/', {}, {});
+          return $resource('http://127.0.0.1:7700/api/rest-auth/login/', {}, {});
         }
      ]);

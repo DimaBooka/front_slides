@@ -5,6 +5,6 @@ angular.module('GetListPresentationServices', ['ngResource'])
  .factory('GetPresentationsService', ['$resource',
     function($resource) {
   		console.log('factory');
-      return $resource('http://127.0.0.1:8005/api/presentations/?published=2', {}, {isArray: true});
+      return $resource('http://127.0.0.1:7700/api/presentations/?published=2', {}, {isArray: true});
     }
  ]);
