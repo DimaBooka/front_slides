@@ -5,7 +5,7 @@ angular.module('SlidesApp', [
   'ngRoute',
   'UploadServices',
   'AuthorizationService',
-  'GetListPresentationServices',
+  'GetListPresentationServices'
 ])
   .config(['$locationProvider', '$routeProvider', '$httpProvider',
     function($locationProvider, $routeProvider, $httpProvider) {
