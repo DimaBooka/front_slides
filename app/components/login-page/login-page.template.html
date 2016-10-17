@@ -1,11 +1,14 @@
-<div>
-
-    <label for="username">Username:
-      <input type="text" name="username" ng-model="$ctrl.username" required>
-    </label><br>
-    <label for="password">Password:
-      <input type="password" name="password" ng-model="$ctrl.password" required>
-    </label><br>
-
-    <input type="submit" value="Sign Up" ng-click="$ctrl.login()">
-</div>
+<h1 class="page-header">Please sign in</h1>
+<form class="col-md-4">
+	<div class="form-group">
+		<label class="control-label">Username</label>
+		<input class="form-control" type="text" name="username" ng-model="$ctrl.username" required>
+	</div>
+	<div class="form-group">
+		<label class="control-label">Password</label>
+		<input class="form-control" type="password" name="password" ng-model="$ctrl.password" required>
+	</div>
+	<div class="form-group">
+		<button class="btn btn-primary" type="submit" ng-click="$ctrl.login()">Sign in</button>
+	</div>
+</form>
