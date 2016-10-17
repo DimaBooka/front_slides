@@ -1,0 +1,17 @@
+<div>
+  <h3>You could add new presentation:</h3>
+
+    <label for="username">Username:
+      <input type="text" name="username" ng-model="$ctrl.username" required>
+    </label><br>
+    <label for="password1">Password:
+      <input type="password" name="password1" ng-model="$ctrl.password1" required>
+    </label><br>
+    <label for="password2">Confirm password:
+      <input type="password" name="password2" ng-model="$ctrl.password2" required/><br>
+    </label><br>
+    <label for="email">Email:
+      <input type="email" name="email" ng-model="$ctrl.email" required/><br>
+    </label><br>
+    <input type="submit" value="Sign Up" ng-click="$ctrl.registration()">
+</div>
