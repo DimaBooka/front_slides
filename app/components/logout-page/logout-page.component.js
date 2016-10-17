@@ -7,6 +7,7 @@ angular.
     controller: [ 'LogoutService',
       function (LogoutService) {
         LogoutService.get();
+        $rootScope.user = false;
       }
     ]
   });
