@@ -1,11 +1,22 @@
 <div>
+   <span ng-if="$ctrl.loginTrue">
+     <label for="username">Username:
+       <input type="text" name="username" ng-model="$ctrl.username" required>
+     </label><br>
+     <label for="password">Password:
+       <input type="password" name="password" ng-model="$ctrl.password" required>
+     </label><br>
+     <button ng-click="$ctrl.changeIf()">Forget password?</button>
+     <input type="submit" value="Sign Up" ng-click="$ctrl.login()">
+   </span>
 
-    <label for="username">Username:
-      <input type="text" name="username" ng-model="$ctrl.username" required>
-    </label><br>
-    <label for="password">Password:
-      <input type="password" name="password" ng-model="$ctrl.password" required>
-    </label><br>
+   <span ng-if="$ctrl.resetTrue">
+     <form action="http://127.0.0.1:7700/api/rest-auth/password/reset/" method="post">
+        <label for="email">Enter email:
+          <input type="email" name="email" required>
+        </label><br>
+        <input type="submit" value="Reset password">
+     </form>
+   </span>
 
-    <input type="submit" value="Sign Up" ng-click="$ctrl.login()">
 </div>

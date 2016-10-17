@@ -24,4 +24,9 @@ angular.module('AuthorizationService', ['ngResource'])
         function($resource) {
           return $resource('http://127.0.0.1:7700/api/rest-auth/password/change/', {}, {});
         }
+     ])
+     .factory('ResetPasswordService', ['$resource',
+        function($resource) {
+          return $resource('http://127.0.0.1:7700/api/rest-auth/password/reset/', {}, {});
+        }
      ]);

@@ -4,16 +4,16 @@
 angular.
   module('SlidesApp')
     .controller('NewPresentation',
-      function NewPresentationCtrl($scope, UploadService, AuthorizService) {
+      function NewPresentationCtrl($scope, UploadService) {
         $scope.createNewPresentation = function () {
-          AuthorizService.save({},{username:'booka', password:'samsung777'});
-          UploadService.save({}, {
-              name: $scope.name,
-              description: $scope.description,
-              slides: $scope.slides,
-              thumbnail: $scope.thumbnail,
-              published: $scope.published
-          });
+
+          // UploadService.save({}, {
+          //     name: $scope.name,
+          //     description: $scope.description,
+          //     slides: $scope.slides,
+          //     thumbnail: $scope.thumbnail,
+          //     published: $scope.published
+          // });
         };
       }
     );
