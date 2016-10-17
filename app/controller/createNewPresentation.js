@@ -6,7 +6,6 @@ angular.
     .controller('NewPresentation',
       function NewPresentationCtrl($scope, UploadService, AuthorizService) {
         $scope.createNewPresentation = function () {
-          AuthorizService.save({},{username:'booka', password:'samsung777'});
           UploadService.save({}, {
               name: $scope.name,
               description: $scope.description,
