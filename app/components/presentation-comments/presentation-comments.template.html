@@ -1,0 +1,6 @@
+<h2>Commentaries</h2>
+<div ng-repeat="comment in $ctrl.comments" class="comment-block"> 
+	<h4 class="comment-name">{{comment.author.name}}</h4>
+	<p class="comment-date">{{comment.date_created}}</p>
+	<p class="comment-text">{{comment.text}}</p>
+</div>

@@ -6,8 +6,7 @@ angular.
   component('logoutPage', {
     controller: [ 'LogoutService',
       function (LogoutService) {
-        LogoutService.save();
-        $rootScope.isAuth = false;
+        LogoutService.get();
       }
     ]
   });

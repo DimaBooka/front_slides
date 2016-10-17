@@ -1,10 +1,13 @@
-<h1>Public presentations</h1>
-<div ng-repeat="presentation in $ctrl.public_presentations" class="presentation-block-left"> 
-	<!--<img class="presentation-image" src="{{presentation.thumbnail}}" alt="Presentation thumbnail" style="float: left;">-->
+<link rel="stylesheet" href="components/presentation-list/presentation-list.styles.css">
+<h1 class="page-header">Public presentations</h1>
+<div ng-repeat="presentation in public_presentations" class="presentation-block">
+	<div class="presentation-image-block">
+		<img class="presentation-image" src="{{presentation.thumbnail}}" alt="Presentation thumbnail">
+	</div>
 	<div class="presentation-right">
 		<h3 class="presentation-name">{{presentation.name}}</h3>
 		<p class="presentation-author-date">{{presentation.creator}} | {{presentation.date_created}}</p>
 		<p class="presentation-description">{{presentation.description}}</p>
-		<a href="presentation/{{presentation.id}}" class="presentation-button">Watch presentation</a>
+		<button href="presentations/{{presentation.id}}" class="presentation-button btn btn-default">Watch details</button>
 	</div>
 </div>

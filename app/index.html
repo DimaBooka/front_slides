@@ -11,26 +11,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
   <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <ul>
-    <li><a href="#!/">Main</a></li>
-    <li><a href="#!/schedule">Schedule</a></li>
-    <li><a href="#!/presentations">Presentations</a></li>
-    <li><a href="#!/registration">Sign Up</a></li>
-    <li><a href="#!/login">Log In</a></li>
-    <li><a href="#!/logout">Log Out</a></li>
-    <li><a href="#!/profile">Profile</a></li>
-  </ul>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Presentations</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#!/registration">Log In</a></li>
+          <li><a href="#!/login">Sign In</a></li>
+          <li><a href="#!/profile">Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <div ng-view></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2 col-md-2 col-xs-1 sidebar collapse">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="#!/">Main</a></li>
+          <li><a href="#!/schedule">Schedule</a></li>
+          <li><a href="#!/presentations">Presentations</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div ng-view></div>
+    </div>
+  </div>
+
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/jquery-1.12.0.min.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <script src="app.js"></script>
   <script src="services/uploadService.js"></script>
@@ -38,10 +64,10 @@
   <script src="components/main/main.component.js"></script>
   <script src="components/presentation-list/presentation-list.component.js"></script>
   <script src="components/profile-page/profile-page.component.js"></script>
-  <script src="controller/createNewPresentation.js"></script>
   <script src="components/registration-page/registration-page.component.js"></script>
   <script src="components/login-page/login-page.component.js"></script>
   <script src="components/logout-page/logout-page.component.js"></script>
+  <script src="controller/createNewPresentation.js"></script>
   <script src="services/presentation-list.service.js"></script>
 </body>
 </html>
