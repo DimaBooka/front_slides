@@ -16,8 +16,6 @@ angular.module('SlidesApp', [
       $httpProvider.defaults.xsrfCookieName = 'csrftoken';
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-      $httpProvider.defaults.headers.common['Authorization'] = 'Token ' + localStorage['token']
-
       $routeProvider.
         when('/', {
           template: '<main-page></main-page>'
