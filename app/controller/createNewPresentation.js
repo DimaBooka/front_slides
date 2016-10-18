@@ -24,7 +24,7 @@ angular.
         fd.append('thumbnail', thumbnail);
         fd.append('name', name);
         fd.append('description', description);
-        fd.append('isPrivate', isPrivate);
+        fd.append('published', isPrivate);
         $http.post(uploadUrl, fd, {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
