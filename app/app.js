@@ -10,7 +10,9 @@ angular.module('SlidesApp', [
   .config(['$locationProvider', '$routeProvider', '$httpProvider',
     function($locationProvider, $routeProvider, $httpProvider) {
       $locationProvider.hashPrefix('!');
-
+      if (localStorage['token']) {
+        $httpProvider.defaults.headers.common['Authorization'] = 'Token ' + localStorage['token'];        
+      }
       $httpProvider.defaults.withCredentials = true;
       $httpProvider.defaults.xsrfCookieName = 'csrftoken';
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
