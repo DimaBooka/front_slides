@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
@@ -26,10 +26,12 @@
         </button>
         <a class="navbar-brand" href="#">Presentations</a>
       </div>
+
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#!/registration">Log In</a></li>
-          <li><a href="#!/login">Sign In</a></li>
+          <li><a href="#!/registration">Registration</a></li>
+          <li><a href="#!/login">Log In</a></li>
+          <li><a href="#!/logout">Log Out</a></li>
           <li><a href="#!/profile">Profile</a></li>
         </ul>
       </div>
@@ -47,6 +49,7 @@
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <div ng-view></div>
+      </div>
     </div>
   </div>
 
@@ -59,7 +62,6 @@
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <script src="app.js"></script>
-  <script src="services/uploadService.js"></script>
   <script src="services/usersServices/authorizationService.js"></script>
   <script src="components/main/main.component.js"></script>
   <script src="components/presentation-list/presentation-list.component.js"></script>

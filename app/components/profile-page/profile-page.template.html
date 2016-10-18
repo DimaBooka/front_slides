@@ -3,18 +3,18 @@
   <form class="col-md-4">
     <div class="form-group">
       <label for="presentation-name" class="control-label">Presentation name</label>
-      <input  class="form-control" class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
+      <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
     </div>
     <div class="form-group">
       <label for="presentation-file" class="control-label">Markdown file</label><br>
       <label class="btn btn-default btn-file">
-        Browse <input type="file" name="slides" ng-model="slides" id="presentation-file" accept=".md" required>
+        Browse <input type="file" name="slides" file-model = "slides" ng-model="slides" id="presentation-file" accept=".md" required>
       </label>
     </div>
     <div class="form-group">
       <label for="presentation-file" class="control-label">Thumbnail</label><br>
       <label class="btn btn-default btn-file">
-        Browse <input type="file" name="thumbnail" name="thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb" required>
+        Browse <input type="file" name="thumbnail" file-model = "thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb" required>
       </label>
     </div>
     <div class="form-group">
@@ -27,6 +27,7 @@
     </div>
 
     <div class="form-group">
-      <button ng-click="createNewPresentation()" class="btn btn-primary">Create</button>
+      <a ng-click = "uploadFile()" class="btn btn-primary">Create</a>
     </div>  
   </form>
+</div>

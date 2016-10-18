@@ -3,7 +3,6 @@
 // Declare app level module which depends on views, and components
 angular.module('SlidesApp', [
   'ngRoute',
-  'UploadServices',
   'AuthorizationService',
   'GetListPresentationServices'
 ])
@@ -14,6 +13,8 @@ angular.module('SlidesApp', [
       $httpProvider.defaults.withCredentials = true;
       $httpProvider.defaults.xsrfCookieName = 'csrftoken';
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+      $httpProvider.defaults.headers.common['Authorization'] = 'Token ' + localStorage['token']
 
       $routeProvider.
         when('/', {
@@ -33,6 +34,9 @@ angular.module('SlidesApp', [
         }).
         when('/login', {
           template: '<login-page></login-page>'
+        }).
+        when('/restore', {
+          template: '<restore-password></restore-password>'
         }).
         when('/logout', {
           template: '<logout-page></logout-page>'
