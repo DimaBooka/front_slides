@@ -4,9 +4,14 @@
 angular.
   module('SlidesApp').
   component('logoutPage', {
-    controller: [ 'LogoutService',
-      function (LogoutService) {
-        LogoutService.get();
+    controller: [ 'LogoutService', '$http',
+      function (LogoutService, $httpProvider) {
+        LogoutService.save({},{
+        	'token': localStorage['token'],
+        }).$promise.then( function () {
+        	$httpProvider.defaults.headers.common['Authorization'] = undefined;
+        	localStorage.removeItem('token');
+        });
       }
     ]
   });
