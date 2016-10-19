@@ -25,7 +25,7 @@ angular.module('AuthorizationService', ['ngResource'])
           return $resource(baseUrl + '/api/rest-auth/password/change/', {}, {});
         }
      ])
-     .factory('ResetPasswordService', ['$resource', 'baseUrl',
+     .factory('RestorePasswordService', ['$resource', 'baseUrl',
         function($resource, baseUrl) {
           return $resource(baseUrl + '/api/rest-auth/password/reset/', {}, {});
         }
