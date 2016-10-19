@@ -27,8 +27,8 @@ angular.module('SlidesApp', [
         when('/presentations/:linkPresentation', {
           template: '<presentation-detail></presentation-detail>'
         }).
-        when('/onlive/:linkPresentation', {
-          template: '<presentation-onlive></presentation-onlive>'
+        when('/events/:id', {
+          template: '<event-detail></event-detail>'
         }).
         when('/login', {
           template: '<login-page></login-page>'
