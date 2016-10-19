@@ -1,17 +1,17 @@
 angular.
   module('SlidesApp').
-  component('loginPage', {
-    templateUrl: 'components/login-page/login-page.template.html',
-    controller: [ 'AuthorizService', '$location',
-      function (AuthorizService, $location) {
+  component('restorePassword', {
+    templateUrl: 'components/restore-password/restore-password.template.html',
+    controller: [ 'RestorePasswordService', '$location',
+      function (RestorePasswordService, $location) {
         var self = this;
-        this.login = function () {
-          AuthorizService.save({}, {
-            username: self.username,
-            password: self.password
+        self.sended = false;
+        this.restoreEmail = function () {
+          RestorePasswordService.save({}, {
+            email: self.email
           }).$promise.then(
             function () {
-              $location.path('/')
+              self.sended = true;
             }
           )
         }

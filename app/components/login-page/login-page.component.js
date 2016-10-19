@@ -15,7 +15,10 @@ angular.
             $rootScope.token = data.key;
             $location.path('/');
           });
-        }
+        };
+        this.restore = function () {
+          $location.path('/restore');
+        };
       }
     ]
   });
