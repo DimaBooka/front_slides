@@ -35,7 +35,7 @@ angular.
         });
       }
     }])
-    .controller('NewPresentation', ['$scope', 'fileUpload', function($scope, fileUpload){
+    .controller('NewPresentation', ['$scope', 'fileUpload', 'baseUrl', function($scope, fileUpload, baseUrl){
       $scope.uploadFile = function(){
         var slides = $scope.slides;
         var thumbnail = $scope.thumbnail;
@@ -43,7 +43,7 @@ angular.
         var description = $scope.description;
         var isPrivate = $scope.isPrivate;
         console.log('upload');
-        var uploadUrl = "http://127.0.0.1:7700/api/presentations/";
+        var uploadUrl = baseUrl + "/api/presentations/";
         fileUpload.uploadFileToUrl(slides, thumbnail, name, isPrivate, description, uploadUrl);
       };
     }]);

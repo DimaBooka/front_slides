@@ -5,28 +5,28 @@ angular.module('AuthorizationService', ['ngResource'])
      .config(function($resourceProvider) {
         $resourceProvider.defaults.stripTrailingSlashes = false;
      })
-     .factory('AuthorizService', ['$resource',
-        function($resource) {
-          return $resource('http://127.0.0.1:7700/api/rest-auth/login/', {}, {});
+     .factory('AuthorizService', ['$resource', 'baseUrl',
+        function($resource, baseUrl) {
+          return $resource(baseUrl + '/api/rest-auth/login/', {}, {});
         }
      ])
-     .factory('RegistraService', ['$resource',
-        function($resource) {
-          return $resource('http://127.0.0.1:7700/api/rest-auth/registration/', {}, {});
+     .factory('RegistraService', ['$resource', 'baseUrl',
+        function($resource, baseUrl) {
+          return $resource(baseUrl + '/api/rest-auth/registration/', {}, {});
         }
      ])
-     .factory('LogoutService', ['$resource',
-        function($resource) {
-          return $resource('http://127.0.0.1:7700/api/rest-auth/logout/', {}, {});
+     .factory('LogoutService', ['$resource', 'baseUrl',
+        function($resource, baseUrl) {
+          return $resource(baseUrl + '/api/rest-auth/logout/', {}, {});
         }
      ])
-     .factory('ResetPasswordService', ['$resource',
-        function($resource) {
-          return $resource('http://127.0.0.1:7700/api/rest-auth/password/change/', {}, {});
+     .factory('ResetPasswordService', ['$resource', 'baseUrl',
+        function($resource, baseUrl) {
+          return $resource(baseUrl + '/api/rest-auth/password/change/', {}, {});
         }
      ])
-     .factory('ResetPasswordService', ['$resource',
-        function($resource) {
-          return $resource('http://127.0.0.1:7700/api/rest-auth/password/reset/', {}, {});
+     .factory('ResetPasswordService', ['$resource', 'baseUrl',
+        function($resource, baseUrl) {
+          return $resource(baseUrl + '/api/rest-auth/password/reset/', {}, {});
         }
      ]);
