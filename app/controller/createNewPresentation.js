@@ -36,6 +36,7 @@ angular.
       }
     }])
     .controller('NewPresentation', ['$scope', 'fileUpload', 'baseUrl', function($scope, fileUpload, baseUrl){
+      $scope.uploaded = false;
       $scope.uploadFile = function(){
         var slides = $scope.slides;
         var thumbnail = $scope.thumbnail;
@@ -45,5 +46,9 @@ angular.
         console.log('upload');
         var uploadUrl = baseUrl + "/api/presentations/";
         fileUpload.uploadFileToUrl(slides, thumbnail, name, isPublic, description, uploadUrl);
+        $scope.uploaded = true;
       };
+      $scope.uploadedSuccess = function () {
+        $scope.uploaded = false;
+      }
     }]);

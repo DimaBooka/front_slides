@@ -1,22 +1,33 @@
-<h1 class="page-header">Please register</h1>
-<form class="col-md-4">
-  <div class="form-group">
-    <label class="control-label">Username</label>
-    <input class="form-control" type="text" name="username" ng-model="$ctrl.username" required>
+<div ng-if="!$ctrl.registred">
+  <h1 class="page-header">Please register</h1>
+  <div ng-if="$ctrl.error">
+    <div ng-repeat="errorMes in $ctrl.errorList">
+      <p class="page-header">{{ errorMes }}</p>
+    </div>
   </div>
-  <div class="form-group">
-    <label class="control-label">Password</label>
-    <input class="form-control" type="password" name="password1" ng-model="$ctrl.password1" required>
-  </div>
-  <div class="form-group">
-    <label class="control-label">Confirm password</label>
-    <input class="form-control" type="password" name="password2" ng-model="$ctrl.password2" required>
-  </div>
-  <div class="form-group">
-    <label class="control-label">Email</label>
-    <input class="form-control" type="email" name="email" ng-model="$ctrl.email" required/>
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit" ng-click="$ctrl.registration()">Register</button>
-  </div>
-</form>
+  <form class="col-md-4">
+    <div class="form-group">
+      <label class="control-label">Username</label>
+      <input class="form-control" type="text" name="username" ng-model="$ctrl.username" required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Password</label>
+      <input class="form-control" type="password" name="password1" ng-model="$ctrl.password1" required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Confirm password</label>
+      <input class="form-control" type="password" name="password2" ng-model="$ctrl.password2" required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Email</label>
+      <input class="form-control" type="email" name="email" ng-model="$ctrl.email" required/>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit" ng-click="$ctrl.registration()">Register</button>
+    </div>
+  </form>
+</div>
+<div ng-if="$ctrl.registred">
+  <h1 class="page-header">You've successfully registered</h1>
+  <p>You need to check your email to confirm email address.</p>
+</div>
