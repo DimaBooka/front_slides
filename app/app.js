@@ -4,7 +4,8 @@
 angular.module('SlidesApp', [
   'ngRoute',
   'AuthorizationService',
-  'GetListPresentationServices'
+  'GetListPresentationServices',
+  'eventService'
 ])
   .config(['$locationProvider', '$routeProvider', '$httpProvider',
     function($locationProvider, $routeProvider, $httpProvider) {
@@ -17,8 +18,8 @@ angular.module('SlidesApp', [
         when('/', {
           template: '<main-page></main-page>'
         }).
-        when('/schedule', {
-          template: '<schedule></schedule>'
+        when('/events', {
+          template: '<event-list></event-list>'
         }).
         when('/presentations', {
           template: '<presentation-list></presentation-list>'
