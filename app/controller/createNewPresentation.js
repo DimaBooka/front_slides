@@ -18,13 +18,13 @@ angular.
       };
     }])
     .service('fileUpload', ['$http', function ($http) {
-      this.uploadFileToUrl = function(slides, thumbnail, name, isPrivate, description, uploadUrl){
+      this.uploadFileToUrl = function(slides, thumbnail, name, isPublic, description, uploadUrl){
         var fd = new FormData();
         fd.append('slides', slides);
         fd.append('thumbnail', thumbnail);
         fd.append('name', name);
         fd.append('description', description);
-        fd.append('published', isPrivate);
+        fd.append('published', isPublic);
         $http.post(uploadUrl, fd, {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
@@ -41,9 +41,9 @@ angular.
         var thumbnail = $scope.thumbnail;
         var name =$scope.name;
         var description = $scope.description;
-        var isPrivate = $scope.isPrivate;
+        var isPublic = !!$scope.isPublic;
         console.log('upload');
         var uploadUrl = baseUrl + "/api/presentations/";
-        fileUpload.uploadFileToUrl(slides, thumbnail, name, isPrivate, description, uploadUrl);
+        fileUpload.uploadFileToUrl(slides, thumbnail, name, isPublic, description, uploadUrl);
       };
     }]);
