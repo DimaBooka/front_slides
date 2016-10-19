@@ -1,0 +1,25 @@
+.event-block {
+	margin-bottom: 30px;
+}
+
+.event-image-block {
+	width: 230px;
+	height: 130px;
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+
+.event-image { 
+	max-width: 250px;
+	max-height: 130px;
+}
+
+.event-right {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.event-name {
+	margin-top: 0px;
+}
