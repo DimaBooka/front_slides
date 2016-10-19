@@ -1,0 +1,25 @@
+.presentation-block {
+	margin-bottom: 30px;
+}
+
+.presentation-image-block {
+	width: 230px;
+	height: 130px;
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+
+.presentation-image { 
+	max-width: 250px;
+	max-height: 130px;
+}
+
+.presentation-right {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.presentation-name {
+	margin-top: 0px;
+}

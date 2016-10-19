@@ -35,6 +35,26 @@ angular.
         });
       }
     }])
+    .service('fileUpdate', ['$http', '$route', function ($http, $route) {
+      this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl){
+        var fd = new FormData();
+        if (typeof thumbnail != "string") {
+          fd.append('thumbnail', thumbnail);
+        }
+        fd.append('name', name);
+        fd.append('description', description);
+        fd.append('published', isPublic);
+        $http.patch(uploadUrl, fd, {
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+        })
+        .success(function(){
+          $route.reload();
+        })
+        .error(function(){
+        });
+      }
+    }])
     .controller('NewPresentation', ['$scope', 'fileUpload', 'baseUrl', function($scope, fileUpload, baseUrl){
       $scope.uploaded = false;
       $scope.uploadFile = function(){
@@ -51,4 +71,17 @@ angular.
       $scope.uploadedSuccess = function () {
         $scope.uploaded = false;
       }
+    }])
+    .controller('UpdatePresentation', ['$scope', 'fileUpdate', 'baseUrl', function($scope, fileUpdate, baseUrl){
+      $scope.updated = false;
+      $scope.redactor = function(){
+        var thumbnail = $scope.thumbnail;
+        var name =$scope.name;
+        var description = $scope.description;
+        var isPublic = !!$scope.isPublic;
+        console.log('update');
+        var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
+        fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl);
+        $scope.updated = true;
+      };
     }]);

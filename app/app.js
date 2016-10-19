@@ -27,7 +27,7 @@ angular.module('SlidesApp', [
         when('/presentations', {
           template: '<presentation-list></presentation-list>'
         }).
-        when('/presentations/:linkPresentation', {
+        when('/presentations/:id', {
           template: '<presentation-detail></presentation-detail>'
         }).
         when('/events/:id', {

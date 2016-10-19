@@ -32,6 +32,12 @@ angular.module('authService', [])
             operation: 'password/reset',
           },
         },
+        currentUser: {
+          method: 'GET',
+          params: {
+            operation: 'user',
+          },
+        },
       });
     }
  ]);

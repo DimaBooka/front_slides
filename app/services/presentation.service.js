@@ -1,7 +1,7 @@
 angular.module('presentationService', [])
  .factory('Presentation', ['$resource', 'baseUrl',
     function($resource, baseUrl) {
-      return $resource(baseUrl + '/api/presentations/:id', {}, {
+      return $resource(baseUrl + '/api/presentations/:id/', {}, {
         get: {
           method: 'GET',
           params: {

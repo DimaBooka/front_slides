@@ -11,6 +11,7 @@ angular.
         }).$promise.then( function () {
         	$httpProvider.defaults.headers.common['Authorization'] = undefined;
         	localStorage.removeItem('token');
+            localStorage.removeItem('user');
           $rootScope.token = undefined;
           $location.path('/');
         });

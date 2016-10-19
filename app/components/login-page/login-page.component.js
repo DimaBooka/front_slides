@@ -14,6 +14,11 @@ angular.
             localStorage['token'] = data.key;
             $httpProvider.defaults.headers.common['Authorization'] = 'Token ' + data.key;
             $rootScope.token = data.key;
+            Auth.currentUser().$promise.then(
+              function (response) {
+                localStorage['user'] = JSON.stringify(response);
+              }
+            );
             $location.path('/');
           }).catch(function () {
             self.errorMes = 'Please enter a correct username and password. Note that both fields may be case-sensitive.';
