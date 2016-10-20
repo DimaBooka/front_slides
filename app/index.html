@@ -29,10 +29,10 @@
 
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li ng-if="!$root.token"><a href="#!/login">Login</a></li>
-          <li ng-if="!$root.token"><a href="#!/registration">Register</a></li>
-          <li ng-if="$root.token"><a href="#!/profile">Add presentations</a></li>
-          <li ng-if="$root.token"><a href="#!/logout">Logout</a></li>
+          <li ng-if="!$root.token"><a ui-sref="login">Login</a></li>
+          <li ng-if="!$root.token"><a ui-sref="registration">Register</a></li>
+          <li ng-if="$root.token"><a ui-sref="profile">Add presentations</a></li>
+          <li ng-if="$root.token"><a ui-sref="logout">Logout</a></li>
         </ul>
       </div>
     </div>
@@ -42,13 +42,12 @@
     <div class="row">
       <div class="col-sm-2 col-md-2 col-xs-1 sidebar collapse">
         <ul class="nav nav-sidebar">
-          <li><a href="#!/">Main</a></li>
-          <li><a href="#!/events">Events</a></li>
-          <li><a href="#!/presentations">Presentations</a></li>
+          <li><a ui-sref="events">Events</a></li>
+          <li><a ui-sref="presentations">Presentations</a></li>
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <div ng-view></div>
+        <ui-view></ui-view>
       </div>
     </div>
   </div>
@@ -60,7 +59,7 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/jquery-1.12.0.min.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="app.js"></script>
   <script src="app.constant.js"></script>
   <script src="services/auth.service.js"></script>
