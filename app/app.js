@@ -3,16 +3,19 @@
 // Declare app level module which depends on views, and components
 angular.module('SlidesApp', [
   'ngRoute',
-  'AuthorizationService',
-  'GetListPresentationServices',
-  'eventService'
+  'ngResource',
+  'authService',
+  'presentationService',
+  'eventService',
+  'commentService',
 ])
-  .config(['$locationProvider', '$routeProvider', '$httpProvider',
-    function($locationProvider, $routeProvider, $httpProvider) {
+  .config(['$locationProvider', '$routeProvider', '$httpProvider', '$resourceProvider',
+    function($locationProvider, $routeProvider, $httpProvider, $resourceProvider) {
       $locationProvider.hashPrefix('!');
       $httpProvider.defaults.withCredentials = true;
       $httpProvider.defaults.xsrfCookieName = 'csrftoken';
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+      $resourceProvider.defaults.stripTrailingSlashes = false;
 
       $routeProvider.
         when('/', {
