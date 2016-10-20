@@ -10,6 +10,9 @@ angular.module('commentService', [])
           },
           isArray: true,
         },
+        create: {
+          method: 'POST',
+        }
       });
     }
  ]);
