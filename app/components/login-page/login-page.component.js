@@ -2,12 +2,12 @@ angular.
   module('SlidesApp').
   component('loginPage', {
     templateUrl: 'components/login-page/login-page.template.html',
-    controller: [ 'AuthorizService', '$http', '$location', '$rootScope',
-      function (AuthorizService, $httpProvider, $location, $rootScope) {
+    controller: [ 'Auth', '$http', '$location', '$rootScope',
+      function (Auth, $httpProvider, $location, $rootScope) {
         var self = this;
         self.error = false;
         this.login = function () {
-          AuthorizService.save({}, {
+          Auth.login({}, {
             username: self.username,
             password: self.password
           }).$promise.then( function (data) {

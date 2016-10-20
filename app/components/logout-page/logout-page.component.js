@@ -4,9 +4,9 @@
 angular.
   module('SlidesApp').
   component('logoutPage', {
-    controller: [ 'LogoutService', '$http', '$location', '$rootScope',
-      function (LogoutService, $httpProvider, $location, $rootScope) {
-        LogoutService.save({},{
+    controller: [ 'Auth', '$http', '$location', '$rootScope',
+      function (Auth, $httpProvider, $location, $rootScope) {
+        Auth.logout({},{
         	'token': localStorage['token'],
         }).$promise.then( function () {
         	$httpProvider.defaults.headers.common['Authorization'] = undefined;

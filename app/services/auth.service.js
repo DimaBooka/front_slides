@@ -20,16 +20,16 @@ angular.module('authService', [])
             operation: 'logout',
           },
         },
-        resetPass: {
+        changePass: {
           method: 'POST',
           params: {
-            operation: 'resetPass',
+            operation: 'password/change',
           },
         },
         restorePass: {
           method: 'POST',
           params: {
-            operation: 'restorePass',
+            operation: 'password/reset',
           },
         },
       });
