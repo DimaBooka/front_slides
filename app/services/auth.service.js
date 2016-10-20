@@ -1,7 +1,7 @@
 angular.module('authService', [])
  .factory('Auth', ['$resource', 'baseUrl',
     function($resource, baseUrl) {
-      return $resource(baseUrl + '/api/rest-auth/:operation/', {}, {
+      return $resource(baseUrl + '/api/rest-auth/:operation/:afterOperation/', {}, {
         login: {
           method: 'POST',
           params: {
@@ -26,10 +26,11 @@ angular.module('authService', [])
             operation: 'password/change',
           },
         },
-        restorePass: {
+         restorePass: {
           method: 'POST',
           params: {
-            operation: 'password/reset',
+            operation: 'password',
+            afterOperation: 'reset',
           },
         },
         currentUser: {

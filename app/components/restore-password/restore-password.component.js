@@ -6,6 +6,7 @@ angular.
       function (Auth, $location) {
         var self = this;
         self.sended = false;
+        self.error = false;
         this.restoreEmail = function () {
           Auth.restorePass({}, {
             email: self.email
@@ -13,7 +14,12 @@ angular.
             function () {
               self.sended = true;
             }
-          )
+          ).catch(function (error) {
+            self.error = true;
+            for (var key in error['data']) {
+              self.errorMes = error['data'][key];
+            }
+          })
         }
       }
     ]
