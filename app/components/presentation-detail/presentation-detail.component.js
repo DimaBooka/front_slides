@@ -2,11 +2,11 @@ angular.
   module('SlidesApp').
   component('presentationDetail', {
     templateUrl: 'components/presentation-detail/presentation-detail.template.html',
-    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$routeParams',
-      function (Presentation, fileUpdate, baseUrl, $scope, $routeParams) {
+    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$stateParams',
+      function (Presentation, fileUpdate, baseUrl, $scope, $stateParams) {
         var self = this;
         self.updateAble = false;
-        Presentation.get({'id': $routeParams.id}).$promise
+        Presentation.get({'id': $stateParams.id}).$promise
         .then(
           function (response) {
             $scope.presentation = response;

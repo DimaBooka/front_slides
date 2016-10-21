@@ -35,7 +35,7 @@ angular.
         });
       }
     }])
-    .service('fileUpdate', ['$http', '$route', function ($http, $route) {
+    .service('fileUpdate', ['$http', '$state', function ($http, $state) {
       this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl){
         var fd = new FormData();
         if (typeof thumbnail != "string") {
@@ -49,7 +49,7 @@ angular.
           headers: {'Content-Type': undefined}
         })
         .success(function(){
-          $route.reload();
+          $state.reload();
         })
         .error(function(){
         });

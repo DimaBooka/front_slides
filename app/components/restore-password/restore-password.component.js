@@ -17,7 +17,11 @@ angular.
           ).catch(function (error) {
             self.error = true;
             for (var key in error['data']) {
-              self.errorMes = error['data'][key];
+              if (key == 'error') {
+                self.errorMes = error['data'][key];
+              } else {
+                self.errorMes = error['data'][key][0];
+              }
             }
           })
         }
