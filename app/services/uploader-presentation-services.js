@@ -54,34 +54,4 @@ angular.
         .error(function(){
         });
       }
-    }])
-    .controller('NewPresentation', ['$scope', 'fileUpload', 'baseUrl', function($scope, fileUpload, baseUrl){
-      $scope.uploaded = false;
-      $scope.uploadFile = function(){
-        var slides = $scope.slides;
-        var thumbnail = $scope.thumbnail;
-        var name =$scope.name;
-        var description = $scope.description;
-        var isPublic = !!$scope.isPublic;
-        console.log('upload');
-        var uploadUrl = baseUrl + "/api/presentations/";
-        fileUpload.uploadFileToUrl(slides, thumbnail, name, isPublic, description, uploadUrl);
-        $scope.uploaded = true;
-      };
-      $scope.uploadedSuccess = function () {
-        $scope.uploaded = false;
-      }
-    }])
-    .controller('UpdatePresentation', ['$scope', 'fileUpdate', 'baseUrl', function($scope, fileUpdate, baseUrl){
-      $scope.updated = false;
-      $scope.redactor = function(){
-        var thumbnail = $scope.thumbnail;
-        var name =$scope.name;
-        var description = $scope.description;
-        var isPublic = !!$scope.isPublic;
-        console.log('update');
-        var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
-        fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl);
-        $scope.updated = true;
-      };
     }]);

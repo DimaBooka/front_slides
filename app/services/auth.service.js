@@ -40,6 +40,12 @@ angular.module('authService', [])
             operation: 'user',
           },
         },
+        updateUser: {
+          method: 'PATCH',
+          params: {
+            operation: 'user',
+          },
+        },
       });
     }
  ]);

@@ -17,7 +17,6 @@ angular.
             Auth.currentUser().$promise.then(
               function (response) {
                 localStorage['user'] = JSON.stringify(response);
-                localStorage['profileMenu'] = JSON.stringify([true, false, false]);
               }
             );
             $state.go('presentations');

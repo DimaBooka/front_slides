@@ -23,6 +23,17 @@ angular.module('SlidesApp', [
           name: 'presentations',
           url: '/presentations/',
           component: 'presentationList',
+          params: {
+            "published": true,
+          }
+        })
+      .state({
+          name: 'myPresentations',
+          url: '/my-presentations/',
+          component: 'presentationList',
+          params: {
+            "my": true,
+          }
         })
       .state(
         {
@@ -71,6 +82,18 @@ angular.module('SlidesApp', [
           name: 'profile',
           url: '/profile/',
           component: 'profilePage',
+        })
+      .state(
+        {
+          name: 'addPresentation',
+          url: '/add_presentation/',
+          component: 'addPresentation',
+        })
+      .state(
+        {
+          name: 'changePassword',
+          url: '/change_password/',
+          component: 'changePassword',
         });
     }]).run(function ($rootScope, $http) {
       if (localStorage['token']) {

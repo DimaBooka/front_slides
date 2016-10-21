@@ -31,6 +31,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li ng-if="!$root.token"><a ui-sref="login">Login</a></li>
           <li ng-if="!$root.token"><a ui-sref="registration">Register</a></li>
+          <li ng-if="$root.token"><a ui-sref="addPresentation">Add presentation</a></li>
           <li ng-if="$root.token"><a ui-sref="profile">Profile</a></li>
           <li ng-if="$root.token"><a ui-sref="logout">Logout</a></li>
         </ul>
@@ -44,6 +45,7 @@
         <ul class="nav nav-sidebar">
           <li><a ui-sref="events">Events</a></li>
           <li><a ui-sref="presentations">Presentations</a></li>
+          <li ng-if="$root.token"><a ui-sref="myPresentations">My Presentations</a></li>
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -66,19 +68,20 @@
   <script src="services/presentation.service.js"></script>
   <script src="services/event.service.js"></script>
   <script src="services/presentation.service.js"></script>
+  <script src="services/uploader-presentation-services.js"></script>
   <script src="services/comment.service.js"></script>
   <script src="components/main/main.component.js"></script>
+  <script src="components/profile-page/profile-page.component.js"></script>
   <script src="components/presentation-list/presentation-list.component.js"></script>
   <script src="components/presentation-detail/presentation-detail.component.js"></script>
+  <script src="components/add-presentation/add-presentation.component.js"></script>
   <script src="components/presentation-comments/presentation-comments.component.js"></script>
   <script src="components/event-list/event-list.component.js"></script>
   <script src="components/event-detail/event-detail.component.js"></script>
-  <script src="components/profile-page/profile-page.component.js"></script>
   <script src="components/change-password/change-password.component.js"></script>
   <script src="components/registration-page/registration-page.component.js"></script>
   <script src="components/login-page/login-page.component.js"></script>
   <script src="components/restore-password/restore-password.component.js"></script>
   <script src="components/logout-page/logout-page.component.js"></script>
-  <script src="controller/createNewPresentation.js"></script>
 </body>
 </html>
