@@ -23,7 +23,8 @@ angular.module('authService', [])
         changePass: {
           method: 'POST',
           params: {
-            operation: 'password/change',
+            operation: 'password',
+            afterOperation: 'change',
           },
         },
          restorePass: {

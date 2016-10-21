@@ -12,6 +12,7 @@ angular.
         	$httpProvider.defaults.headers.common['Authorization'] = undefined;
         	localStorage.removeItem('token');
             localStorage.removeItem('user');
+            localStorage.removeItem('profileMenu');
           $rootScope.token = undefined;
           $state.go('presentations');
         });

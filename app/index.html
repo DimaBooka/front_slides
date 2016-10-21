@@ -31,7 +31,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li ng-if="!$root.token"><a ui-sref="login">Login</a></li>
           <li ng-if="!$root.token"><a ui-sref="registration">Register</a></li>
-          <li ng-if="$root.token"><a ui-sref="profile">Add presentations</a></li>
+          <li ng-if="$root.token"><a ui-sref="profile">Profile</a></li>
           <li ng-if="$root.token"><a ui-sref="logout">Logout</a></li>
         </ul>
       </div>
@@ -74,6 +74,7 @@
   <script src="components/event-list/event-list.component.js"></script>
   <script src="components/event-detail/event-detail.component.js"></script>
   <script src="components/profile-page/profile-page.component.js"></script>
+  <script src="components/change-password/change-password.component.js"></script>
   <script src="components/registration-page/registration-page.component.js"></script>
   <script src="components/login-page/login-page.component.js"></script>
   <script src="components/restore-password/restore-password.component.js"></script>

@@ -1,39 +1,74 @@
-<div ng-controller="NewPresentation">
-  <div ng-show="!uploaded">
-    <h1 class="page-header">Add presentation</h1>
-    <form class="col-md-4">
-      <div class="form-group">
-        <label for="presentation-name" class="control-label">Presentation name</label>
-        <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
-      </div>
-      <div class="form-group">
-        <label for="presentation-file" class="control-label">Markdown file</label><br>
-        <label class="btn btn-default btn-file">
-          Browse <input type="file" name="slides" file-model = "slides" ng-model="slides" id="presentation-file" accept=".md" required>
-        </label>
-      </div>
-      <div class="form-group">
-        <label for="presentation-file" class="control-label">Thumbnail</label><br>
-        <label class="btn btn-default btn-file">
-          Browse <input type="file" name="thumbnail" file-model = "thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb" required>
-        </label>
-      </div>
-      <div class="form-group">
-        <label for="presentation-desc" class="control-label">Description</label>
-        <textarea class="form-control" name="desc" ng-model="description" id="presentation-desc" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="isPublic" class="control-label">Public
-        <input type="checkbox" name="isPublic" ng-model="isPublic" id="isPublic"></label>
-      </div>
+<link rel="stylesheet" href="components/presentation-list/presentation-list.styles.css">
+<ul class="nav nav-sidebar">
+  <li><a ng-click="addPr()">Add presentation</a></li>
+  <li><a ng-click="myPr()">My presentations</a></li>
+  <li><a ng-click="infoUser()">Profile information</a></li>
+</ul>
 
-      <div class="form-group">
-        <a ng-click = "uploadFile()" class="btn btn-primary">Create</a>
-      </div>
-    </form>
+<div ng-init="infoUser()" ng-if="profileMenu[0]" >
+  <h1 class="page-header">Change Password</h1>
+  <div>
+    <change-password></change-password>
   </div>
-  <div ng-if="uploaded">
-    <p class="page-header">You've successfully add presentation.</p>
-    <p>If you want to upload once more presentation click <a ui-sref="profile" ng-click="uploadedSuccess()">here</a>.</p>
+</div>
+<div ng-init="myPr()" ng-if="profileMenu[1]" >
+  <h1 class="page-header">Your presentations</h1>
+  <div ng-repeat="presentation in presentations" class="presentation-block">
+	<div class="presentation-image-block">
+		<img class="presentation-image" src="{{presentation.thumbnail}}" alt="Presentation thumbnail">
+	</div>
+	<div class="presentation-right">
+	  <h3 class="presentation-name">{{presentation.name}}</h3>
+	  <p class="presentation-author-date">{{presentation.date_created}}</p>
+	  <p class="presentation-description">{{presentation.description}}</p>
+	  <div class="form-group">
+        <label class="control-label" for="published">Published</label>
+        <input type="checkbox" name="published" id="published" ng-model="presentation.published" disabled="disabled"/>
+      </div>
+      <a ui-sref="presentation-detail({id: presentation.id})" class="presentation-button btn btn-default">Refactor</a>
+      <button ng-click="deletePr(presentation.id)" class="presentation-button btn btn-default">Delete</button>
+	</div>
+  </div>
+
+</div>
+<div ng-init="addPr()" ng-if="profileMenu[2]">
+  <div ng-controller="NewPresentation">
+    <div ng-show="!uploaded">
+      <h1 class="page-header">Add presentation</h1>
+      <form class="col-md-4">
+        <div class="form-group">
+          <label for="presentation-name" class="control-label">Presentation name</label>
+          <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
+        </div>
+        <div class="form-group">
+          <label for="presentation-file" class="control-label">Markdown file</label><br>
+          <label class="btn btn-default btn-file">
+            Browse <input type="file" name="slides" file-model = "slides" ng-model="slides" id="presentation-file" accept=".md" required>
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="presentation-file" class="control-label">Thumbnail</label><br>
+          <label class="btn btn-default btn-file">
+            Browse <input type="file" name="thumbnail" file-model = "thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb" required>
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="presentation-desc" class="control-label">Description</label>
+          <textarea class="form-control" name="desc" ng-model="description" id="presentation-desc" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="isPublic" class="control-label">Public
+          <input type="checkbox" name="isPublic" ng-model="isPublic" id="isPublic"></label>
+        </div>
+
+        <div class="form-group">
+          <a ng-click = "uploadFile()" class="btn btn-primary">Create</a>
+        </div>
+      </form>
+    </div>
+    <div ng-if="uploaded">
+      <p class="page-header">You've successfully add presentation.</p>
+      <p>If you want to upload once more presentation click <a ui-sref="profile" ng-click="uploadedSuccess()">here</a>.</p>
+    </div>
   </div>
 </div>
