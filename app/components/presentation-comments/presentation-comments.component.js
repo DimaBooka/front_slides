@@ -4,8 +4,8 @@ angular.
     templateUrl: 'components/presentation-comments/presentation-comments.template.html',
     controller: ['Comments', '$scope', '$stateParams', '$state',
       function (Comments, $scope, $stateParams, $state) {
-        var self = this;
         $scope.userAuth = !!localStorage['user'];
+        $scope.currentUserId = JSON.parse(localStorage['user']).id;
         Comments.forPresentation({presentation_id: $stateParams.id}).$promise
         .then(
           function (response) {
@@ -20,6 +20,13 @@ angular.
           }).$promise.then(function () {
             $state.reload();
           })
+        };
+        $scope.deleteComment = function (id) {
+          Comments.delete({id: id}).$promise.then(
+            function () {
+              $state.reload();
+            }
+          );
         }
       }
     ]

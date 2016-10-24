@@ -1,7 +1,7 @@
 angular.module('commentService', [])
  .factory('Comments', ['$resource', 'baseUrl',
     function($resource, baseUrl) {
-      return $resource(baseUrl + '/api/comments/:id', {}, {
+      return $resource(baseUrl + '/api/comments/:id/', {}, {
         forPresentation: {
           method: 'GET',
           params: {

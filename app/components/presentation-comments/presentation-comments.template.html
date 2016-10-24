@@ -2,6 +2,7 @@
 <div ng-repeat="comment in comments" class="comment-block">
 	<h4 class="comment-name">{{comment.author_info.username}}</h4>
 	<p class="comment-text">{{comment.text}} | {{comment.date_created}}</p>
+    <a ng-click="deleteComment(comment.id)" ng-if="currentUserId == comment.author_info.id">Delete</a>
 </div>
 
 <div ng-if="userAuth">
