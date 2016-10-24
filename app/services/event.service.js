@@ -1,7 +1,7 @@
 angular.module('eventService', [])
  .factory('Event', ['$resource', 'baseUrl',
     function($resource, baseUrl) {
-      return $resource(baseUrl + '/api/events/:id', {}, {
+      return $resource(baseUrl + '/api/events/:id/', {}, {
         get: {
           method: 'GET',
           params: {

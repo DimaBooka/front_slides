@@ -1,12 +1,22 @@
 angular.
   module('SlidesApp').
   component('presentationDetail', {
+    bindings: {
+      id: '@'
+    },
     templateUrl: 'components/presentation-detail/presentation-detail.template.html',
-    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$stateParams','$state',
+
+    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$stateParams', '$state',
       function (Presentation, fileUpdate, baseUrl, $scope, $stateParams, $state) {
         var self = this;
         self.updateAble = false;
-        Presentation.get({'id': $stateParams.id}).$promise
+        $scope.presentationId = this.id;
+        if (!this.id) {
+          $scope.presentationId = $stateParams.id;
+        }
+        queryStr = Presentation.get({'id': $scope.presentationId});
+
+        queryStr.$promise
         .then(
           function (response) {
             $scope.presentation = response;
@@ -29,17 +39,18 @@ angular.
           var name =this.name;
           var description = this.description;
           var isPublic = !!this.isPublic;
-          var uploadUrl = baseUrl + "/api/presentations/" + $stateParams.id + "/";
+          var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
           fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl);
           $scope.updated = true;
         };
         $scope.deletePr = function () {
-          Presentation.delete({id:$stateParams.id}).$promise.then(
+          Presentation.delete({id:$scope.presentationId}).$promise.then(
             function () {
                $state.go('presentations');
             }
           )
         };
+
       }
     ]
   });

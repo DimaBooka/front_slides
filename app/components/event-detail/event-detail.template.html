@@ -2,4 +2,7 @@
 <h1 class="page-header">{{event.name}}</h1>
 <p class="event-date">{{event.date}}</p>
 <a href="#!/events/{{event.id}}" class="event-button btn btn-default">Start event</a>
-<presentation-detail></presentation-detail>
+
+<div ng-if="event">
+    <presentation-detail id='{{event.presentation.id}}'></presentation-detail>
+</div>
