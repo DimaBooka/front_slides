@@ -2,7 +2,7 @@
 <h1 class="page-header">Public events</h1>
 <div ng-repeat="event in events" class="event-block">
 	<div class="event-image-block">
-		<img class="event-presentation-image" src="{{event.presentation.thumbnail}}" alt="event thumbnail">
+		<img class="event-presentation-image" ng-src="{{event.presentation.thumbnail}}" alt="event thumbnail">
 	</div>
 	<div class="event-right">
 		<h3 class="event-name">{{event.name}}</h3>
