@@ -1,19 +1,20 @@
 <h2>Commentaries</h2>
 <div ng-repeat="comment in comments" class="comment-block">
 	<h4 class="comment-name">{{comment.author_info.username}}</h4>
+    <a class="btn btn-primary" ng-click="deleteComment(comment.id)" ng-if="currentUserId == comment.author_info.id">Delete</a>
 	<p class="comment-text">{{comment.text}} | {{comment.date_created}}</p>
-    <a ng-click="deleteComment(comment.id)" ng-if="currentUserId == comment.author_info.id">Delete</a>
+    <hr>
 </div>
 
 <div ng-if="userAuth">
-	<form class="col-md-4">
+	<form class="col-md-4" ng-submit="addComment()">
       <div class="form-group">
         <label for="presentation-name" class="control-label">Comment</label>
         <input  class="form-control" type="text" name="text" ng-model="text" id="presentation-name" required>
       </div>
 
 	  <div class="form-group">
-        <a ng-click = "addComment()" class="btn btn-primary">Add comment</a>
+        <input type="submit" class="btn btn-primary" value="Add comment">
       </div>
     </form>
 </div>

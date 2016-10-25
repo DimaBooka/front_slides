@@ -5,8 +5,8 @@ angular.
     bindings: {
       id: '@'
     },
-    controller: ['Comments', '$scope', '$stateParams', '$state',
-      function (Comments, $scope, $stateParams, $state) {
+    controller: ['Comments', '$scope', '$stateParams',
+      function (Comments, $scope, $stateParams) {
         $scope.userAuth = !!localStorage['user'];
 
         $scope.currentUserId = JSON.parse(localStorage['user']).id;
@@ -15,30 +15,34 @@ angular.
         if (!this.id) {
           $scope.presentationId = $stateParams.id;
         }
-        queryStr = Comments.forPresentation({presentation_id: $scope.presentationId});
-
-        queryStr.$promise
-        .then(
-          function (response) {
-            $scope.comments = response;
-          }
-        );
+        $scope.getComments = function () {
+          Comments.forPresentation({presentation_id: $scope.presentationId}).$promise
+            .then(
+              function (response) {
+                $scope.comments = response;
+              }
+            );
+        };
+        $scope.getComments();
         $scope.addComment = function () {
           Comments.create({}, {
             text: this.text,
             presentation: $scope.presentationId,
             author: JSON.parse(localStorage['user'])['id']
-          }).$promise.then(function () {
-            $state.reload();
-          })
+          }).$promise.then(
+            function (response) {
+             $scope.getComments();
+            }
+          );
+          this.text = '';
         };
         $scope.deleteComment = function (id) {
           Comments.delete({id: id}).$promise.then(
-            function () {
-              $state.reload();
+            function (response) {
+              $scope.getComments();
             }
           );
-        }
+        };
       }
     ]
   });

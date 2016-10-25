@@ -1,22 +1,23 @@
-<div ng-show="!created">
-  <h1 class="page-header">Create event</h1>
-  <form class="col-md-4" ng-submit="createEventNew()">
-    <div class="form-group">
-      <label for="presentation-name" class="control-label">Event name</label>
-      <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
-    </div>
+<div ng-if="creator">
+  <div ng-show="currentUserId==creator" ng-if="!created">
+    <h1 class="page-header">Create event</h1>
+    <form class="col-md-4" ng-submit="createEventNew()">
+      <div class="form-group">
+        <label for="presentation-name" class="control-label">Event name</label>
+        <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
+      </div>
 
-    <div class="form-group">
-      <label for="presentation-name" class="control-label">Choose a date</label>
-      <input  class="form-control" type="date" name="date" ng-model="date" required>
-    </div>
+      <div class="form-group">
+        <label for="presentation-name" class="control-label">Choose day and time</label>
+        <input  class="form-control" type="datetime-local" name="date" ng-model="date" min="curDate" max="2050-12-31T23:59" required>
+      </div>
 
-    <div class="form-group">
-      <input type="submit" class="btn btn-primary" value="Create">
-    </div>
-  </form>
-</div>
-<div ng-if="created">
-  <p class="page-header">You've successfully add event.</p>
-  <p>If you want to upload one more click <a ui-sref="addPresentation" ng-click="createdSuccess()">here</a>.</p>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Create">
+      </div>
+    </form>
+  </div>
+  <div ng-if="created">
+    <p class="page-header">You've successfully add event.</p>
+  </div>
 </div>

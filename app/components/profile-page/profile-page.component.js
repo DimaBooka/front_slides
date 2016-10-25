@@ -11,17 +11,19 @@ angular.
         self.successUpdeate = false;
         self.error = false;
         Auth.currentUser().$promise.then(
-            function (response) {
-                $scope.user = response;
-            }
+          function (response) {
+            $scope.user = response;
+            $scope.user.birth_date = new Date(response.birth_date);
+          }
         );
+        $scope.date = new Date();
         $scope.updateUserInfo = function () {
           Auth.updateUser({}, {
             username: $scope.user.username,
             first_name: $scope.user.first_name,
             last_name: $scope.user.last_name,
             email: $scope.user.email,
-            birth_date: $scope.user.birth_date,
+            birth_date: $scope.user.birth_date.toISOString().substring(0, 10),
             phone_number: $scope.user.phone_number,
             gender: $scope.user.gender
           }).$promise.then(function (response) {

@@ -2,12 +2,12 @@
 <h1 class="page-header">Public events</h1>
 <div ng-repeat="event in events" class="event-block">
 	<div class="event-image-block">
-		<img class="event-presentation-image" ng-src="{{event.presentation.thumbnail}}" alt="event thumbnail">
+		<img class="event-presentation-image" ng-src="{{event.presentation_info.thumbnail}}" alt="event thumbnail">
 	</div>
 	<div class="event-right">
 		<h3 class="event-name">{{event.name}}</h3>
 		<h4 class="event-presentation-name">{{event.presentation.name}}</h4>
-		<p class="event-date">{{event.date}}</p>
+		<p class="event-date">{{event.date | date: "yyyy-MM-dd HH:mm"}}</p>
 		<a ui-sref="event-detail({id: event.id})" class="event-button btn btn-default">Watch details</a>
 	</div>
 </div>
