@@ -2,8 +2,9 @@ angular.
   module('SlidesApp').
   component('eventDetail', {
     templateUrl: 'components/event-detail/event-detail.template.html',
-    controller: ['Event', '$scope', '$stateParams',
-      function (Event, $scope, $stateParams) {
+    controller: ['Event', '$scope', '$stateParams', 'baseUrl',
+      function (Event, $scope, $stateParams, baseUrl) {
+        $scope.baseUrl = baseUrl;
         Event.get({id: $stateParams.id}).$promise
         .then(
           function (response) {
