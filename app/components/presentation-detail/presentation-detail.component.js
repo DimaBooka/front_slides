@@ -33,11 +33,8 @@ angular.
                 var currentUserId = JSON.parse(localStorage['user']).id;
                 if (currentUserId == response['creator_info']['id']) {
                   $scope.presentationId = response['id'];
-                  $scope.thumbnail = response['thumbnail'];
                   $scope.name = response['name'];
                   $scope.description = response['description'];
-                  $scope.isPublic = response['published'];
-
                 self.updateAble = true;
                 }
               }
@@ -51,8 +48,8 @@ angular.
           var description = this.presentation.description;
           var isPublic = !!this.presentation.published;
           var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
-          fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl);
-          $scope.getPresentation();
+          fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl, $scope.getPresentation);
+          $scope.updateTrue = false;
         };
         $scope.deletePr = function () {
           Presentation.delete({id:$scope.presentationId}).$promise.then(

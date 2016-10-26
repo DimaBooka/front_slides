@@ -36,7 +36,7 @@ angular.
       }
     }])
     .service('fileUpdate', ['$http', '$state', function ($http, $state) {
-      this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl){
+      this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl, reload){
         var fd = new FormData();
         if (typeof thumbnail != "string") {
           fd.append('thumbnail', thumbnail);
@@ -49,7 +49,7 @@ angular.
           headers: {'Content-Type': undefined}
         })
         .success(function(){
-          $state.reload();
+          reload();
         })
         .error(function(){
         });
