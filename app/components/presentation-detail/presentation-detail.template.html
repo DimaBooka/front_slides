@@ -1,47 +1,50 @@
 <link rel="stylesheet" href="components/presentation-detail/presentation-detail.styles.css">
 <h1 class="page-header">Public presentations</h1>
 <div class="presentation-image-block">
-	<img class="presentation-image" src="{{presentation.thumbnail}}" alt="Presentation thumbnail">
+	<img class="presentation-image" ng-src="{{presentation.thumbnail}}" alt="Presentation thumbnail">
 </div>
 <div class="presentation-right">
-	<h3 class="presentation-name">{{presentation.name}}</h3>
-	<p class="presentation-author-date">{{presentation.creator_info.username}} | {{presentation.date_created  | date: "yyyy-MM-dd HH:mm"}}</p>
-	<p class="presentation-description">{{presentation.description}}</p>
+	<h3 class="presentation-name">{{name}}</h3>
+	<p class="presentation-author-date">{{presentation.creator_info.username}} | {{presentation.date_created | date: "yyyy-MM-dd HH:mm"}}</p>
+	<p class="presentation-description">{{description}}</p>
 </div>
-
 <div ng-if="$ctrl.updateAble">
+  <button class="btn btn-primary" ng-click="trueUpdate()">Update information</button>
+  <button class="btn btn-primary" ng-click="trueCreate()">Create event</button>
+</div>
+<div ng-if="$ctrl.updateAble" ng-show="updateTrue">
   <h1 class="page-header">You could to update data of this presentation.</h1>
-    <form class="col-md-4">
+    <form class="col-md-4" ng-submit="redactor()" >
 	  <div class="form-group">
 	    <label for="presentation-name" class="control-label">Presentation name</label>
-	    <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
+	    <input  class="form-control" type="text" name="name" ng-model="presentation.name" id="presentation-name" required>
 	  </div>
 	  <div class="form-group">
-	    <label for="presentation-file" class="control-label">Thumbnail</label><br>
+	    <label for="presentation-thumb" class="control-label">Thumbnail</label><br>
 	    <label class="btn btn-default btn-file">
-		  Browse <input type="file" name="thumbnail" file-model="thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb">
+		  Browse <input type="file" name="thumbnail" file-model="thumbnail" ng-model="presentation.thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb">
 	    </label>
 	  </div>
 	  <div class="form-group">
 	    <label for="presentation-desc" class="control-label">Description</label>
-	    <textarea class="form-control" name="desc" ng-model="description" id="presentation-desc" required></textarea>
+	    <textarea class="form-control" name="desc" ng-model="presentation.description" id="presentation-desc" required></textarea>
 	  </div>
 	  <div class="form-group">
-	    <label for="isPublic" class="control-label">Public
-	    <input type="checkbox" name="isPublic" ng-model="isPublic" id="isPublic"></label>
+	    <label for="published" class="control-label">Public
+	    <input type="checkbox" name="published" ng-model="presentation.published" id="published"></label>
 	  </div>
 
 	  <div class="form-group">
-	    <a ng-click="redactor()" class="btn btn-primary">Update</a>
+	    <input type="submit" class="btn btn-primary" value="Update">
 	  </div>
 	  <div class="form-group">
 	    <a ng-click="deletePr()" class="btn btn-primary">Delete</a>
 	  </div>
     </form>
 </div>
-<div ng-if="presentation">
-	<presentation-comments id="{{presentation.id}}"></presentation-comments>
+<div ng-if="presentation" ng-show="!createTrue && !updateTrue">
+	<presentation-comments id="{{presentationId}}"></presentation-comments>
 </div>
-<div>
+<div ng-if="createTrue">
 	<create-event></create-event>
 </div>
