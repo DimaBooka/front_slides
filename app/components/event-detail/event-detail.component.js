@@ -2,14 +2,44 @@ angular.
   module('SlidesApp').
   component('eventDetail', {
     templateUrl: 'components/event-detail/event-detail.template.html',
-    controller: ['Event', '$scope', '$stateParams', 'baseUrl',
-      function (Event, $scope, $stateParams, baseUrl) {
+    controller: ['Event', '$scope', '$stateParams', 'baseUrl', '$state',
+      function (Event, $scope, $stateParams, baseUrl, $state) {
         $scope.baseUrl = baseUrl;
-        Event.get({id: $stateParams.id}).$promise
-        .then(
-          function (response) {
-            $scope.event = response;
-          });
+        $scope.updateEventTrue = false;
+        $scope.getEvent = function () {
+          Event.get({id: $stateParams.id}).$promise
+            .then(
+              function (response) {
+                $scope.event = response;
+                if (!!localStorage['user']) {
+                  var currentUserId = JSON.parse(localStorage['user']).id;
+                  if (currentUserId == response['presentation_info']['creator_info'].id) {
+                    $scope.name = response['name'];
+                    var date = response['date'];
+                    $scope.date = new Date(date);
+                  $scope.updateEventAble = true;
+                  }
+                }
+              });
+        };
+        $scope.getEvent();
+        $scope.updateTrueEvent = function () {
+           $scope.updateEventTrue = !$scope.updateEventTrue;
+        };
+        $scope.updateEvent = function () {
+          Event.update({id: $stateParams.id},{
+            name: this.name,
+            date: this.date
+          }).$promise.then(function () {
+              $scope.getEvent();
+              $scope.updateEventTrue = false;
+            });
+        };
+        $scope.deleteEvent = function () {
+          Event.delete({id: $stateParams.id}).$promise.then(function () {
+            $state.go('events');
+          })
+        };
       }
     ]
   })

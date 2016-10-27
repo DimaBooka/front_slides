@@ -19,6 +19,9 @@ angular.module('eventService', [])
         save: {
           method: 'POST',
         },
+        update:{
+          method: 'PATCH',
+        },
       });
     }
  ]);
