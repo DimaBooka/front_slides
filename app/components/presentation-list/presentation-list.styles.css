@@ -1,25 +1,48 @@
 .presentation-block {
-	margin-bottom: 30px;
+	padding: 0px;
+	margin-left: 20px;
+	margin-bottom: 20px;
 }
 
-.presentation-image-block {
-	width: 230px;
-	height: 130px;
-	display: inline-block;
-	float: left;
-	text-align: center;
+@media all and (min-width: 992px) {
+  .presentation-block {
+  	height: 200px;
+	}
+
+ .presentation-image-block {
+		max-width: 100%;
+		max-height: 80%;
+		display: inline-block;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+}
+
+
+@media all and (max-width: 991px) {
+  .presentation-image-block {
+		display: inline-block;
+		vertical-align: middle;
+		text-align: center;
+	}
 }
 
 .presentation-image { 
-	max-width: 250px;
-	max-height: 130px;
+	max-width: 100%;
 }
 
-.presentation-right {
-	display: inline-block;
-	margin-left: 20px;
+.presentation-info {
+	// border-top: 1px solid black;
+	// height: 100px;
 }
 
 .presentation-name {
-	margin-top: 0px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.presentation-button {
+	margin-top: 5px;
+	height: 100%;
 }

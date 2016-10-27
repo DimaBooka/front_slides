@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="components/presentation-list/presentation-list.styles.css">
+
 <h1 class="page-header" ng-if="!my">Public presentations</h1>
 <h1 class="page-header" ng-if="my">My presentations</h1>
-<div ng-repeat="presentation in public_presentations" class="presentation-block">
-	<div class="presentation-image-block">
-		<img class="presentation-image" ng-src="{{presentation.thumbnail}}" alt="Presentation thumbnail">
-	</div>
-	<div class="presentation-right">
-		<h3 class="presentation-name">{{presentation.name}}</h3>
-		<p class="presentation-author-date">{{presentation.creator}} | {{presentation.date_created | date: "yyyy-MM-dd HH:mm"}}</p>
-		<p class="presentation-description">{{presentation.description}}</p>
-		<a ui-sref="presentation-detail({id: presentation.id})" class="presentation-button btn btn-default">Watch details</a>
-	</div>
+<div class="row">
+  <div ng-repeat="presentation in public_presentations" class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img ng-src="{{presentation.thumbnail}}" class="img-rounded">
+      <div class="caption">
+        <h3 class="text-center">{{presentation.name}}</h3>
+        <p><a ui-sref="presentation-detail({id: presentation.id})" class="btn btn-primary btn-block" role="button">Show presentation</a> </p>
+      </div>
+    </div>
+  </div>
 </div>
