@@ -23,7 +23,6 @@ angular.
         $scope.trueCreate = function () {
           $scope.createTrue = !$scope.createTrue;
           $scope.updateTrue = false;
-          console.log($scope.createTrue);
         };
         $scope.getPresentation = function () {
           Presentation.get({'id': $scope.presentationId}).$promise
