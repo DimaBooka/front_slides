@@ -22,6 +22,8 @@ angular.
             date: $scope.date
           }).$promise.then(function () {
             $scope.created = true;
+            $scope.$parent.message.text="add"
+            $scope.$parent.trueCreate();
           });
         };
         $scope.createdSuccess = function () {

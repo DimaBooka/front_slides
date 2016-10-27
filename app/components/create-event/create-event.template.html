@@ -1,7 +1,7 @@
-<div>
-  <div ng-if="!created">
-    <h1 class="page-header">Create event</h1>
-    <form class="col-md-4" ng-submit="createEventNew()">
+<div class="row">
+  <div ng-if="!created" class="well col-md-12">
+  <h3 class="page-header">Create event</h3>
+    <form ng-submit="createEventNew()" class="col-md-6">
       <div class="form-group">
         <label for="presentation-name" class="control-label">Event name</label>
         <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
@@ -13,11 +13,9 @@
       </div>
 
       <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Create">
+        <input type="submit" class="btn btn-primary col-md-3" value="Create">
+        <a class="btn btn-default col-md-3 col-md-offset-1" ng-click="$parent.$parent.trueCreate()">Cancel</a>
       </div>
     </form>
-  </div>
-  <div ng-if="created">
-    <p class="page-header">You've successfully add event.</p>
   </div>
 </div>

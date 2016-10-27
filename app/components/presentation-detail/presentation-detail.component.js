@@ -13,19 +13,17 @@ angular.
         $scope.createTrue = false;
         $scope.updateTrue = false;
         $scope.presentationId = this.id;
-        console.log($scope);
         if (!this.id) {
           $scope.presentationId = $stateParams.id;
         }
         $scope.trueUpdate = function () {
           $scope.updateTrue = !$scope.updateTrue;
           $scope.createTrue = false;
-          console.log($scope.createTrue);
         };
         $scope.trueCreate = function () {
           $scope.createTrue = !$scope.createTrue;
           $scope.updateTrue = false;
-          console.log($scope.trueCreate);
+          console.log($scope.createTrue);
         };
         $scope.getPresentation = function () {
           Presentation.get({'id': $scope.presentationId}).$promise
