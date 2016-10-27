@@ -2,14 +2,16 @@ angular.
   module('SlidesApp').
   component('presentationList', {
     templateUrl: 'components/presentation-list/presentation-list.template.html',
-    controller: ['Presentation', '$scope', '$stateParams',
-      function (Presentation, $scope, $stateParams) {
+    controller: ['Presentation', 'currentUserService', '$scope', '$stateParams', '$rootScope',
+      function (Presentation, currentUserService, $scope, $stateParams, $rootScope) {
         var query;
 
         if ($stateParams.my) {
-          var userID = JSON.parse(localStorage['user']).id;
+          $scope.my = true;
+          var userID = $rootScope.user.id;
           query = Presentation.query({creator_id: userID});
         } else if ($stateParams.published) {
+          $scope.my = false;
           query = Presentation.published();
         } else {
           console.error("Not implemented");

@@ -5,11 +5,11 @@ angular.
     bindings: {
       id: '@'
     },
-    controller: ['Comments', '$scope', '$stateParams',
-      function (Comments, $scope, $stateParams) {
-        $scope.userAuth = !!localStorage['user'];
-
-        $scope.currentUserId = JSON.parse(localStorage['user']).id;
+    controller: ['Comments',  'currentUserService', '$scope', '$stateParams', '$rootScope',
+      function (Comments,  currentUserService, $scope, $stateParams, $rootScope) {
+        if ($rootScope.user) {
+          $scope.currentUserId = $rootScope.user.id;
+        }
 
         $scope.presentationId = this.id;
         if (!this.id) {
@@ -28,7 +28,7 @@ angular.
           Comments.create({}, {
             text: this.text,
             presentation: $scope.presentationId,
-            author: JSON.parse(localStorage['user'])['id']
+            author: $scope.currentUserId
           }).$promise.then(
             function (response) {
              $scope.getComments();

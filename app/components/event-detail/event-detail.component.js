@@ -2,8 +2,8 @@ angular.
   module('SlidesApp').
   component('eventDetail', {
     templateUrl: 'components/event-detail/event-detail.template.html',
-    controller: ['Event', '$scope', '$stateParams', 'baseUrl', '$state',
-      function (Event, $scope, $stateParams, baseUrl, $state) {
+    controller: ['Event', 'currentUserService', '$scope', '$stateParams', 'baseUrl', '$state', '$rootScope',
+      function (Event, currentUserService, $scope, $stateParams, baseUrl, $state, $rootScope) {
         $scope.baseUrl = baseUrl;
         $scope.updateEventTrue = false;
         $scope.getEvent = function () {
@@ -11,8 +11,8 @@ angular.
             .then(
               function (response) {
                 $scope.event = response;
-                if (!!localStorage['user']) {
-                  var currentUserId = JSON.parse(localStorage['user']).id;
+                if ($rootScope.user) {
+                  var currentUserId = $rootScope.user.id;
                   if (currentUserId == response['presentation_info']['creator_info'].id) {
                     $scope.name = response['name'];
                     var date = response['date'];

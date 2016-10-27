@@ -95,9 +95,7 @@ angular.module('SlidesApp', [
           url: '/change_password/',
           component: 'changePassword',
         });
-    }]).run(function ($rootScope, $http) {
-      if (localStorage['token']) {
-        $http.defaults.headers.common['Authorization'] = 'Token ' + localStorage['token'];
-        $rootScope.token = localStorage['token'];
-      }
+    }]).run(function ($rootScope, currentUserService) {
+      currentUserService.loadTokenFromLS();
+      currentUserService.loadUserFromLS();
     });

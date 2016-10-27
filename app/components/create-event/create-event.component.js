@@ -5,20 +5,20 @@ angular.
   module('SlidesApp').
   component('createEvent', {
     templateUrl: 'components/create-event/create-event.template.html',
-    controller: ['$scope', 'Event', '$stateParams',
-      function ($scope, Event,  $stateParams) {
+    controller: ['$scope', 'currentUserService', 'Event', '$stateParams', '$rootScope',
+      function ($scope, currentUserService, Event, $stateParams, $rootScope) {
         var date = new Date();
         date = date.toISOString().substring(0,16);
         $scope.curDate = new Date(Date.parse(date));
         $scope.date = $scope.curDate;
         $scope.created = false;
-        $scope.currentUserId = JSON.parse(localStorage['user']).id;
+        $scope.currentUserId = $rootScope.user.id;
         $scope.createEventNew = function () {
           $scope.date = new Date(this.date);
           Event.save({}, {
             name: this.name,
             presentation: $stateParams.id,
-            author: JSON.parse(localStorage['user']).id,
+            author: $scope.currentUserId,
             date: $scope.date
           }).$promise.then(function () {
             $scope.created = true;

@@ -6,8 +6,8 @@ angular.
     },
     templateUrl: 'components/presentation-detail/presentation-detail.template.html',
 
-    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$stateParams', '$state',
-      function (Presentation, fileUpdate, baseUrl, $scope, $stateParams, $state) {
+    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$stateParams', '$state', '$rootScope',
+      function (Presentation, fileUpdate, baseUrl, $scope, $stateParams, $state, $rootScope) {
         var self = this;
         self.updateAble = false;
         $scope.createTrue = false;
@@ -29,8 +29,8 @@ angular.
           .then(
             function (response) {
               $scope.presentation = response;
-              if (!!localStorage['user']) {
-                var currentUserId = JSON.parse(localStorage['user']).id;
+              if ($rootScope.user) {
+                var currentUserId = $rootScope.user.id;
                 if (currentUserId == response['creator_info']['id']) {
                   $scope.presentationId = response['id'];
                   $scope.name = response['name'];

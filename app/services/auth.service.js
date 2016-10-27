@@ -48,4 +48,76 @@ angular.module('authService', [])
         },
       });
     }
- ]);
+ ])
+ .service('currentUserService', ['Auth', '$rootScope', '$http',
+   function(Auth, $rootScope, $httpProvider) {
+     this.loadUserFromLS = function () {
+       if (localStorage['user'])
+         this.setUser(JSON.parse(localStorage['user']));
+     };
+
+     this.loadTokenFromLS = function () {
+       if (localStorage['token'])
+         this.setToken(localStorage['token']);
+     };
+
+     this.loadUserFromAPI = function () {
+       Auth.currentUser().$promise.then(this.setUser.bind(this));
+     };
+
+     this.setUser = function (user) {
+       $rootScope.user = user;
+       localStorage['user'] = JSON.stringify(user);
+     };
+
+     this.setToken = function (token) {
+       $rootScope.token = token;
+       localStorage['token'] = token;
+       $httpProvider.defaults.headers.common['Authorization'] = 'Token ' + token;
+     };
+
+     this.unsetUser = function () {
+       $rootScope.user = undefined;
+       localStorage.removeItem('user');
+     };
+
+     this.unsetToken = function () {
+       $rootScope.token = undefined;
+       localStorage.removeItem('token');
+       delete $httpProvider.defaults.headers.common['Authorization'];
+     };
+
+     this.logout = function () {
+       return Auth.logout({
+         'token': $rootScope.token
+       }).$promise.then(function (response) {
+         this.unsetUser();
+         this.unsetToken();
+         return response
+       }.bind(this));
+     };
+
+     this.login = function(username, password) {
+       return Auth.login({}, {
+         'username': username,
+         'password': password
+       }).$promise.then(function (data) {
+         this.setToken(data.key);
+         this.loadUserFromAPI();
+         return data;
+       }.bind(this));
+     };
+
+     this.register = function(username, password1, password2, email) {
+       return Auth.register({}, {
+            'username': username,
+            'password1': password1,
+            'password2': password2,
+            'email': email
+          }).$promise.then(function (data) {
+            this.setToken(data.key);
+            this.loadUserFromAPI();
+       }.bind(this));
+     };
+   }]
+ );
