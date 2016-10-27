@@ -1,13 +1,17 @@
 <link rel="stylesheet" href="components/event-list/event-list.styles.css">
 <h1 class="page-header">Public events</h1>
-<div ng-repeat="event in events" class="event-block">
-	<div class="event-image-block">
-		<img class="event-presentation-image" ng-src="{{event.presentation_info.thumbnail}}" alt="event thumbnail">
-	</div>
-	<div class="event-right">
-		<h3 class="event-name">{{event.name}}</h3>
-		<h4 class="event-presentation-name">{{event.presentation.name}}</h4>
-		<p class="event-date">{{event.date | date: "yyyy-MM-dd HH:mm"}}</p>
-		<a ui-sref="event-detail({id: event.id})" class="event-button btn btn-default">Watch details</a>
-	</div>
+<div id="event_list">
+   <p class="lead" ng-if="!events.length">There are no events yet</p>
+  <div ng-repeat="event in events" >
+    <div class="thumbnail">
+      <div class="image">
+      	<img ng-src="{{event.presentation_info.thumbnail}}" class="img-rounded" alt="Event thumbnail">
+    	</div>
+      <div class="caption">
+        <h3 class="text-center">{{event.name}}</h3>
+				<p class="event-date">Started at {{event.date | date: "HH:mm dd.MM.yyyy"}}</p>
+        <p><a ui-sref="event-detail({id: event.id})" class="btn btn-primary btn-block" role="button">Show event</a> </p>
+      </div>
+    </div>
+  </div>
 </div>
