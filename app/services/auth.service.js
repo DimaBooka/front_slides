@@ -46,6 +46,18 @@ angular.module('authService', [])
             operation: 'user',
           },
         },
+        facebookLogin: {
+          method: 'POST',
+          params: {
+            operation: 'facebook',
+          },
+        },
+        googleLogin: {
+          method: 'POST',
+          params: {
+            operation: 'google',
+          },
+        },
       });
     }
  ])

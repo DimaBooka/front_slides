@@ -5,8 +5,8 @@ angular.
   module('SlidesApp').
   component('createEvent', {
     templateUrl: 'components/create-event/create-event.template.html',
-    controller: ['$scope', 'currentUserService', 'Event', '$stateParams', '$rootScope',
-      function ($scope, currentUserService, Event, $stateParams, $rootScope) {
+    controller: ['$scope', 'currentUserService', 'Event', '$stateParams', '$rootScope', '$state',
+      function ($scope, currentUserService, Event, $stateParams, $rootScope, $state) {
         var date = new Date();
         date = date.toISOString().substring(0,16);
         $scope.curDate = new Date(Date.parse(date));
@@ -20,10 +20,10 @@ angular.
             presentation: $stateParams.id,
             author: $scope.currentUserId,
             date: $scope.date
-          }).$promise.then(function () {
+          }).$promise.then(function (res) {
             $scope.created = true;
-            $scope.$parent.message.text="add"
             $scope.$parent.trueCreate();
+            $state.go('event-detail', {id:res.id})
           });
         };
         $scope.createdSuccess = function () {

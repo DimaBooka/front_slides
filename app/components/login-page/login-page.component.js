@@ -2,10 +2,11 @@ angular.
   module('SlidesApp').
   component('loginPage', {
     templateUrl: 'components/login-page/login-page.template.html',
-    controller: [ 'Auth', 'currentUserService', '$rootScope', '$state',
-      function (Auth, currentUserService, $rootScope, $state) {
+    controller: [ 'Auth', 'currentUserService', 'FacebookAuth','GoogleAuth', '$rootScope', '$state',
+      function (Auth, currentUserService, FacebookAuth, GoogleAuth, $rootScope, $state) {
         var self = this;
         self.error = false;
+        FacebookAuth.fbInit();
         this.login = function () {
           currentUserService.login(this.username, this.password).then(function () {
             $state.go('presentations');
@@ -16,6 +17,13 @@ angular.
         };
         this.restore = function () {
           $state.go('restore');
+        };
+        this.facebookLogin = function () {
+          FacebookAuth.watchLoginChange();
+          $state.go('presentations');
+        };
+         this.googleLogin = function () {
+          GoogleAuth.googleLogin();
         };
       }
     ]

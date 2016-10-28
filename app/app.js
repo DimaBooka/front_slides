@@ -9,6 +9,8 @@ angular.module('SlidesApp', [
   'presentationService',
   'eventService',
   'commentService',
+  'facebookService',
+  'googleService'
 ])
   .config(['$locationProvider', '$httpProvider', '$resourceProvider', '$stateProvider',
     function($locationProvider, $httpProvider, $resourceProvider, $stateProvider) {
