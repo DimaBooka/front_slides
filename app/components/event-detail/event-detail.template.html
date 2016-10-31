@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="components/event-detail/event-detail.styles.css">
-
 <div class="container" id="event_detail" ng-if="event">
   <header class="page-header">
     <div ng-if="updateEventAble && !eventLive" class="pull-right">
@@ -42,7 +41,9 @@
         <label for="event-name" class="control-label">Event name</label>
         <input  class="form-control" type="text" name="name" ng-model="name" id="event-name" required>
       </div>
-
+      <div ng-if="error">
+        <p>{{error}}</p>
+      </div>
       <div class="form-group">
         <label for="dropdown1" class="control-label">Evant date</label>
         <div class="dropdown">

@@ -16,6 +16,10 @@ angular.module('eventService', [])
           },
           isArray: true,
         },
+        myEvents: {
+          method: 'GET',
+          isArray: true,
+        },
         save: {
           method: 'POST',
         },

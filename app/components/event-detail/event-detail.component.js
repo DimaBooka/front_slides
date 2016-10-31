@@ -23,6 +23,7 @@ component('eventDetail', {
             }
           }
         });
+
     };
     $scope.getEvent();
 
@@ -37,6 +38,8 @@ component('eventDetail', {
     }).$promise.then(function () {
       $scope.getEvent();
       $scope.updateEventTrue = false;
+    }).catch(function (error) {
+              $scope.error = error['data']['date'][0];
     });
   };
 
@@ -63,7 +66,7 @@ component('eventDetail', {
     liveFrame = document.getElementById('presentation_live');
     liveFrame.contentWindow.postMessage(JSON.stringify({method: 'togglePause', args: [] }), '*' );
     $scope.eventPaused = state;
-  }
+  };
 
   $scope.endEvent = function () {
     Event.end({id: $stateParams.id}).$promise.then(function (response) {

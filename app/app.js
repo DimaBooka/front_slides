@@ -43,6 +43,18 @@ angular.module('SlidesApp', [
           name: 'events',
           url: '/events/',
           component: 'eventList',
+          params: {
+            "public": true,
+          }
+        })
+      .state(
+        {
+          name: 'myEvents',
+          url: '/my-events/',
+          component: 'eventList',
+          params: {
+            "myEvents": true,
+          }
         })
       .state(
         {
