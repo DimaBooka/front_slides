@@ -2,7 +2,7 @@
 
 <div class="container" id="event_detail" ng-if="event">
   <header class="page-header">
-    <div ng-if="updateEventAble" class="pull-right">
+    <div ng-if="updateEventAble && !eventLive" class="pull-right">
       <div class="btn-group" role="group" aria-label="">
         <a class="btn btn-default btn-sm" ng-click="startEvent()">
           <span class="glyphicon glyphicon-play"> </span> Start event
@@ -15,11 +15,24 @@
         </button>
       </div>
     </div>
+    <div ng-if="eventLive" class="pull-right">
+      <div class="btn-group" role="group" aria-label="">
+        <a class="btn btn-default btn-sm" ng-click="pauseEvent(true)" ng-if="!eventPaused">
+          <span class="glyphicon glyphicon-pause"> </span> Pause event
+        </a>
+        <a class="btn btn-default btn-sm" ng-click="pauseEvent(false)" ng-if="eventPaused">
+          <span class="glyphicon glyphicon-play"> </span> Resume event
+        </a>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="endEvent()">
+          <span class="glyphicon glyphicon-stop"> </span>
+        </button>
+      </div>
+    </div>
     <h1>{{ event.name }}</h1>
   </header> 
   <div class="row" ng-if="!updateEventTrue">
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe ng-src="{{baseUrl + '/events/' + event.id + '/live/' | trustAsResourceUrl}}" allowfullscreen id="presentation_live" class="embed-responsive-item"> 
+    <div class="col-md-10 embed-responsive embed-responsive-16by9">
+      <iframe src="{{baseUrl + '/events/' + event.id + '/live/' | trustAsResourceUrl}}" allowfullscreen id="presentation_live" class="embed-responsive-item"> 
       </iframe>
     </div>
   </div>
