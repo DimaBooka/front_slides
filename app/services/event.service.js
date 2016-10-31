@@ -29,6 +29,13 @@ angular.module('eventService', [])
             operation: 'start',
           }
         },
+        end:  {
+          method: 'GET',
+          params: {
+            id: '@id',
+            operation: 'end',
+          }
+        },
       });
     }
  ]);
