@@ -1,7 +1,7 @@
 angular.module('eventService', [])
  .factory('Event', ['$resource', 'baseUrl',
     function($resource, baseUrl) {
-      return $resource(baseUrl + '/api/events/:id/', {}, {
+      return $resource(baseUrl + '/api/events/:id/:operation/', {}, {
         get: {
           method: 'GET',
           params: {
@@ -19,8 +19,22 @@ angular.module('eventService', [])
         save: {
           method: 'POST',
         },
-        update:{
+        update: {
           method: 'PATCH',
+        },
+        start:  {
+          method: 'GET',
+          params: {
+            id: '@id',
+            operation: 'start',
+          }
+        },
+        end:  {
+          method: 'GET',
+          params: {
+            id: '@id',
+            operation: 'end',
+          }
         },
       });
     }
