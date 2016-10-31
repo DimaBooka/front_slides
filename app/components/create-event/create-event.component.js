@@ -22,8 +22,8 @@ angular.
             date: $scope.date
           }).$promise.then(function (res) {
             $scope.created = true;
-            $scope.$parent.trueCreate();
             $state.go('event-detail', {id:res.id})
+            $scope.$parent.trueCreate();
           });
         };
         $scope.createdSuccess = function () {
