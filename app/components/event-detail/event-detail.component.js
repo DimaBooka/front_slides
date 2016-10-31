@@ -33,6 +33,8 @@ angular.
           }).$promise.then(function () {
               $scope.getEvent();
               $scope.updateEventTrue = false;
+            }).catch(function (error) {
+              $scope.error = error['data']['date'][0];
             });
         };
         $scope.deleteEvent = function () {

@@ -19,6 +19,9 @@
 	    <label for="event-name" class="control-label">Presentation name</label>
 	    <input  class="form-control" type="text" name="name" ng-model="name" id="event-name" required>
 	  </div>
+      <div ng-if="error">
+        <p>{{error}}</p>
+      </div>
       <div class="form-group">
 	    <label class="control-label">Presentation name</label>
 	    <input  class="form-control" type="datetime-local" name="date" ng-model="date" required>
