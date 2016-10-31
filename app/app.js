@@ -5,6 +5,7 @@ angular.module('SlidesApp', [
   'ngRoute',
   'ngResource',
   'ui.router',
+  'ui.bootstrap.datetimepicker',
   'authService',
   'presentationService',
   'eventService',

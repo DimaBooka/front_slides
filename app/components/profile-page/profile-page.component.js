@@ -18,13 +18,14 @@ angular.
         );
         $scope.date = new Date();
         $scope.updateUserInfo = function () {
+          var birth_date = $scope.user.birth_date.toLocaleDateString().split('.');
+          birth_date = birth_date.reverse().join('-');
           Auth.updateUser({}, {
             username: $scope.user.username,
             first_name: $scope.user.first_name,
             last_name: $scope.user.last_name,
             email: $scope.user.email,
-            birth_date: $scope.user.birth_date.toISOString().substring(0, 10),
-            phone_number: $scope.user.phone_number,
+            birth_date: birth_date,
             gender: $scope.user.gender
           }).$promise.then(function (response) {
             self.successUpdeate = true;

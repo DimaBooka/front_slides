@@ -22,11 +22,19 @@
     </div>
     <div class="form-group">
       <label class="control-label">Birth date:</label>
-      <input class="form-control" type="date" name="birth_date" max="date" ng-model="user.birth_date"/>
-    </div>
-    <div class="form-group">
-      <label class="control-label">Phone number:</label>
-      <input class="form-control" type="text" pattern="[0-9]{12}" name="phone_number" ng-model="user.phone_number"/>
+      <div class="dropdown">
+        <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#">
+          <div class="input-group">
+            <input type="text" class="form-control" value="{{user.birth_date | date: 'yyyy MM dd' }}">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <datetimepicker data-ng-model="user.birth_date"
+                          data-datetimepicker-config="{ dropdownSelector: '#dropdown1', startView: 'year',
+            minView: 'day', }"></datetimepicker>
+        </ul>
+      </div>
     </div>
     <div class="form-group">
       <label class="control-label">Gender:</label>
