@@ -2,10 +2,14 @@ angular.
 module('SlidesApp').
 component('eventDetail', {
   templateUrl: 'components/event-detail/event-detail.template.html',
-  controller: ['Event', 'currentUserService', '$scope', '$stateParams', 'baseUrl', '$state', '$rootScope',
-  function (Event, currentUserService, $scope, $stateParams, baseUrl, $state, $rootScope) {
+  controller: ['Event', 'WebSocket', 'currentUserService', '$scope', '$rootScope', '$stateParams', 'baseUrl', '$state', '$rootScope',
+  function (Event, WebSocket, currentUserService, $scope, $rootScope, $stateParams, baseUrl, $state, $rootScope) {
+    var self = this;
     $scope.baseUrl = baseUrl;
     $scope.updateEventTrue = false;
+    $scope.messages = new Array();
+    $scope.room = $stateParams.id;
+
     $scope.getEvent = function () {
       Event.get({id: $stateParams.id}).$promise.then(
         function (response) {
@@ -87,6 +91,30 @@ component('eventDetail', {
     });
   };
 
+  $scope.sendInChat = function () {
+    WebSocket.sendMessage(self.message, $scope.room);
+    console.log(self.message);
+    self.message = '';
+  }
+
+  $scope.initChat = () => WebSocket.getChatHistory($scope.room);
+
+  $scope.initMessage = () => {
+    var objDiv = document.getElementById("messages");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    };
+
+
+  $rootScope.$on('chatMessage' + $scope.room, function (event, message) {
+    $scope.messages.push(message);  
+  });
+
+  $rootScope.$on('chatMessages' + $scope.room, function (event, messages) {
+
+    messages.forEach(function (message){
+      $scope.messages.push(message);
+    });
+  });
 }
 ]
 })
