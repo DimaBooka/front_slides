@@ -12,7 +12,6 @@ angular.module('eventService', [])
           method: 'GET',
           params: {
             ordering: 'date',
-            state: 1,
           },
           isArray: true,
         },
@@ -27,17 +26,17 @@ angular.module('eventService', [])
           method: 'PATCH',
         },
         start:  {
-          method: 'GET',
+          method: 'POST',
           params: {
             id: '@id',
             operation: 'start',
           }
         },
         end:  {
-          method: 'GET',
+          method: 'POST',
           params: {
             id: '@id',
-            operation: 'end',
+            operation: 'finish',
           }
         },
       });

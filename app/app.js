@@ -58,6 +58,15 @@ angular.module('SlidesApp', [
         })
       .state(
         {
+          name: 'historyEvents',
+          url: '/history/',
+          component: 'eventList',
+          params: {
+            "history": true,
+          }
+        })
+      .state(
+        {
           name: 'event-detail',
           url: '/events/{id}',
           component: 'eventDetail',

@@ -3,12 +3,12 @@
   <header class="page-header">
     <div ng-if="updateEventAble && !eventLive" class="pull-right">
       <div class="btn-group" role="group" aria-label="">
-        <a class="btn btn-default btn-sm" ng-click="startEvent()">
-          <span class="glyphicon glyphicon-play"> </span> Start event
-        </a>
-        <button type="button" class="btn btn-default btn-sm" ng-click="updateTrueEvent()">
-          <span class="glyphicon glyphicon-pencil" > </span>
-        </button>
+          <a ng-if="!eventFinished" class="btn btn-default btn-sm" ng-click="startEvent()">
+            <span class="glyphicon glyphicon-play"> </span> Start event
+          </a>
+          <button ng-if="!eventFinished" type="button" class="btn btn-default btn-sm" ng-click="updateTrueEvent()">
+            <span class="glyphicon glyphicon-pencil" > </span>
+          </button>
         <button type="button" class="btn btn-sm btn-danger" ng-click="deleteEvent()">
           <span class="glyphicon glyphicon-trash"> </span>
         </button>

@@ -16,11 +16,13 @@ angular.
             name: this.name,
             presentation: $stateParams.id,
             author: $scope.currentUserId,
-            date: $scope.date
+            date_planned: $scope.date
           }).$promise.then(function (res) {
             $scope.created = true;
             $scope.$parent.trueCreate();
             $state.go('event-detail', {id:res.id})
+          }).catch(function (error) {
+              $scope.error = error['data']['non_field_errors'][0];
           });
         };
         $scope.createdSuccess = function () {

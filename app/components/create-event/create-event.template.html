@@ -6,7 +6,9 @@
         <label for="presentation-name" class="control-label">Event name</label>
         <input  class="form-control" type="text" name="name" ng-model="name" id="presentation-name" required>
       </div>
-
+      <div ng-if="error">
+        <p>{{error}}</p>
+      </div>
       <div class="form-group">
         <label for="dropdown1" class="control-label">Choose day and time</label>
         <div class="dropdown">

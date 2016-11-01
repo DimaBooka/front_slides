@@ -14,12 +14,17 @@ component('eventDetail', {
             var currentUserId = $rootScope.user.id;
             if (currentUserId == response['presentation_info']['creator_info'].id) {
               $scope.name = response['name'];
-              var date = response['date'];
-              $scope.date = new Date(date);
+              $scope.date_planned = new Date(response['date_planned']);
+              $scope.date_started = new Date(response['date_started']);
+              $scope.date_finished = new Date(response['date_finished']);
               $scope.updateEventAble = true;
             }
-            if ($scope.event.state == 5) {
+            if ($scope.event.date_started && !$scope.event.date_finished) {
               $scope.eventLive = true;
+            }
+
+            if ($scope.event.date_started && $scope.event.date_finished) {
+              $scope.eventFinished= true;
             }
           }
         });
@@ -52,7 +57,7 @@ component('eventDetail', {
   $scope.startEvent = function () {
     Event.start({id: $stateParams.id}).$promise.then(function (response) {
       liveFrame = document.getElementById('presentation_live');
-      if (response.state == "live") {
+      if (response.result == "started") {
         liveFrame.src = liveFrame.src;
         $scope.eventLive = true;
       }
@@ -71,14 +76,14 @@ component('eventDetail', {
   $scope.endEvent = function () {
     Event.end({id: $stateParams.id}).$promise.then(function (response) {
       liveFrame = document.getElementById('presentation_live');
-      if (response.state == "done") {
+       if (response.result == 'finished') {
         liveFrame.src = liveFrame.src; 
         $scope.eventLive = false;
       }
       else {
         alert("Error: " + response.error);
       }
-      
+      $scope.eventFinished = true;
     });
   };
 
