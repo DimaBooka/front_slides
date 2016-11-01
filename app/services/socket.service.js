@@ -1,7 +1,7 @@
 angular.module('socketService', ['ngWebSocket'])
 .factory('WebSocket', ['$websocket', 'socketAddr', '$stateParams', '$rootScope', 'currentUserService',
   function($websocket, socketAddr, $stateParams, $rootScope, currentUserService) {
-    var socket = $websocket('ws://' + socketAddr);
+    var socket = $websocket(socketAddr);
     var isopen = false;
 
     socket.onOpen(function() {
