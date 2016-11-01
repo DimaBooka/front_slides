@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="components/event-list/event-list.styles.css">
 <h1 class="page-header" ng-if="!my">Public events</h1>
 <h1 class="page-header" ng-if="my">My events</h1>
-<div id="event_list">
-   <p class="lead" ng-if="!events.length">There are no events yet</p>
+<div id="event_list" ng-cloak>
+  <p class="lead" ng-if="!events.length">There are no events yet</p>
   <div ng-repeat="event in events" >
     <div class="thumbnail">
       <div class="image">

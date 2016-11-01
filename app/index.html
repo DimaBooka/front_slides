@@ -16,7 +16,7 @@
 
   <link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body ng-cloak>
 
   <nav class="navbar navbar-inverse navbar-default navbar-static-top">
     <div class="container">
@@ -64,11 +64,13 @@
   <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
   <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
   <script src="bower_components/angular-date-time-input/src/dateTimeInput.js"></script>
+  <script src="bower_components/angular-websocket/dist/angular-websocket.js"></script>
   <script src="app.js"></script>
   <script src="app.constant.js"></script>
   <script src="services/auth.service.js"></script>
   <script src="services/presentation.service.js"></script>
   <script src="services/event.service.js"></script>
+  <script src="services/socket.service.js"></script>
   <script src="services/presentation.service.js"></script>
   <script src="services/uploader-presentation-services.js"></script>
   <script src="services/comment.service.js"></script>

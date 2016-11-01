@@ -1,0 +1,59 @@
+#work_area {
+    position: relative;
+}
+
+#presentation_live {
+    flex-grow: 3;
+    width: 100%;
+    height: 100vw;
+}
+
+#chat {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    width: 100%;
+    flex-grow: 1;
+}
+
+@media all and (min-width: 767px) {
+    #work_area {
+        display: flex;
+        height: 75vh;
+    }
+    #presentation_live {
+        flex-grow: 3;
+        width: auto;
+        height: auto;
+    }
+    #chat {
+        width: 100px;
+        max-height: 100%;
+    }
+}
+
+#chat > header {
+    flex-grow: 0;
+    color: white;
+    background: #222;
+    font-size: 1.5em;
+    padding-left: 5px;
+}
+
+#chat #messages {
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+#chat > footer {
+    flex-grow: 0;
+}
+
+.divider {
+    margin: 10px 0 0 0;
+}
+
+.media {
+    padding-left: 10px; 
+    padding-right: 10px;
+}
