@@ -14,8 +14,8 @@
 		<button class="btn btn-primary" type="submit" ui-sref="restore">Forgot password?</button>
 	</div>
 </form>
-<input class="btn btn-primary" type="submit" value="Facebook" ng-click="$ctrl.facebookLogin()">
+<input ng-if="fb_enabled" class="btn btn-primary" type="submit" value="Facebook" ng-click="$ctrl.facebookLogin()">
 
-<fb:login-button show-faces="true" max-rows="1" size="large"></fb:login-button>
+<fb:login-button ng-if="fb_enabled" show-faces="true" max-rows="1" size="large"></fb:login-button>
 <br>
 <button class="btn btn-primary" id="signin-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()">Google</button>
