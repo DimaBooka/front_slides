@@ -2,9 +2,8 @@
  * Created by user on 27.10.16.
  */
 angular.module('facebookService', [])
- .service('FacebookAuth', ['$rootScope','$window', 'Auth', 'currentUserService',
-   function($rootScope, $window, Auth, currentUserService) {
-     console.log('facebook login');
+ .service('FacebookAuth', ['$rootScope','$window', 'Auth', 'currentUserService', '$state',
+   function($rootScope, $window, Auth, currentUserService, $state) {
      $rootScope.facebookUser = {};
 
      this.fbInit = function() {
@@ -15,24 +14,34 @@ angular.module('facebookService', [])
           return;
 
        // Executed when the SDK is loaded
-        FB.init({
-         appId: '534086810128512',
-         status: true,
-         cookie: true,
-         xfbml: true
+       FB.init({
+         appId      : '534086810128512',
+         xfbml      : true,
+         version    : 'v2.8'
        });
      };
 
      this.statusChangeCallback = function (response) {
        var _self = this;
-       Auth.facebookLogin({}, {
-         'access_token': response.authResponse.accessToken
-       }).$promise.then(function (data) {
-         currentUserService.setToken(data.key);
-         currentUserService.loadUserFromAPI();
-         _self.getUserInfo();
-         return data;
-       });
+       if (!!response.authResponse){
+         Auth.facebookLogin({}, {
+           'access_token': response.authResponse.accessToken
+         }).$promise.then(function (data) {
+           currentUserService.setToken(data.key);
+           currentUserService.loadUserFromAPI();
+           _self.getUserInfo();
+           $state.go('presentations');
+           return data;
+         });
+       } else {
+         FB.login(function(response) {
+           if (response.authResponse) {
+             FB.getLoginStatus(function(response) {
+              _self.statusChangeCallback(response);
+             });
+           }
+         });
+       }
      };
 
      this.getUserInfo = function() {
@@ -44,7 +53,7 @@ angular.module('facebookService', [])
        });
      };
 
-     this.watchLoginChange = function() {
+     this.watchLoginChange = function(){
        var _self = this;
        FB.Event.subscribe('auth.authResponseChange', function(res) {
          if (res.status === 'connected') {
@@ -53,15 +62,6 @@ angular.module('facebookService', [])
        });
        FB.getLoginStatus(function(response) {
         _self.statusChangeCallback(response);
-       });
-     };
-
-     this.logout = function() {
-       var _self = this;
-       FB.logout(function(response) {
-         $rootScope.$apply(function() {
-           $rootScope.facebookUser = _self.facebookUser = {};
-         });
        });
      };
    }

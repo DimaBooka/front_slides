@@ -1,3 +1,5 @@
+<div id="fb-root"></div>
+
 <h1 class="page-header">Please sign in</h1>
 <p ng-if="$ctrl.error">{{ $ctrl.errorMes }}</p>
 <form class="col-md-4">
@@ -14,8 +16,7 @@
 		<button class="btn btn-primary" type="submit" ui-sref="restore">Forgot password?</button>
 	</div>
 </form>
-<input ng-if="fb_enabled" class="btn btn-primary" type="submit" value="Facebook" ng-click="$ctrl.facebookLogin()">
+<input class="btn btn-primary" type="submit" value="Facebook" ng-click="$ctrl.facebookLogin()">
 
-<fb:login-button ng-if="fb_enabled" show-faces="true" max-rows="1" size="large"></fb:login-button>
 <br>
 <button class="btn btn-primary" id="signin-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()">Google</button>
