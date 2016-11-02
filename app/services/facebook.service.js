@@ -16,7 +16,7 @@ angular.module('facebookService', [])
 
      this.statusChangeCallback = function (response) {
        var _self = this;
-       if (!!response.authResponse){
+       if (response.authResponse){
          Auth.facebookLogin({}, {
            'access_token': response.authResponse.accessToken
          }).$promise.then(function (data) {
