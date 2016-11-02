@@ -2,13 +2,13 @@
  * Created by user on 27.10.16.
  */
 angular.module('facebookService', [])
- .service('FacebookAuth', ['$rootScope','$window', 'Auth', 'currentUserService', '$state',
-   function($rootScope, $window, Auth, currentUserService, $state) {
+ .service('FacebookAuth', ['$rootScope','$window', 'Auth', 'currentUserService', '$state', 'facebookAppId',
+   function($rootScope, $window, Auth, currentUserService, $state, facebookAppId) {
      $rootScope.facebookUser = {};
 
      this.fbInit = function() {
        FB.init({
-         appId      : '678809505614731',
+         appId      : facebookAppId,
          xfbml      : true,
          version    : 'v2.8'
        });
