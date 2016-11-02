@@ -18,9 +18,6 @@ angular.
         this.restore = function () {
           $state.go('restore');
         };
-        function test() {
-          console.log('22222222');
-        }
         this.facebookLogin = function () {
           FacebookAuth.watchLoginChange();
         };

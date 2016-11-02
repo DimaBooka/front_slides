@@ -7,15 +7,8 @@ angular.module('facebookService', [])
      $rootScope.facebookUser = {};
 
      this.fbInit = function() {
-        var fb_enabled = window.FB !== undefined;
-        $rootScope.fb_enabled = fb_enabled;
-
-        if (!fb_enabled)
-          return;
-
-       // Executed when the SDK is loaded
        FB.init({
-         appId      : '534086810128512',
+         appId      : '678809505614731',
          xfbml      : true,
          version    : 'v2.8'
        });
