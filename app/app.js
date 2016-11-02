@@ -120,6 +120,19 @@ angular.module('SlidesApp', [
           name: 'changePassword',
           url: '/change_password/',
           component: 'changePassword',
+        })
+      .state(
+        {
+          name: 'confirmEmail',
+          url: '/account-confirm-email/{key}/',
+          component: 'confirmEmail',
+        })
+
+      .state(
+        {
+          name: 'passwordReset',
+          url: '/reset/done/',
+          templateUrl: '/templates/password-reset-done.html',
         });
     }]).run(function ($rootScope, currentUserService) {
       currentUserService.loadTokenFromLS();

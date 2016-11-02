@@ -126,10 +126,7 @@ angular.module('authService', [])
             'password1': password1,
             'password2': password2,
             'email': email
-          }).$promise.then(function (data) {
-            this.setToken(data.key);
-            this.loadUserFromAPI();
-       }.bind(this));
+          }).$promise;
      };
    }]
  );
