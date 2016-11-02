@@ -74,6 +74,7 @@ component('eventDetail', {
   $scope.pauseEvent = function (state) {
     liveFrame = document.getElementById('presentation_live');
     liveFrame.contentWindow.postMessage(JSON.stringify({method: 'togglePause', args: [] }), '*' );
+    liveFrame.contentWindow.postMessage('mute', '*' );
     $scope.eventPaused = state;
   };
 
