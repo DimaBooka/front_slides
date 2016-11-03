@@ -16,10 +16,10 @@
     </div>
     <div ng-if="eventLive" class="pull-right">
       <div class="btn-group" role="group" aria-label="">
-        <a class="btn btn-default btn-sm" ng-click="pauseEvent(true)" ng-if="!eventPaused">
+        <a class="btn btn-default btn-sm" ng-click="pauseEvent(true)" ng-if="!eventPaused && updateEventAble">
           <span class="glyphicon glyphicon-pause"> </span> Pause event
         </a>
-        <a class="btn btn-default btn-sm" ng-click="pauseEvent(false)" ng-if="eventPaused">
+        <a class="btn btn-default btn-sm" ng-click="pauseEvent(false)" ng-if="eventPaused && updateEventAble">
           <span class="glyphicon glyphicon-play"> </span> Resume event
         </a>
         <a class="btn btn-default btn-sm" ng-click="muteAudio()" ng-if="!updateEventAble && eventLive && !muted">
@@ -28,7 +28,7 @@
         <a class="btn btn-default btn-sm" ng-click="muteAudio()" ng-if="!updateEventAble && eventLive && muted">
           <span class="glyphicon glyphicon-volume-up"> </span>
         </a>
-        <button type="button" class="btn btn-sm btn-danger" ng-click="endEvent()">
+        <button type="button" class="btn btn-sm btn-danger" ng-click="endEvent()" ng-if="updateEventAble">
           <span class="glyphicon glyphicon-stop"> </span>
         </button>
       </div>

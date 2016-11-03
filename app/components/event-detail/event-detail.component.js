@@ -24,14 +24,15 @@ component('eventDetail', {
               $scope.date_finished = new Date(response['date_finished']);
               $scope.updateEventAble = true;
             }
-            if ($scope.event.date_started && !$scope.event.date_finished) {
-              $scope.eventLive = true;
-            }
-
-            if ($scope.event.date_started && $scope.event.date_finished) {
-              $scope.eventFinished= true;
-            }
           }
+        if ($scope.event.date_started && !$scope.event.date_finished) {
+          $scope.eventLive = true;
+          console.log('Live');
+        }
+
+        if ($scope.event.date_started && $scope.event.date_finished) {
+          $scope.eventFinished= true;
+        }
         });
 
     };
