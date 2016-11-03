@@ -143,4 +143,8 @@ angular.module('SlidesApp', [
     }]).run(function ($rootScope, currentUserService) {
       currentUserService.loadTokenFromLS();
       currentUserService.loadUserFromLS();
+      $rootScope.profilePageClear = function() {
+        $rootScope.change = false;
+        $rootScope.successfuly = false;
+      };
     });

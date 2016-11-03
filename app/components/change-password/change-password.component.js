@@ -5,18 +5,21 @@ angular.
   module('SlidesApp').
   component('changePassword', {
     templateUrl: 'components/change-password/change-password.template.html',
-    controller: ['Auth', '$scope',
-      function (Auth,$scope) {
+    controller: ['Auth', '$scope', '$rootScope',
+      function (Auth,$scope, $rootScope) {
         var self = this;
         self.error = false;
-        self.successfuly = false;
+        $rootScope.successfuly = false;
+
         $scope.passwordChange = function () {
           Auth.changePass({}, {
             new_password1: $scope.new_password1,
             new_password2: $scope.new_password2,
           }).$promise.then(function (response) {
             self.messageSuccess = response['success'];
-            self.successfuly = true;
+            $scope.new_password1 = '';
+            $scope.new_password2 = '';
+            $rootScope.successfuly = true;
           }).catch(function (error) {
             for (var key in error['data']){
               self.errorMes = error['data'][key][0];
