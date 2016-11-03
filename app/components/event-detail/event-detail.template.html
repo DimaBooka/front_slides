@@ -14,7 +14,7 @@
         </button>
       </div>
     </div>
-    <div ng-if="eventLive" class="pull-right">
+    <div ng-if="updateEventAble && eventLive" class="pull-right">
       <div class="btn-group" role="group" aria-label="">
         <a class="btn btn-default btn-sm" ng-click="pauseEvent(true)" ng-if="!eventPaused && updateEventAble">
           <span class="glyphicon glyphicon-pause"> </span> Pause event
