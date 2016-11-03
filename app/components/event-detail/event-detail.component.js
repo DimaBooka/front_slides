@@ -38,19 +38,24 @@ component('eventDetail', {
 
     $scope.updateTrueEvent = function () {
      $scope.updateEventTrue = !$scope.updateEventTrue;
-   };
+    };
 
-   $scope.updateEvent = function () {
-    Event.update({id: $stateParams.id},{
-      name: this.name,
-      date: this.date
-    }).$promise.then(function () {
-      $scope.getEvent();
-      $scope.updateEventTrue = false;
-    }).catch(function (error) {
-              $scope.error = error['data']['date'][0];
-    });
-  };
+    $scope.updateEvent = function () {
+     if (this.name) {
+       $scope.error = false;
+       Event.update({id: $stateParams.id},{
+         name: this.name,
+         date_planned: this.date
+       }).$promise.then(function () {
+         $scope.getEvent();
+         $scope.updateEventTrue = false;
+       }).catch(function (error) {
+         $scope.error = error['data']['non_field_errors'][0];
+       });
+     } else {
+        $scope.error = 'The name could not consist of spaces only.';
+     }
+    };
 
   $scope.deleteEvent = function () {
     Event.delete({id: $stateParams.id}).$promise.then(function () {
@@ -99,7 +104,7 @@ component('eventDetail', {
     }
     WebSocket.sendMessage(self.message, $scope.room);
     self.message = '';
-  }
+  };
 
   $scope.initChat = () => WebSocket.setRoom($scope.room);  
 

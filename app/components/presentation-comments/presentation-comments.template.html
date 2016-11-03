@@ -18,7 +18,7 @@
     <h3 class="page-header">Leave a comment:</h3>
     <form role="form" ng-submit="addComment()">
       <div class="form-group">
-        <textarea class="form-control" rows="3" name="text" ng-model="text" id="presentation-name" required></textarea>
+        <textarea class="form-control" rows="3" name="text" maxlength="250" ng-model="text" id="presentation-name" required></textarea>
       </div>
       <input type="submit" class="btn btn-primary" value="Add comment" />
     </form>

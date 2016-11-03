@@ -12,18 +12,22 @@ angular.
         $scope.currentUserId = $rootScope.user.id;
         $scope.createEventNew = function () {
           $scope.date = new Date(this.date);
-          Event.save({}, {
-            name: this.name,
-            presentation: $stateParams.id,
-            author: $scope.currentUserId,
-            date_planned: $scope.date
-          }).$promise.then(function (res) {
-            $scope.created = true;
-            $scope.$parent.trueCreate();
-            $state.go('event-detail', {id:res.id})
-          }).catch(function (error) {
+          if (this.name) {
+            Event.save({}, {
+              name: this.name,
+              presentation: $stateParams.id,
+              author: $scope.currentUserId,
+              date_planned: $scope.date
+            }).$promise.then(function (res) {
+              $scope.created = true;
+              $scope.$parent.trueCreate();
+              $state.go('event-detail', {id: res.id})
+            }).catch(function (error) {
               $scope.error = error['data']['non_field_errors'][0];
-          });
+            });
+          } else {
+            $scope.error = 'The name could not consist of spaces only.';
+          }
         };
         $scope.createdSuccess = function () {
           $scope.created = false;

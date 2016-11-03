@@ -18,7 +18,7 @@ angular.
       };
     }])
     .service('fileUpload', ['$http', function ($http) {
-      this.uploadFileToUrl = function(slides, thumbnail, name, isPublic, description, uploadUrl){
+      this.uploadFileToUrl = function(slides, thumbnail, name, isPublic, description, uploadUrl, scope){
         var fd = new FormData();
         fd.append('slides', slides);
         fd.append('thumbnail', thumbnail);
@@ -31,11 +31,12 @@ angular.
         })
         .success(function(){
         })
-        .error(function(){
+        .error(function(error){
+          scope = error;
         });
       }
     }])
-    .service('fileUpdate', ['$http', '$state', function ($http, $state) {
+    .service('fileUpdate', ['$http', '$state', function ($http) {
       this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl, reload){
         var fd = new FormData();
         if (typeof thumbnail != "string") {

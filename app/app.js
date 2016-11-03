@@ -133,6 +133,12 @@ angular.module('SlidesApp', [
           name: 'passwordReset',
           url: '/reset/done/',
           templateUrl: '/templates/password-reset-done.html',
+        })
+      .state(
+        {
+          name: 'main',
+          url: '/',
+          component: 'mainPage',
         });
     }]).run(function ($rootScope, currentUserService) {
       currentUserService.loadTokenFromLS();
