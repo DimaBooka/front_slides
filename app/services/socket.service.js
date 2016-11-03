@@ -52,6 +52,12 @@ angular.module('socketService', ['ngWebSocket'])
         var data = {'text': text, 'room': room, 'from': 'chat', 'token': $rootScope.token};
         socket.send(JSON.stringify(data));
         console.log("Message sent. ", JSON.stringify(data));
+      },
+
+      event: function(state) {
+        var data = {'from': 'reveal', 'event': state, 'socketId': user_room};
+        socket.send(JSON.stringify(data));
+        console.log("Message sent. ", JSON.stringify(data));
       }
     };
     return methods;
