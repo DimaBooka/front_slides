@@ -10,9 +10,12 @@ angular.
         this.login = function () {
           currentUserService.login(this.username, this.password).then(function () {
             $state.go('presentations');
-          }).catch(function () {
-            self.errorMes = 'Please enter a correct username and password. Note that both fields may be case-sensitive.';
+          }).catch(function (error) {
             self.error = true;
+            self.errors = [];
+            for (var key in error['data']){
+              self.errors.push(error['data'][key][0]);
+            }
           });
         };
         this.restore = function () {

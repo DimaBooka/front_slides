@@ -25,7 +25,13 @@ angular.module('facebookService', [])
            _self.getUserInfo();
            $state.go('presentations');
            return data;
-         });
+         }).catch(function (error) {
+            self.error = true;
+            self.errors = [];
+            for (var key in error['data']){
+              self.errors.push(error['data'][key][0]);
+            }
+          });
        } else {
          FB.login(function(response) {
            if (response.authResponse) {

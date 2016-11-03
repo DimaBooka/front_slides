@@ -1,7 +1,10 @@
 <div id="fb-root"></div>
 
 <h1 class="page-header">Please sign in</h1>
-<p ng-if="$ctrl.error">{{ $ctrl.errorMes }}</p>
+<div ng-if="$ctrl.error" ng-repeat="errorMes in $ctrl.errors">
+	<p>{{ errorMes }}</p>
+</div>
+
 <form class="col-md-4">
 	<div class="form-group">
 		<label class="control-label">Username</label>
