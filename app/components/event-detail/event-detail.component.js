@@ -93,8 +93,11 @@ component('eventDetail', {
   };
 
   $scope.sendInChat = function () {
+    if (self.message.length > 120) {
+      alert('Your message is very long. Max size - 120');
+      return
+    }
     WebSocket.sendMessage(self.message, $scope.room);
-    console.log(self.message);
     self.message = '';
   }
 
