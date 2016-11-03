@@ -43,13 +43,25 @@ angular.
         };
         $scope.getPresentation();
         $scope.redactor = function(){
-          var thumbnail = this.presentation.thumbnail;
-          var name =this.presentation.name;
-          var description = this.presentation.description;
-          var isPublic = !!this.presentation.published;
-          var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
-          fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl, $scope.getPresentation);
-          $scope.updateTrue = false;
+          $scope.error = false;
+          if (this.thumbnail) {
+            if (this.thumbnail.size / 1024 / 1024 > 5) {
+              $scope.error = 'The file is biggest then 5Mb.';
+            }
+          }
+          if (!$scope.error) {
+            if (this.presentation.name && this.presentation.description) {
+              var thumbnail = this.thumbnail;
+              var name = this.presentation.name;
+              var description = this.presentation.description;
+              var isPublic = !!this.presentation.published;
+              var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
+              fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl, $scope.getPresentation);
+              $scope.updateTrue = false;
+            } else {
+              $scope.error = 'Name or description consist of spaces only.';
+            }
+          }
         };
         $scope.deletePr = function () {
           Presentation.delete({id:$scope.presentationId}).$promise.then(
@@ -58,7 +70,6 @@ angular.
             }
           )
         };
-
       }
     ]
   });

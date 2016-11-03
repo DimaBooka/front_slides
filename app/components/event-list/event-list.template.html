@@ -4,13 +4,13 @@
 <h1 class="page-header" ng-if="history">Events History</h1>
 <div id="event_list">
    <p class="lead" ng-if="!events.length">There are no events yet</p>
-  <div ng-repeat="event in events" >
+  <div ng-repeat="event in events">
     <div class="thumbnail">
       <div class="image">
       	<img ng-src="{{event.presentation_info.thumbnail}}" class="img-rounded" alt="Event thumbnail">
     	</div>
       <div class="caption">
-        <h3 class="text-center">{{event.name}}</h3>
+        <h3 class="text-center hack-word">{{event.name}}</h3>
 			<p class="event-date" ng-if="!my && !history">Started at {{event.date_planned | date: "HH:mm dd.MM.yyyy"}}</p>
 			<p class="event-date" ng-if="my"><span ng-if="!event.date_finished">Started at {{event.date_planned | date: "HH:mm dd.MM.yyyy"}}</span>
                                              <span ng-if="event.date_finished">Finished at {{event.date_finished | date: "HH:mm dd.MM.yyyy"}}</span></p>

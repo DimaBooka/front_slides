@@ -39,7 +39,7 @@ angular.
     .service('fileUpdate', ['$http', '$state', function ($http) {
       this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl, reload){
         var fd = new FormData();
-        if (typeof thumbnail != "string") {
+        if (thumbnail) {
           fd.append('thumbnail', thumbnail);
         }
         fd.append('name', name);

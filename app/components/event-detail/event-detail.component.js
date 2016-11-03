@@ -47,7 +47,7 @@ component('eventDetail', {
        $scope.error = false;
        Event.update({id: $stateParams.id},{
          name: this.name,
-         date_planned: this.date
+         date_planned: this.date_planned
        }).$promise.then(function () {
          $scope.getEvent();
          $scope.updateEventTrue = false;

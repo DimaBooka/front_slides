@@ -26,7 +26,16 @@ angular.
         query.$promise
         .then(
           function (response) {
-            $scope.events = response;
+            $scope.events = [];
+            if ($stateParams.public) {
+              for (i in response) {
+                if (!response[i].date_finished && !response[i].date_started && response[i].date_planned){
+                  $scope.events.push(response[i]);
+                }
+              }
+            } else {
+              $scope.events = response;
+            }
           });
       }
     ]

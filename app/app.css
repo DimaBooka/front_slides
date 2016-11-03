@@ -111,3 +111,8 @@
 .page-header {
   margin-top: 20px;
 }
+
+.hack-word {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
