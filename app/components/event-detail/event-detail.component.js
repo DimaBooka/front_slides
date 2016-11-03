@@ -69,8 +69,8 @@ component('eventDetail', {
     Event.start({id: $stateParams.id}).$promise.then(function (response) {
       liveFrame = document.getElementById('presentation_live');
       if (response.result == "started") {
-        liveFrame.src = liveFrame.src;
         $scope.eventLive = true;
+        WebSocket.event('start');
       }
       else {
         alert("Error: " + response.error);
@@ -95,8 +95,8 @@ component('eventDetail', {
     Event.end({id: $stateParams.id}).$promise.then(function (response) {
       liveFrame = document.getElementById('presentation_live');
        if (response.result == 'finished') {
-        liveFrame.src = liveFrame.src; 
         $scope.eventLive = false;
+        WebSocket.event('end');
       }
       else {
         alert("Error: " + response.error);
@@ -104,6 +104,24 @@ component('eventDetail', {
       $scope.eventFinished = true;
     });
   };
+
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+  // Listen to message from child window
+  eventer(messageEvent,function(e) {
+    console.log(e);
+    if (e.data == 'start') {
+      $scope.eventLive = true;
+      $scope.eventFinished = false;
+    }
+    if (e.data == 'end') {
+      $scope.eventFinished = true;
+      $scope.eventLive = false;
+    }
+    console.log($scope.eventLive, $scope.eventFinished);
+  },false);
 
   $scope.sendInChat = function () {
     if (self.message.length > 120) {
