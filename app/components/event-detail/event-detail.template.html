@@ -48,7 +48,7 @@
       </div>
 
       <footer>
-        <form role="form" ng-submit="sendInChat()" ng-if="$root.user">
+        <form role="form" ng-submit="sendInChat()" ng-if="$root.user && !eventFinished">
           <textarea class="form-control message-text" ng-model="$ctrl.message" name="message" placeholder="Enter message..."></textarea>
           <input type="submit" class="btn btn-default btn-block pull-right" value="Send" />
         </form>
