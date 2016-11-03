@@ -98,7 +98,7 @@ component('eventDetail', {
     self.message = '';
   }
 
-  $scope.initChat = () => WebSocket.getChatHistory($scope.room);
+  $scope.initChat = () => WebSocket.setRoom($scope.room);  
 
   $scope.initMessage = () => {
     var objDiv = document.getElementById("messages");
@@ -111,10 +111,7 @@ component('eventDetail', {
   });
 
   $rootScope.$on('chatMessages' + $scope.room, function (event, messages) {
-
-    messages.forEach(function (message){
-      $scope.messages.push(message);
-    });
+    $scope.messages = messages;
   });
 }
 ]

@@ -2,12 +2,21 @@ angular.module('socketService', ['ngWebSocket'])
 .factory('WebSocket', ['$websocket', 'socketAddr', '$stateParams', '$rootScope', 'currentUserService',
   function($websocket, socketAddr, $stateParams, $rootScope, currentUserService) {
 
+    var user_room = null;
     var socket = null;
     function start_socket(addres) {
       socket = $websocket(addres);
 
       socket.onOpen(function() {
         console.log("Connected!");
+        if (user_room) {
+          socket.send(JSON.stringify({
+            'register': true,
+            'token': $rootScope.token,
+            'room': user_room,
+            'from': 'chat',
+          }));  
+        }
         $rootScope.$emit('socketOpened');
       });
 
@@ -28,21 +37,15 @@ angular.module('socketService', ['ngWebSocket'])
       socket.onClose(function(e) {
         console.log('Connection closed: ', e);
         setTimeout(function() {
-              start_socket(addres)
+              start_socket(addres);
           }, 1000);
       });
     }
-    start_socket(socketAddr);
-
+    
     var methods = {
-      getChatHistory: function(room) {
-        console.log('get chet history', $rootScope.token, room);
-        socket.send(JSON.stringify({
-          'register': true,
-          'token': $rootScope.token,
-          'room': room,
-          'from': 'chat',
-        }));
+      setRoom: function(room) {
+        user_room = room;
+        start_socket(socketAddr);
       },
 
       sendMessage: function(text, room) {
