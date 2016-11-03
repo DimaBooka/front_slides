@@ -9,7 +9,8 @@ component('eventDetail', {
     $scope.updateEventTrue = false;
     $scope.messages = new Array();
     $scope.room = $stateParams.id;
-
+    $scope.muted = false;
+    
     $scope.getEvent = function () {
       Event.get({id: $stateParams.id}).$promise.then(
         function (response) {
@@ -81,6 +82,12 @@ component('eventDetail', {
     liveFrame.contentWindow.postMessage(JSON.stringify({method: 'togglePause', args: [] }), '*' );
     liveFrame.contentWindow.postMessage('mute', '*' );
     $scope.eventPaused = state;
+  };
+  
+  $scope.muteAudio = function () {
+    liveFrame = document.getElementById('presentation_live');
+    liveFrame.contentWindow.postMessage('mute', '*' );
+    $scope.muted = !$scope.muted;
   };
 
   $scope.endEvent = function () {
