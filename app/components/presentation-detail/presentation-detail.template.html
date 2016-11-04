@@ -15,7 +15,7 @@
         </button>
       </div>
     </div>
-    <h1 class="hack-word">{{ name }}
+    <h1 class="hack-word">{{presentation.name}}
     </h1>
   </header> 
   <div class="row">
@@ -25,7 +25,7 @@
     <div class="col-md-5 col-lg-4 col-sm-6 col-xs-12 presentation-info">
       <p class="presentation-author-date"><b>Creator:</b> {{presentation.creator_info.username}}</p>
       <p><b>Date created:</b> {{presentation.date_created | date: "dd.MM.yyyy HH:mm"}}
-        <p class="presentation-description hack-word"><b>Description: </b>{{description}}
+        <p class="presentation-description hack-word"><b>Description: </b>{{presentation.description}}
         </p>
     </div>
   </div>
