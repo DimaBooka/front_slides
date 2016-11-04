@@ -11,6 +11,8 @@ component('eventDetail', {
     $scope.room = $stateParams.id;
     $scope.muted = false;
     
+    $scope.firefox = navigator.userAgent.indexOf('Firefox') != -1
+
     $scope.getEvent = function () {
       Event.get({id: $stateParams.id}).$promise.then(
         function (response) {
@@ -66,9 +68,13 @@ component('eventDetail', {
     });
   };
 
+  $scope.fullscreen = function () {
+    liveFrame = document.getElementById('presentation_live');
+    liveFrame.contentWindow.postMessage('fullscreen', '*' );
+  };
+
   $scope.startEvent = function () {
     Event.start({id: $stateParams.id}).$promise.then(function (response) {
-      liveFrame = document.getElementById('presentation_live');
       if (response.result == "started") {
         $scope.eventLive = true;
         WebSocket.event('start');
