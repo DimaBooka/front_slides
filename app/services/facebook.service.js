@@ -26,11 +26,11 @@ angular.module('facebookService', [])
            $state.go('presentations');
            return data;
          }).catch(function (error) {
-            self.error = true;
-            self.errors = [];
+            self.facebookErrors = [];
             for (var key in error['data']){
-              self.errors.push(error['data'][key][0]);
+              self.facebookErrors.push(error['data'][key][0]);
             }
+            self.error = true;
           });
        } else {
          FB.login(function(response) {
