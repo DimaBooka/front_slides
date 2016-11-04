@@ -36,9 +36,8 @@ component('eventDetail', {
           $scope.eventFinished = true;
         }
         }).catch(function (){
-          currentUserService.checkStatus(error)
+          currentUserService.checkStatus(error);
         });
-
     };
     $scope.getEvent();
 
