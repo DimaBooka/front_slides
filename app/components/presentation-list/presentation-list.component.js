@@ -18,7 +18,7 @@ angular.
           return;
         }
 
-        query.$promise.then(function (response, status) {
+        query.$promise.then(function (response) {
           $scope.public_presentations = response;
         }).catch(function (error) {
           currentUserService.checkStatus(error);
