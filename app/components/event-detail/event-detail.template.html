@@ -43,7 +43,7 @@
       <header>Chat</header>
 
       <div id="messages">
-        <div class="media" ng-repeat="message in messages" ng-init="initMessage()">
+        <div class="media" ng-repeat="message in messages track by $index" ng-init="initMessage()">
           <div class="media-body">
             <h4 class="media-heading"> {{ message.user }}
               <span class="small pull-right"> {{ message.datetime }}</span>
