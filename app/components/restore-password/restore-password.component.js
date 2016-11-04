@@ -2,8 +2,8 @@ angular.
   module('SlidesApp').
   component('restorePassword', {
     templateUrl: 'components/restore-password/restore-password.template.html',
-    controller: [ 'Auth', '$location',
-      function (Auth, $location) {
+    controller: [ 'Auth', 'currentUserService',
+      function (Auth, currentUserService) {
         var self = this;
         self.sended = false;
         self.error = false;
@@ -15,6 +15,7 @@ angular.
               self.sended = true;
             }
           ).catch(function (error) {
+            currentUserService.checkStatus(error);
             self.error = true;
             for (var key in error['data']) {
               if (key == 'error') {

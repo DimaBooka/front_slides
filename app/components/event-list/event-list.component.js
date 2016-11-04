@@ -36,7 +36,10 @@ angular.
             } else {
               $scope.events = response;
             }
-          });
+          }).catch(function (error) {
+            currentUserService.checkStatus(error);
+          }
+        );
       }
     ]
   });

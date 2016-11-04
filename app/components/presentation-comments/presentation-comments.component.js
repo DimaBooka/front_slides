@@ -21,7 +21,9 @@ angular.
               function (response) {
                 $scope.comments = response;
               }
-            );
+            ).catch(function (error) {
+              currentUserService.checkStatus(error);
+            });
         };
         $scope.getComments();
         $scope.addComment = function () {
@@ -43,7 +45,9 @@ angular.
             function (response) {
               $scope.getComments();
             }
-          );
+          ).catch(function (error) {
+            currentUserService.checkStatus(error);
+          });
         };
       }
     ]

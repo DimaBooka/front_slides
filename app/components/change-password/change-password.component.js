@@ -21,6 +21,7 @@ angular.
             $scope.new_password2 = '';
             $rootScope.successfuly = true;
           }).catch(function (error) {
+            currentUserService.checkStatus(error);
             for (var key in error['data']){
               self.errorMes = error['data'][key][0];
             }

@@ -4,6 +4,7 @@
 angular.module('SlidesApp', [
   'ngRoute',
   'ngResource',
+  'ngCookies',
   'ui.router',
   'ui.bootstrap.datetimepicker',
   'ngWebSocket',

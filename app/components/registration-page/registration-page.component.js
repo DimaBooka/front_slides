@@ -12,6 +12,7 @@ angular.
             function () {
               self.registred = true;
           }).catch(function (error) {
+            currentUserService.checkStatus(error);
             self.error = true;
             self.errorList = [];
             for (var key in error['data']){

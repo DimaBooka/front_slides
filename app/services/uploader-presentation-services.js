@@ -32,6 +32,7 @@ angular.
         .success(function(){
         })
         .error(function(error){
+          currentUserService.checkStatus(error);
           scope = error;
         });
       }

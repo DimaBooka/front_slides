@@ -8,6 +8,8 @@ angular.
       function (Auth, currentUserService, $state) {
         currentUserService.logout().then(function () {
           $state.go('presentations');
+        }).catch(function (error) {
+          currentUserService.checkStatus(error);
         });
       }
     ]

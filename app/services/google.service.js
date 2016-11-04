@@ -25,6 +25,8 @@ angular.module('googleService', [])
            currentUserService.setToken(data.key);
            currentUserService.loadUserFromAPI();
            return data;
+         }).catch(function (error) {
+           currentUserService.checkStatus(error);
          });
          $state.go('presentations');
        });

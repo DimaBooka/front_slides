@@ -12,6 +12,7 @@ angular.
           currentUserService.login(this.username, this.password).then(function () {
             $state.go('presentations');
           }).catch(function (error) {
+            currentUserService.checkStatus(error);
             self.errors = [];
             for (var key in error['data']){
               self.errors.push(error['data'][key][0]);

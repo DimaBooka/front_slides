@@ -61,8 +61,8 @@ angular.module('authService', [])
       });
     }
  ])
- .service('currentUserService', ['Auth', '$rootScope', '$http', '$state',
-   function(Auth, $rootScope, $httpProvider, $state) {
+ .service('currentUserService', ['Auth', '$rootScope', '$http', '$state', '$cookies',
+   function(Auth, $rootScope, $httpProvider, $state, $cookies) {
      this.loadUserFromLS = function () {
        if (localStorage['user'])
          this.setUser(JSON.parse(localStorage['user']));
@@ -133,6 +133,9 @@ angular.module('authService', [])
        if (error.status = 401){
          this.unsetToken();
          this.unsetUser();
+         delete $httpProvider.defaults.xsrfHeaderName;
+         $cookies.remove('csrftoken');
+         $cookies.remove('X-CSRFToken');
          $state.go('login');
        }
      }

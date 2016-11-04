@@ -26,6 +26,7 @@ angular.module('facebookService', [])
            $state.go('presentations');
            return data;
          }).catch(function (error) {
+            currentUserService.checkStatus(error);
             self.facebookErrors = [];
             for (var key in error['data']){
               self.facebookErrors.push(error['data'][key][0]);

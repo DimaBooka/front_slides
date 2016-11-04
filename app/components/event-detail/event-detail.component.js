@@ -52,6 +52,7 @@ component('eventDetail', {
          $scope.getEvent();
          $scope.updateEventTrue = false;
        }).catch(function (error) {
+         currentUserService.checkStatus(error);
          $scope.error = error['data']['non_field_errors'][0];
        });
      } else {

@@ -23,6 +23,7 @@ angular.
               $scope.$parent.trueCreate();
               $state.go('event-detail', {id: res.id})
             }).catch(function (error) {
+              currentUserService.checkStatus(error);
               $scope.error = error['data']['non_field_errors'][0];
             });
           } else {

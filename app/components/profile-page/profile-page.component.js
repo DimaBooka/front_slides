@@ -5,8 +5,8 @@ angular.
   module('SlidesApp').
   component('profilePage', {
     templateUrl: 'components/profile-page/profile-page.template.html',
-    controller: ['Auth', '$scope', '$rootScope',
-      function (Auth, $scope, $rootScope) {
+    controller: ['Auth', '$scope', '$rootScope', 'currentUserService',
+      function (Auth, $scope, $rootScope, currentUserService) {
         var self = this;
         self.successUpdeate = false;
         $rootScope.change = false;
@@ -15,8 +15,16 @@ angular.
           function (response) {
             $scope.user = response;
             $scope.user.birth_date = new Date(response.birth_date);
+            $scope.username = $scope.user.username;
+            $scope.first_name = $scope.user.first_name;
+            $scope.last_name = $scope.user.last_name;
+            $scope.email = $scope.user.email;
+            $scope.birth_date = $scope.user.birth_date;
+            $scope.gender = $scope.user.gender;
           }
-        );
+        ).catch(function (error) {
+          currentUserService.checkStatus(error);
+        });
         self.changeOn = function () {
           $rootScope.change = !$rootScope.change;
         };
@@ -35,6 +43,7 @@ angular.
             }).$promise.then(function (response) {
               $rootScope.change = false;
             }).catch(function (error) {
+              currentUserService.checkStatus(error);
               for (var key in error['data']) {
                 self.errorMes = error['data'][key][0];
               }
