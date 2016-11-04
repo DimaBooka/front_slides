@@ -36,7 +36,7 @@ angular.
         });
       }
     }])
-    .service('fileUpdate', ['$http', '$state', function ($http) {
+    .service('fileUpdate', ['$http', '$state', 'currentUserService', function ($http, currentUserService) {
       this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl, reload){
         var fd = new FormData();
         if (thumbnail) {
@@ -52,7 +52,8 @@ angular.
         .success(function(){
           reload();
         })
-        .error(function(){
+        .error(function(error){
+          currentUserService.checkStatus(error);
         });
       }
     }]);

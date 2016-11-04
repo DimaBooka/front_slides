@@ -18,8 +18,10 @@ angular.
           return;
         }
 
-        query.$promise.then(function (response) {
+        query.$promise.then(function (response, status) {
           $scope.public_presentations = response;
+        }).catch(function (error) {
+          currentUserService.checkStatus(error);
         });
       }
     ]

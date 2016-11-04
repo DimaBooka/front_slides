@@ -61,8 +61,8 @@ angular.module('authService', [])
       });
     }
  ])
- .service('currentUserService', ['Auth', '$rootScope', '$http',
-   function(Auth, $rootScope, $httpProvider) {
+ .service('currentUserService', ['Auth', '$rootScope', '$http', '$state',
+   function(Auth, $rootScope, $httpProvider, $state) {
      this.loadUserFromLS = function () {
        if (localStorage['user'])
          this.setUser(JSON.parse(localStorage['user']));
@@ -128,5 +128,13 @@ angular.module('authService', [])
             'email': email
           }).$promise;
      };
+
+     this.checkStatus = function (error) {
+       if (error.status = 401){
+         this.unsetToken();
+         this.unsetUser();
+         $state.go('login');
+       }
+     }
    }]
  );

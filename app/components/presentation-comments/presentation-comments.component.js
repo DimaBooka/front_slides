@@ -33,7 +33,9 @@ angular.
             function (response) {
              $scope.getComments();
             }
-          );
+          ).catch(function (error) {
+            currentUserService.checkStatus(error);
+          });
           this.text = '';
         };
         $scope.deleteComment = function (id) {
