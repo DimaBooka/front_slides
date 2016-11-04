@@ -11,37 +11,41 @@ angular.
         self.successUpdeate = false;
         $rootScope.change = false;
         self.error = false;
-        Auth.currentUser().$promise.then(
-          function (response) {
-            $scope.user = response;
-            $scope.user.birth_date = new Date(response.birth_date);
-            $scope.username = $scope.user.username;
-            $scope.first_name = $scope.user.first_name;
-            $scope.last_name = $scope.user.last_name;
-            $scope.email = $scope.user.email;
-            $scope.birth_date = $scope.user.birth_date;
-            $scope.gender = $scope.user.gender;
-          }
-        ).catch(function (error) {
-          currentUserService.checkStatus(error);
-        });
+        this.getUserProfile = function () {
+          Auth.currentUser().$promise.then(
+            function (response) {
+              $scope.user = response;
+              $scope.user.birth_date = new Date(response.birth_date);
+              self.username = $scope.user.username;
+              self.first_name = $scope.user.first_name;
+              self.last_name = $scope.user.last_name;
+              self.email = $scope.user.email;
+              self.birth_date = $scope.user.birth_date;
+              self.gender = $scope.user.gender;
+            }
+          ).catch(function (error) {
+            currentUserService.checkStatus(error);
+          });
+        };
+        this.getUserProfile();
         self.changeOn = function () {
           $rootScope.change = !$rootScope.change;
         };
         $scope.updateUserInfo = function () {
           self.error = false;
-          if (new Date() / 1 > $scope.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < $scope.user.birth_date.getTime()) {
-            var birth_date = $scope.user.birth_date.toLocaleDateString().split('.');
+          if (new Date() / 1 > self.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < self.birth_date.getTime()) {
+            var birth_date = self.birth_date.toLocaleDateString().split('.');
             birth_date = birth_date.reverse().join('-');
             Auth.updateUser({}, {
-              username: $scope.username,
-              first_name: $scope.first_name,
-              last_name: $scope.last_name,
-              email: $scope.email,
+              username: self.username,
+              first_name: self.first_name,
+              last_name: self.last_name,
+              email: self.email,
               birth_date: birth_date,
-              gender: $scope.gender
+              gender: self.gender
             }).$promise.then(function (response) {
               $rootScope.change = false;
+              self.getUserProfile();
             }).catch(function (error) {
               currentUserService.checkStatus(error);
               for (var key in error['data']) {
