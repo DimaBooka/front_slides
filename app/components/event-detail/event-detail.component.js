@@ -35,6 +35,8 @@ component('eventDetail', {
         if ($scope.event.date_started && $scope.event.date_finished) {
           $scope.eventFinished = true;
         }
+        }).catch(function (){
+          currentUserService.checkStatus(error)
         });
 
     };
