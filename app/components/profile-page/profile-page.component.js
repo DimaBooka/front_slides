@@ -30,16 +30,16 @@ angular.
         };
         $scope.updateUserInfo = function () {
           self.error = false;
-          if (new Date() / 1 > $scope.user.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < $scope.user.birth_date.getTime()) {
+          if (new Date() / 1 > $scope.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < $scope.user.birth_date.getTime()) {
             var birth_date = $scope.user.birth_date.toLocaleDateString().split('.');
             birth_date = birth_date.reverse().join('-');
             Auth.updateUser({}, {
-              username: $scope.user.username,
-              first_name: $scope.user.first_name,
-              last_name: $scope.user.last_name,
-              email: $scope.user.email,
+              username: $scope.username,
+              first_name: $scope.first_name,
+              last_name: $scope.last_name,
+              email: $scope.email,
               birth_date: birth_date,
-              gender: $scope.user.gender
+              gender: $scope.gender
             }).$promise.then(function (response) {
               $rootScope.change = false;
             }).catch(function (error) {
