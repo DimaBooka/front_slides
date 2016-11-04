@@ -113,14 +113,27 @@ component('eventDetail', {
   eventer(messageEvent,function(e) {
     console.log(e);
     if (e.data == 'start') {
-      $scope.eventLive = true;
-      $scope.eventFinished = false;
+      $scope.$apply(function() {
+        $scope.eventLive = true;
+        $scope.eventFinished = false;
+      });
     }
     if (e.data == 'end') {
-      $scope.eventFinished = true;
-      $scope.eventLive = false;
+      $scope.$apply(function() {
+        $scope.eventLive = false;
+        $scope.eventFinished = true;
+      });
     }
-    console.log($scope.eventLive, $scope.eventFinished);
+    if (e.data == 'paused') {
+      $scope.$apply(function() {
+        $scope.eventPaused = true;
+      });
+    }
+    if (e.data == 'unpaused') {
+      $scope.$apply(function() {
+        $scope.eventPaused = false;
+      });
+    }
   },false);
 
   $scope.sendInChat = function () {
