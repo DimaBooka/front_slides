@@ -2,8 +2,8 @@ angular.
 module('SlidesApp').
 component('eventDetail', {
   templateUrl: 'components/event-detail/event-detail.template.html',
-  controller: ['Event', 'WebSocket', 'currentUserService', '$scope', '$rootScope', '$stateParams', 'baseUrl', '$state', '$rootScope',
-  function (Event, WebSocket, currentUserService, $scope, $rootScope, $stateParams, baseUrl, $state, $rootScope) {
+  controller: ['Event', 'WebSocket', 'currentUserService', '$scope', '$rootScope', '$stateParams', 'baseUrl', '$state',
+  function (Event, WebSocket, currentUserService, $scope, $rootScope, $stateParams, baseUrl, $state) {
     var self = this;
     $scope.baseUrl = baseUrl;
     $scope.updateEventTrue = false;

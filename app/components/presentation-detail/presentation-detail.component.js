@@ -39,7 +39,9 @@ angular.
                 }
               }
             }
-          );
+          ).catch(function (error) {
+            currentUserService.checkStatus(error);
+          });
         };
         $scope.getPresentation();
         $scope.redactor = function(){
@@ -68,7 +70,9 @@ angular.
             function () {
                $state.go('presentations');
             }
-          )
+          ).catch(function (error) {
+            currentUserService.checkStatus(error);
+          });
         };
       }
     ]

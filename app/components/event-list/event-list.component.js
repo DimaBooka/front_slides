@@ -2,8 +2,8 @@ angular.
   module('SlidesApp').
   component('eventList', {
     templateUrl: 'components/event-list/event-list.template.html',
-    controller: ['Event', '$scope','$stateParams', '$rootScope',
-      function (Event, $scope, $stateParams, $rootScope) {
+    controller: ['Event', '$scope','$stateParams', '$rootScope', 'currentUserService',
+      function (Event, $scope, $stateParams, $rootScope, currentUserService) {
 
         if ($stateParams.myEvents) {
           $scope.my = true;

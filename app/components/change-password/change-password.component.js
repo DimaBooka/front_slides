@@ -5,8 +5,8 @@ angular.
   module('SlidesApp').
   component('changePassword', {
     templateUrl: 'components/change-password/change-password.template.html',
-    controller: ['Auth', '$scope', '$rootScope',
-      function (Auth,$scope, $rootScope) {
+    controller: ['Auth', '$scope', '$rootScope', 'currentUserService',
+      function (Auth,$scope, $rootScope, currentUserService) {
         var self = this;
         self.error = false;
         $rootScope.successfuly = false;
