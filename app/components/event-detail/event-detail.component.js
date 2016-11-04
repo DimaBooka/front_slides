@@ -33,7 +33,7 @@ component('eventDetail', {
         }
 
         if ($scope.event.date_started && $scope.event.date_finished) {
-          $scope.eventFinished= true;
+          $scope.eventFinished = true;
         }
         });
 
@@ -53,6 +53,7 @@ component('eventDetail', {
        }).$promise.then(function () {
          $scope.getEvent();
          $scope.updateEventTrue = false;
+         WebSocket.event('update');
        }).catch(function (error) {
          currentUserService.checkStatus(error);
          $scope.error = error['data']['non_field_errors'][0];
