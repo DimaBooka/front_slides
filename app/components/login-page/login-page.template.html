@@ -1,3 +1,4 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <div id="fb-root"></div>
 
 <h1 class="page-header">Please sign in</h1>
@@ -19,7 +20,8 @@
 		<button class="btn btn-primary" type="submit" ui-sref="restore">Forgot password?</button>
 	</div>
 </form>
-<input class="btn btn-primary" type="submit" value="Facebook" ng-click="$ctrl.facebookLogin()">
-
-<br>
-<button class="btn btn-primary" id="signin-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()">Google</button>
+<div class="col-md-4">
+<label class="control-label">Login with social</label>
+  <a class="btn btn-primary btn-block btn-facebook" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
+  <button class="btn btn-primary btn-block btn-google" id="signin-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()"><i class="fa fa-google pull-left"></i>Sign in with Google</button>
+</div>
