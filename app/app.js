@@ -132,7 +132,7 @@ angular.module('SlidesApp', [
         {
           name: 'passwordReset',
           url: '/reset/done/',
-          templateUrl: '/templates/password-reset-done.html',
+          component: 'passwordReset',
         })
       .state(
         {
@@ -140,7 +140,10 @@ angular.module('SlidesApp', [
           url: '/',
           component: 'mainPage',
         });
-    }]).run(function ($rootScope, currentUserService) {
+    }]).run(function ($rootScope, currentUserService, $state) {
+      if (!location.hash) {
+        $state.go('presentations')
+      }
       currentUserService.loadTokenFromLS();
       currentUserService.loadUserFromLS();
       $rootScope.profilePageClear = function() {

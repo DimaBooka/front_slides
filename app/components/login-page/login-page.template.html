@@ -5,6 +5,9 @@
 <div ng-if="$ctrl.error" ng-repeat="errorMes in $ctrl.errors">
 	<p>{{ errorMes }}</p>
 </div>
+<div ng-if="$root.facebookErrors">
+	<p>{{ $root.facebookErrors }}</p>
+</div>
 
 <form class="col-md-4">
 	<div class="form-group">

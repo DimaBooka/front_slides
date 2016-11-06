@@ -7,6 +7,9 @@ angular.
     templateUrl: 'components/create-event/create-event.template.html',
     controller: ['$scope', 'currentUserService', 'Event', '$stateParams', '$rootScope', '$state',
       function ($scope, currentUserService, Event, $stateParams, $rootScope, $state) {
+        if (!$rootScope.user){
+          $state.go('login');
+        }
         $scope.date = new Date();
         $scope.created = false;
         $scope.currentUserId = $rootScope.user.id;

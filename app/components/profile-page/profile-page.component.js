@@ -5,8 +5,11 @@ angular.
   module('SlidesApp').
   component('profilePage', {
     templateUrl: 'components/profile-page/profile-page.template.html',
-    controller: ['Auth', '$scope', '$rootScope', 'currentUserService',
-      function (Auth, $scope, $rootScope, currentUserService) {
+    controller: ['Auth', '$scope', '$rootScope', 'currentUserService', '$state',
+      function (Auth, $scope, $rootScope, currentUserService, $state) {
+        if (!$rootScope.user){
+          $state.go('login');
+        }
         var self = this;
         self.successUpdeate = false;
         $rootScope.change = false;

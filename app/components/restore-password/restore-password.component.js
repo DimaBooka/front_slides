@@ -2,8 +2,11 @@ angular.
   module('SlidesApp').
   component('restorePassword', {
     templateUrl: 'components/restore-password/restore-password.template.html',
-    controller: [ 'Auth', 'currentUserService',
-      function (Auth, currentUserService) {
+    controller: [ 'Auth', 'currentUserService','$rootScope', '$state',
+      function (Auth, currentUserService, $rootScope, $state) {
+        if ($rootScope.user){
+          $state.go('presentations');
+        }
         var self = this;
         self.sended = false;
         self.error = false;

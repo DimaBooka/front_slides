@@ -2,14 +2,18 @@ angular.
   module('SlidesApp').
   component('presentationList', {
     templateUrl: 'components/presentation-list/presentation-list.template.html',
-    controller: ['Presentation', 'currentUserService', '$scope', '$stateParams', '$rootScope',
-      function (Presentation, currentUserService, $scope, $stateParams, $rootScope) {
+    controller: ['Presentation', 'currentUserService', '$scope', '$stateParams', '$rootScope', '$state',
+      function (Presentation, currentUserService, $scope, $stateParams, $rootScope, $state) {
         var query;
 
         if ($stateParams.my) {
-          $scope.my = true;
-          var userID = $rootScope.user.id;
-          query = Presentation.query({creator_id: userID});
+          if (!$rootScope.user){
+            $state.go('login');
+          } else {
+            $scope.my = true;
+            var userID = $rootScope.user.id;
+            query = Presentation.query({creator_id: userID});
+          }
         } else if ($stateParams.published) {
           $scope.my = false;
           query = Presentation.published();
@@ -17,12 +21,13 @@ angular.
           console.error("Not implemented");
           return;
         }
-
-        query.$promise.then(function (response) {
-          $scope.public_presentations = response;
-        }).catch(function (error) {
-          currentUserService.checkStatus(error);
-        });
+        if (query) {
+          query.$promise.then(function (response) {
+            $scope.public_presentations = response;
+          }).catch(function (error) {
+            currentUserService.checkStatus(error);
+          });
+        }
       }
     ]
   });

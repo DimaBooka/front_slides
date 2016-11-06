@@ -4,6 +4,10 @@ angular.
     templateUrl: 'components/login-page/login-page.template.html',
     controller: [ 'Auth', 'currentUserService', 'FacebookAuth','GoogleAuth', '$rootScope', '$state',
       function (Auth, currentUserService, FacebookAuth, GoogleAuth, $rootScope, $state) {
+        if ($rootScope.user){
+          $state.go('presentations');
+        }
+        $rootScope.facebookErrors = false;
         var self = this;
         self.error = false;
         FacebookAuth.fbInit();

@@ -27,11 +27,18 @@ angular.module('authService', [])
             afterOperation: 'change',
           },
         },
-         restorePass: {
+        restorePass: {
           method: 'POST',
           params: {
             operation: 'password',
             afterOperation: 'reset',
+          },
+        },
+        confirmEmail: {
+          method: 'POST',
+          params: {
+            operation: 'registration',
+            afterOperation: 'verify-email',
           },
         },
         currentUser: {

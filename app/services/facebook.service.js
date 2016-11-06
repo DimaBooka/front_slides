@@ -27,11 +27,7 @@ angular.module('facebookService', [])
            return data;
          }).catch(function (error) {
             currentUserService.checkStatus(error);
-            self.facebookErrors = [];
-            for (var key in error['data']){
-              self.facebookErrors.push(error['data'][key][0]);
-            }
-            self.error = true;
+            $rootScope.facebookErrors = error['data'].detail;
           });
        } else {
          FB.login(function(response) {

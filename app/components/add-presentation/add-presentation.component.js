@@ -5,8 +5,11 @@ angular.
   module('SlidesApp').
   component('addPresentation', {
     templateUrl: 'components/add-presentation/add-presentation.template.html',
-    controller: ['$scope', 'fileUpload', 'baseUrl',
-      function ($scope, fileUpload, baseUrl) {
+    controller: ['$scope', 'fileUpload', 'baseUrl', '$rootScope', '$state',
+      function ($scope, fileUpload, baseUrl, $rootScope, $state) {
+        if (!$rootScope.user){
+          $state.go('login');
+        }
         $scope.uploaded = false;
         $scope.error = false;
         $scope.uploadFile = function(){

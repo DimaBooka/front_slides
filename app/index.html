@@ -32,23 +32,23 @@
 
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a ui-sref="events">Events</a></li>
-            <li ng-if="$root.user"><a ui-sref="myEvents">My Events</a></li>
-            <li><a ui-sref="historyEvents">Events History</a></li>
-            <li><a ui-sref="presentations">Presentations</a></li>
-            <li ng-if="$root.user"><a ui-sref="myPresentations">My Presentations</a></li>
+            <li><a ui-sref="events" ng-cloak>Events</a></li>
+            <li ng-if="$root.user" ng-cloak><a ui-sref="myEvents">My Events</a></li>
+            <li><a ui-sref="historyEvents" ng-cloak>Events History</a></li>
+            <li><a ui-sref="presentations" ng-cloak>Presentations</a></li>
+            <li ng-if="$root.user" ng-cloak><a ui-sref="myPresentations">My Presentations</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-if="!$root.user"><a ui-sref="login">Login</a></li>
-            <li ng-if="!$root.user"><a ui-sref="registration">Register</a></li>
-            <li ng-if="$root.user" ng-click="$root.profilePageClear()"><a ui-sref="profile">Profile</a></li>
-            <li ng-if="$root.user"><a ui-sref="logout">Logout</a></li>
+            <li ng-if="!$root.user" ng-cloak><a ui-sref="login">Login</a></li>
+            <li ng-if="!$root.user" ng-cloak><a ui-sref="registration">Register</a></li>
+            <li ng-if="$root.user" ng-click="$root.profilePageClear()" ng-cloak><a ui-sref="profile">Profile</a></li>
+            <li ng-if="$root.user" ng-cloak><a ui-sref="logout">Logout</a></li>
           </ul>
         </div>
     </div>
     </nav>
   <div class="container">
-    <ui-view></ui-view>
+    <ui-view ng-cloak></ui-view>
     </div>
 
   <script src="//apis.google.com/js/api.js"></script>
@@ -90,6 +90,7 @@
   <script src="components/registration-page/registration-page.component.js"></script>
   <script src="components/login-page/login-page.component.js"></script>
   <script src="components/restore-password/restore-password.component.js"></script>
+  <script src="components/password-reset/password-reset.component.js"></script>
   <script src="components/logout-page/logout-page.component.js"></script>
   <script src="components/confirm-email/confirm-email.component.js"></script>
 </body>

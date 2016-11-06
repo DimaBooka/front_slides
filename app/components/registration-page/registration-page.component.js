@@ -2,8 +2,11 @@ angular.
   module('SlidesApp').
   component('registrationPage', {
     templateUrl: 'components/registration-page/registration-page.template.html',
-    controller: ['Auth', 'currentUserService',
-      function (Auth, currentUserService) {
+    controller: ['Auth', 'currentUserService', '$rootScope', '$state',
+      function (Auth, currentUserService, $rootScope, $state) {
+        if ($rootScope.user){
+          $state.go('presentations');
+        }
         var self = this;
         self.registred = false;
         self.error = false;

@@ -2,13 +2,17 @@ angular.
   module('SlidesApp').
   component('eventList', {
     templateUrl: 'components/event-list/event-list.template.html',
-    controller: ['Event', '$scope','$stateParams', '$rootScope', 'currentUserService',
-      function (Event, $scope, $stateParams, $rootScope, currentUserService) {
+    controller: ['Event', '$scope','$stateParams', '$rootScope', 'currentUserService', '$state',
+      function (Event, $scope, $stateParams, $rootScope, currentUserService, $state) {
 
         if ($stateParams.myEvents) {
-          $scope.my = true;
-          var userID = $rootScope.user.id;
-          query = Event.myEvents({author: userID});
+          if (!$rootScope.user){
+            $state.go('login');
+          } else {
+            $scope.my = true;
+            var userID = $rootScope.user.id;
+            query = Event.myEvents({author: userID});
+          }
         } else if ($stateParams.public) {
           $scope.my = false;
           today = new Date();
@@ -22,24 +26,16 @@ angular.
           console.error("Not implemented");
           return;
         }
-
-        query.$promise
-        .then(
-          function (response) {
-            $scope.events = [];
-            if ($stateParams.public) {
-              for (i in response) {
-                if (!response[i].date_finished && !response[i].date_started && response[i].date_planned){
-                  $scope.events.push(response[i]);
-                }
-              }
-            } else {
-              $scope.events = response;
+        if (query) {
+          query.$promise
+            .then(
+              function (response) {
+                $scope.events = response;
+              }).catch(function (error) {
+              currentUserService.checkStatus(error);
             }
-          }).catch(function (error) {
-            currentUserService.checkStatus(error);
-          }
-        );
+          );
+        }
       }
     ]
   });

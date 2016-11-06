@@ -35,6 +35,7 @@ angular.
                   $scope.presentationId = response['id'];
                   $scope.name = response['name'];
                   $scope.description = response['description'];
+                  $scope.published = response['published'];
                 self.updateAble = true;
                 }
               }
@@ -52,11 +53,11 @@ angular.
             }
           }
           if (!$scope.error) {
-            if (this.presentation.name && this.presentation.description) {
+            if (this.name && this.description) {
               var thumbnail = this.thumbnail;
-              var name = this.presentation.name;
-              var description = this.presentation.description;
-              var isPublic = !!this.presentation.published;
+              var name = this.name;
+              var description = this.description;
+              var isPublic = !!this.published;
               var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
               fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl, $scope.getPresentation);
               $scope.updateTrue = false;
