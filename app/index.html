@@ -20,7 +20,7 @@
 
   <nav class="navbar navbar-inverse navbar-default navbar-static-top">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header disabled">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -32,11 +32,8 @@
 
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a ui-sref="events" ng-cloak>Events</a></li>
-            <li ng-if="$root.user" ng-cloak><a ui-sref="myEvents">My Events</a></li>
-            <li><a ui-sref="historyEvents" ng-cloak>Events History</a></li>
-            <li><a ui-sref="presentations" ng-cloak>Presentations</a></li>
-            <li ng-if="$root.user" ng-cloak><a ui-sref="myPresentations">My Presentations</a></li>
+            <li><a ui-sref="events">Events</a></li>
+            <li><a ui-sref="presentations">Presentations</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-if="!$root.user" ng-cloak><a ui-sref="login">Login</a></li>
