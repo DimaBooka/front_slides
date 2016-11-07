@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="components/event-list/event-list.styles.css">
 <ul class="nav nav-tabs">
   <li ng-class="{active: !my && !history}"><a ui-sref="events">Events</a></li>
-  <li ng-class="{active: history}"><a ui-sref="historyEvents">History events</a></li>
+  <li ng-class="{active: history}"><a ui-sref="historyEvents">History</a></li>
   <li ng-class="{active: my}" ng-if="$root.user" ng-cloak><a ui-sref="myEvents">My events</a></li>
 </ul>
 <div id="event_list">
