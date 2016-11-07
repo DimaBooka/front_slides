@@ -2,6 +2,10 @@
  * Global add-ons
  */
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
