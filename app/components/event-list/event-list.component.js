@@ -16,7 +16,7 @@ angular.
         } else if ($stateParams.public) {
           $scope.my = false;
           today = new Date();
-          query = Event.query({date_planned__gte: today.toISOString().substring(0, 19).replace('T', ' '), date_started__isnull: 'True'});
+          query = Event.query({date_planned__gte: today.toISOString().substring(0, 19).replace('T', ' '), date_finished__isnull: 'True'});
         } else if ($stateParams.history) {
           $scope.history = true;
           $scope.my = false;
