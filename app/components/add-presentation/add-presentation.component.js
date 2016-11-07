@@ -35,7 +35,6 @@ angular.
               var name = this.name;
               var description = this.description;
               var isPublic = !!this.isPublic;
-              console.log('upload');
               var uploadUrl = baseUrl + "/api/presentations/";
               fileUpload.uploadFileToUrl(slides, thumbnail, name, isPublic, description, uploadUrl, $scope.error);
               $scope.uploaded = true;
