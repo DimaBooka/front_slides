@@ -1,7 +1,7 @@
 angular.module('eventService', [])
  .factory('Event', ['$resource', 'baseUrl',
     function($resource, baseUrl) {
-      return $resource(baseUrl + '/api/events/:id/:operation/', {}, {
+      return $resource(baseUrl + '/api/events/:id/:operation/', { page: 1, }, {
         get: {
           method: 'GET',
           params: {
@@ -13,11 +13,9 @@ angular.module('eventService', [])
           params: {
             ordering: 'date',
           },
-          isArray: true,
         },
         myEvents: {
           method: 'GET',
-          isArray: true,
         },
         save: {
           method: 'POST',
