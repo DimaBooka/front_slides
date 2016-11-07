@@ -6,8 +6,8 @@ angular.
     },
     templateUrl: 'components/presentation-detail/presentation-detail.template.html',
 
-    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$stateParams', '$state', '$rootScope', 'currentUserService',
-      function (Presentation, fileUpdate, baseUrl, $scope, $stateParams, $state, $rootScope, currentUserService) {
+    controller: ['Presentation', 'fileUpdate', 'baseUrl','$scope', '$stateParams', '$state', '$rootScope', 'currentUserService', 'pageSize',
+      function (Presentation, fileUpdate, baseUrl, $scope, $stateParams, $state, $rootScope, currentUserService, pageSize) {
         var self = this;
         self.updateAble = false;
         $scope.createTrue = false;

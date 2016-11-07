@@ -9,8 +9,9 @@
 	<h1 class="page-header" ng-if="my">My presentations</h1>
 </div> 
 
+<p class="lead" ng-if="!public_presentations.length">There are no presentations yet</p>
+
 <div id="presentation_list">
-   <p class="lead" ng-if="!public_presentations.length">There are no presentations yet</p>
   <div ng-repeat="presentation in public_presentations" >
     <div class="thumbnail">
       <div class="image">
@@ -23,3 +24,8 @@
     </div>
   </div>
 </div>
+<footer class="row text-center">
+  <div class="btn-group" role="group">
+    <a class="btn btn-default" ng-repeat="page in pages track by $index" ui-sref="{page: '{{ page }}' }" ui-sref-active="active">{{ page }}</a>
+  </div>
+</footer>

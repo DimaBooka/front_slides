@@ -13,6 +13,11 @@
       </div>
       <hr>
     </div>
+    <footer class="row text-center">
+      <div class="btn-group" role="group">
+        <a class="btn btn-default" ng-repeat="page in pages track by $index" ng-click="getComments(page)" ng-class="{'active': cur_page == page}">{{ page }}</a>
+      </div>
+    </footer>
   </div>
   <div class="well col-md-5 col-md-offset-1" ng-if="$root.user">
     <h3 class="page-header">Leave a comment:</h3>

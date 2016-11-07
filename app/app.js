@@ -91,13 +91,13 @@ angular.module('SlidesApp', [
       .state(
         {
           name: 'event-detail',
-          url: '/event/{id}',
+          url: '/events/{id}',
           component: 'eventDetail',
         })
       .state(
         {
           name: 'presentation-detail',
-          url: '/presentation/{id}',
+          url: '/presentations/{id}',
           component: 'presentationDetail',
         })
       .state(

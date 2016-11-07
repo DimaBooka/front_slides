@@ -20,3 +20,10 @@
     </div>
   </div>
 </div>
+</div>
+</div>
+<footer class="row text-center">
+  <div class="btn-group" role="group">
+    <a class="btn btn-default" ng-repeat="page in pages track by $index" ui-sref="{page: '{{ page }}' }" ui-sref-active="active">{{ page }}</a>
+  </div>
+</footer>

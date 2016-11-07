@@ -5,8 +5,8 @@ angular.
     bindings: {
       id: '@'
     },
-    controller: ['Comments',  'currentUserService', '$scope', '$stateParams', '$rootScope',
-      function (Comments,  currentUserService, $scope, $stateParams, $rootScope) {
+    controller: ['Comments', 'currentUserService', '$scope', '$stateParams', '$rootScope', 'pageSize',
+      function (Comments,  currentUserService, $scope, $stateParams, $rootScope, pageSize) {
         if ($rootScope.user) {
           $scope.currentUserId = $rootScope.user.id;
         }
@@ -15,11 +15,14 @@ angular.
         if (!this.id) {
           $scope.presentationId = $stateParams.id;
         }
-        $scope.getComments = function () {
-          Comments.forPresentation({presentation_id: $scope.presentationId}).$promise
+        var page = parseInt($stateParams.page);
+        $scope.getComments = function (page) {
+          Comments.forPresentation({page: page, presentation_id: $scope.presentationId}).$promise
             .then(
               function (response) {
-                $scope.comments = response;
+                $scope.comments = response.results;
+                $scope.pages = Array.apply(null, Array(Math.ceil(response.count / pageSize))).map(function (_, i) {return i + 1;});
+                $scope.cur_page = page || 1;
               }
             ).catch(function (error) {
               currentUserService.checkStatus(error);
