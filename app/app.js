@@ -26,51 +26,72 @@ angular.module('SlidesApp', [
       $stateProvider.state(
         {
           name: 'presentations',
-          url: '/presentations/',
+          url: '/presentations/?page',
           component: 'presentationList',
           params: {
-            "published": true,
+            published: true,
+            page: {
+              value: '1',
+              squash: true
+            },
           }
+
         })
       .state({
           name: 'myPresentations',
-          url: '/my-presentations/',
+          url: '/my-presentations/?page',
           component: 'presentationList',
           params: {
-            "my": true,
+            my: true,
+            page: {
+              value: '1',
+              squash: true
+            },
           }
         })
       .state(
         {
           name: 'events',
-          url: '/events/',
+          url: '/events/?page',
           component: 'eventList',
           params: {
-            "public": true,
+            public: true,
+            page: {
+              value: '1',
+              squash: true
+            },
           }
         })
       .state(
         {
           name: 'myEvents',
-          url: '/my-events/',
+          url: '/my-events/?page',
           component: 'eventList',
           params: {
-            "myEvents": true,
+            myEvents: true,
+            page: {
+              value: '1',
+              squash: true
+            },
           }
         })
       .state(
         {
           name: 'historyEvents',
-          url: '/history/',
+          url: '/history/?page',
           component: 'eventList',
           params: {
-            "history": true,
+            history: true,
+            page: {
+              value: '1',
+              squash: true
+            },
           }
         })
       .state(
         {
           name: 'event-detail',
-          url: '/events/{id}',
+          url: '/event/{id}',
           component: 'eventDetail',
         })
       .state(
@@ -127,7 +148,6 @@ angular.module('SlidesApp', [
           url: '/account-confirm-email/{key}/',
           component: 'confirmEmail',
         })
-
       .state(
         {
           name: 'passwordReset',
