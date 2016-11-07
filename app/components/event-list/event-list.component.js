@@ -13,17 +13,19 @@ angular.
             } else {
               $scope.my = true;
               var userID = $rootScope.user.id;
-              query = Event.myEvents({page: page, author: userID});
+              query = Event.myEvents({page: page, author: userID, ordering: 'date_planned'});
             }
           } else if ($stateParams.public) {
             $scope.my = false;
             today = new Date();
-            query = Event.query({page: page, date_planned__gte: today.toISOString().substring(0, 19).replace('T', ' '), date_finished__isnull: 'True'});
+            query = Event.query({page: page, date_planned__gte: today.toISOString().substring(0, 19).replace('T', ' '),
+                                 date_finished__isnull: 'True', ordering: 'date_planned'});
           } else if ($stateParams.history) {
             $scope.history = true;
             $scope.my = false;
             today = new Date();
-            query = Event.query({page: page, date_finished__lte: today.toISOString().substring(0, 19).replace('T', ' ')});
+            query = Event.query({page: page, date_finished__lte: today.toISOString().substring(0, 19).replace('T', ' '),
+                                 ordering: 'date_finished'});
           } else {
             console.error("Not implemented");
             return;

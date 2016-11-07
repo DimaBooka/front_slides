@@ -10,9 +10,6 @@ angular.module('eventService', [])
         },
         query: {
           method: 'GET',
-          params: {
-            ordering: 'date',
-          },
         },
         myEvents: {
           method: 'GET',
