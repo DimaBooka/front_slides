@@ -34,13 +34,6 @@ angular.module('authService', [])
             afterOperation: 'reset',
           },
         },
-        confirmEmail: {
-          method: 'POST',
-          params: {
-            operation: 'registration',
-            afterOperation: 'verify-email',
-          },
-        },
         currentUser: {
           method: 'GET',
           params: {
