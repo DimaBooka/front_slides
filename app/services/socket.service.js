@@ -4,8 +4,11 @@ angular.module('socketService', ['ngWebSocket'])
 
     var user_room = null;
     var socket = null;
-    function start_socket(addres) {
-      socket = $websocket(addres);
+    function start_socket() {
+      if (socket == null)
+        socket = $websocket(socketAddr);
+      else
+        return
 
       socket.onOpen(function() {
         console.log("Connected!");
@@ -18,6 +21,10 @@ angular.module('socketService', ['ngWebSocket'])
           }));  
         }
         $rootScope.$emit('socketOpened');
+      });
+
+      socket.onError(function(error) {
+          console.log("Chat Error:", error);
       });
 
       socket.onMessage(function(e) {
@@ -36,16 +43,16 @@ angular.module('socketService', ['ngWebSocket'])
 
       socket.onClose(function(e) {
         console.log('Connection closed: ', e);
-        setTimeout(function() {
-              start_socket(addres);
-          }, 1000);
+        socket.close();
+        socket = null;
+        setTimeout(start_socket, 1000);
       });
     }
     
     var methods = {
       setRoom: function(room) {
         user_room = room;
-        start_socket(socketAddr);
+        start_socket();
       },
 
       sendMessage: function(text, room) {

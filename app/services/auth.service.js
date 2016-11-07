@@ -130,7 +130,7 @@ angular.module('authService', [])
      };
 
      this.checkStatus = function (error) {
-       if (error.data['detail'] == "Invalid token."){
+       if (error && error.data['detail'] == "Invalid token."){
          this.unsetToken();
          this.unsetUser();
          $state.go('login');
