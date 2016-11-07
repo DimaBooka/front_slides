@@ -13,13 +13,28 @@ angular.
         $scope.uploaded = false;
         $scope.error = false;
         $scope.uploadFile = function(){
-          if ($scope.thumbnail.size/1024/1024 < 5){
-            if ($scope.name && $scope.description) {
-              var slides = $scope.slides;
-              var thumbnail = $scope.thumbnail;
-              var name = $scope.name;
-              var description = $scope.description;
-              var isPublic = !!$scope.isPublic;
+          $scope.error = false;
+          if (this.thumbnail) {
+            if (this.thumbnail.size / 1024 / 1024 > 5) {
+              $scope.error = 'The thumbnail picture is biggest then 5Mb.';
+            } else if (this.thumbnail.size < 1) {
+              $scope.error = 'The thumbnail picture is empty.';
+            }
+          }
+          if (this.slides) {
+            if (this.slides.size / 1024 / 1024 > 2) {
+              $scope.error = 'The markdown file is biggest then 2Mb.';
+            } else if (this.slides.size < 1) {
+              $scope.error = 'The markdown file is empty.';
+            }
+          }
+          if (!$scope.error){
+            if (this.slides && this.thumbnail && this.name && this.description) {
+              var slides = this.slides;
+              var thumbnail = this.thumbnail;
+              var name = this.name;
+              var description = this.description;
+              var isPublic = !!this.isPublic;
               console.log('upload');
               var uploadUrl = baseUrl + "/api/presentations/";
               fileUpload.uploadFileToUrl(slides, thumbnail, name, isPublic, description, uploadUrl, $scope.error);
@@ -27,8 +42,6 @@ angular.
             }else {
               $scope.error = 'Name or description consist of spaces only.';
             }
-          } else {
-            $scope.error = 'The file is biggest then 5Mb.';
           }
         };
         $scope.uploadedSuccess = function () {
