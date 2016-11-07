@@ -13,7 +13,7 @@
       </div>
       <hr>
     </div>
-    <footer class="row text-center">
+    <footer class="row text-center" ng-if="pages.length > 1">
       <div class="btn-group" role="group">
         <a class="btn btn-default" ng-repeat="page in pages track by $index" ng-click="getComments(page)" ng-class="{'active': cur_page == page}">{{ page }}</a>
       </div>
