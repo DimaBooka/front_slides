@@ -38,8 +38,11 @@ angular.
       }
     }])
     .service('fileUpdate', ['$http', '$state', 'currentUserService', function ($http, currentUserService) {
-      this.updateToUrl = function(thumbnail, name, isPublic, description, uploadUrl, reload){
+      this.updateToUrl = function(slides, thumbnail, name, isPublic, description, uploadUrl, reload){
         var fd = new FormData();
+        if (slides) {
+          fd.append('slides', slides);
+        }
         if (thumbnail) {
           fd.append('thumbnail', thumbnail);
         }

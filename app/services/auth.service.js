@@ -134,6 +134,8 @@ angular.module('authService', [])
          this.unsetToken();
          this.unsetUser();
          $state.go('login');
+       } else if (error.data['detail'] == "Not found.") {
+         $state.go('notFound');
        }
      }
    }]

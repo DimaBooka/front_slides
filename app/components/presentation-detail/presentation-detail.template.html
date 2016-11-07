@@ -42,6 +42,12 @@
           <input  class="form-control" type="text" name="name" ng-model="name" maxlength="39" id="presentation-name" required>
         </div>
         <div class="form-group">
+          <label for="presentation-slides" class="control-label">Markdown file</label><br>
+          <label class="btn btn-default btn-file">
+            Browse <input type="file" name="slides" file-model = "slides" ng-model="slides" accept=".md" id="presentation-slides">
+          </label>
+        </div>
+        <div class="form-group">
           <label for="presentation-thumb" class="control-label">Thumbnail</label><br>
           <label class="btn btn-default btn-file">
             Browse <input type="file" name="thumbnail" file-model = "thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb">

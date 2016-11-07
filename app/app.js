@@ -139,6 +139,12 @@ angular.module('SlidesApp', [
           name: 'main',
           url: '/',
           component: 'mainPage',
+        })
+      .state(
+        {
+          name: 'notFound',
+          url: '/404/',
+          templateUrl: '/templates/notFound.html',
         });
     }]).run(function ($rootScope, currentUserService, $state) {
       if (!location.hash) {

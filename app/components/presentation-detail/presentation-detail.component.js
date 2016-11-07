@@ -49,17 +49,27 @@ angular.
           $scope.error = false;
           if (this.thumbnail) {
             if (this.thumbnail.size / 1024 / 1024 > 5) {
-              $scope.error = 'The file is biggest then 5Mb.';
+              $scope.error = 'The thumbnail picture is biggest then 5Mb.';
+            } else if (this.thumbnail.size < 1) {
+              $scope.error = 'The thumbnail picture is empty.';
+            }
+          }
+          if (this.slides) {
+            if (this.slides.size / 1024 / 1024 > 2) {
+              $scope.error = 'The markdown file is biggest then 2Mb.';
+            } else if (this.slides.size < 1) {
+              $scope.error = 'The markdown file is empty.';
             }
           }
           if (!$scope.error) {
             if (this.name && this.description) {
               var thumbnail = this.thumbnail;
+              var slides = this.slides;
               var name = this.name;
               var description = this.description;
               var isPublic = !!this.published;
               var uploadUrl = baseUrl + "/api/presentations/" + $scope.presentationId + "/";
-              fileUpdate.updateToUrl(thumbnail, name, isPublic, description, uploadUrl, $scope.getPresentation);
+              fileUpdate.updateToUrl(slides, thumbnail, name, isPublic, description, uploadUrl, $scope.getPresentation);
               $scope.updateTrue = false;
             } else {
               $scope.error = 'Name or description consist of spaces only.';
