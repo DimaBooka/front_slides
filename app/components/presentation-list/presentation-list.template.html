@@ -1,12 +1,13 @@
 <link rel="stylesheet" href="components/presentation-list/presentation-list.styles.css">
-
 <div>
   <button type="button" class="btn btn-default btn-sm pull-right" ui-sref="addPresentation" ng-if="$root.user">
     <span class="glyphicon glyphicon-plus" > </span>
     <span class="hidden-xs">Create presentation</span>
   </button>
-	<h1 class="page-header" ng-if="!my">Public presentations</h1>
-	<h1 class="page-header" ng-if="my">My presentations</h1>
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: !my}"><a ui-sref="presentations">Public presentations</a></li>
+    <li ng-class="{active: my}" ng-if="$root.user" ng-cloak><a ui-sref="myPresentations">My presentations</a></li>
+</ul>
 </div> 
 
 <p class="lead" ng-if="!public_presentations.length">There are no presentations yet</p>
@@ -24,7 +25,7 @@
     </div>
   </div>
 </div>
-<footer class="row text-center">
+<footer class="row text-center" ng-if="pages.length > 1">
   <div class="btn-group" role="group">
     <a class="btn btn-default" ng-repeat="page in pages track by $index" ui-sref="{page: '{{ page }}' }" ui-sref-active="active">{{ page }}</a>
   </div>
