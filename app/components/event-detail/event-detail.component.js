@@ -164,12 +164,10 @@ component('eventDetail', {
     };
 
 
-  $rootScope.$on('chatMessage' + $scope.room, function (event, message) {
-    if ($scope.messages.indexOf(message) == -1){
-      $scope.messages.push(message);
-    }
+  var addMessage = $rootScope.$on('chatMessage' + $scope.room, function (event, message) {
+    $scope.messages.push(message);
   });
-
+  $scope.$on('$destroy', addMessage);
   $rootScope.$on('chatMessages' + $stateParams.id, function (event, messages) {
     $scope.messages = messages;
   });
