@@ -48,10 +48,18 @@ angular.module('socketService', ['ngWebSocket'])
         setTimeout(start_socket, 1000);
       });
     }
+
+    function stop_socket() {
+      if (socket != null)
+        socket.close();
+      else
+        return
+    }
     
     var methods = {
       setRoom: function(room) {
         user_room = room;
+        stop_socket()
         start_socket();
       },
 
