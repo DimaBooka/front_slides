@@ -11,7 +11,7 @@ component('eventDetail', {
     $scope.room = $stateParams.id;
     $scope.muted = false;
     
-    $scope.firefox = navigator.userAgent.indexOf('Firefox') != -1
+    $scope.firefox = navigator.userAgent.indexOf('Firefox') != -1;
 
     $scope.getEvent = function () {
       Event.get({id: $stateParams.id}).$promise.then(
@@ -151,12 +151,12 @@ component('eventDetail', {
         alert('Your message is very long. Max size - 120');
         return
       }
-      WebSocket.sendMessage(self.message, $scope.room);
+      WebSocket.sendMessage(self.message, $stateParams.id);
       self.message = '';
     }
   };
 
-  $scope.initChat = () => WebSocket.setRoom($scope.room);  
+  $scope.initChat = () => WebSocket.setRoom($stateParams.id);
 
   $scope.initMessage = () => {
     var objDiv = document.getElementById("messages");
@@ -170,7 +170,7 @@ component('eventDetail', {
     }
   });
 
-  $rootScope.$on('chatMessages' + $scope.room, function (event, messages) {
+  $rootScope.$on('chatMessages' + $stateParams.id, function (event, messages) {
     $scope.messages = messages;
   });
 }
