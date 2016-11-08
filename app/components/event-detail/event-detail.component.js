@@ -165,7 +165,9 @@ component('eventDetail', {
 
 
   $rootScope.$on('chatMessage' + $scope.room, function (event, message) {
-    $scope.messages.push(message);  
+    if ($scope.messages.indexOf(message) == -1){
+      $scope.messages.push(message);
+    }
   });
 
   $rootScope.$on('chatMessages' + $scope.room, function (event, messages) {
