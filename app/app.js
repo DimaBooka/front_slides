@@ -17,7 +17,7 @@ angular.module('SlidesApp', [
 ])
   .config(['$locationProvider', '$httpProvider', '$resourceProvider', '$stateProvider',
     function($locationProvider, $httpProvider, $resourceProvider, $stateProvider) {
-      $locationProvider.hashPrefix('!');
+      $locationProvider.html5Mode(true);
       $httpProvider.defaults.withCredentials = true;
       $httpProvider.defaults.xsrfCookieName = 'csrftoken';
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
