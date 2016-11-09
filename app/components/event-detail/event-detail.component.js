@@ -156,6 +156,13 @@ component('eventDetail', {
     }
   };
 
+  $scope.typeKeyHandler = function (event) {
+    if (event.which == 13 && !event.shiftKey) {
+      $scope.sendInChat();
+      event.preventDefault();
+    }
+  };
+
   $scope.initChat = () => WebSocket.setRoom($stateParams.id);
 
   $scope.initMessage = () => {
