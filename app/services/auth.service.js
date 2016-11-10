@@ -130,12 +130,14 @@ angular.module('authService', [])
      };
 
      this.checkStatus = function (error) {
-       if (error && error.data['detail'] == "Invalid token."){
+       if (error && error.data && error.data['detail'] == "Invalid token."){
          this.unsetToken();
          this.unsetUser();
          $state.go('login');
-       } else if (error.data['detail'] == "Not found.") {
+       } else if (error.data && error.data['detail'] == "Not found.") {
          $state.go('notFound');
+       } else if (error.data && error.data['error'] == "need email") {
+         $state.go('setEmail');
        }
      }
    }]

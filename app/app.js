@@ -9,6 +9,7 @@ angular.module('SlidesApp', [
   'ngWebSocket',
   'authService',
   'presentationService',
+  'setEmailService',
   'eventService',
   'socketService',
   'commentService',
@@ -165,6 +166,18 @@ angular.module('SlidesApp', [
           name: 'notFound',
           url: '/404/',
           component: 'notFound',
+        })
+      .state(
+        {
+          name: 'setEmail',
+          url: '/set-email/',
+          component: 'setEmail',
+        })
+      .state(
+        {
+          name: 'validatePassword',
+          url: '/validate-account/',
+          component: 'validatePassword',
         });
     }]).run(function ($rootScope, currentUserService, $state) {
       if (!location.hash) {
