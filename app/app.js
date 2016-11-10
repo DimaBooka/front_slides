@@ -22,7 +22,6 @@ angular.module('SlidesApp', [
       $httpProvider.defaults.withCredentials = true;
       $httpProvider.defaults.xsrfCookieName = 'csrftoken';
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-      // $httpProvider.defaults.headers. = 'X-CSRFToken';
       $resourceProvider.defaults.stripTrailingSlashes = false;
 
       $stateProvider.state(
