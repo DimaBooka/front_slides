@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="components/event-detail/event-detail.styles.css">
+<div class="container" id="event_detail" ng-if="event">
+  <header class="page-header">
+    <div ng-if="updateEventAble && !eventLive" class="pull-right">
+      <div class="btn-group" role="group" aria-label="">
+          <a ng-if="!eventFinished" class="btn btn-default btn-sm" ng-click="startEvent()">
+            <span class="glyphicon glyphicon-play"> </span> Start event
+          </a>
+          <button ng-if="!eventFinished" type="button" class="btn btn-default btn-sm" ng-click="updateTrueEvent()">
+            <span class="glyphicon glyphicon-pencil" > </span>
+          </button>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="deleteEvent()">
+          <span class="glyphicon glyphicon-trash"> </span>
+        </button>
+      </div>
+    </div>
+    <div ng-if="eventLive" class="pull-right">
+      <div class="btn-group" role="group" aria-label="">
+        <a class="btn btn-default btn-sm" ng-click="pauseEvent(true)" ng-if="!eventPaused && updateEventAble">
+          <span class="glyphicon glyphicon-pause"> </span> Pause event
+        </a>
+        <a class="btn btn-default btn-sm" ng-click="pauseEvent(false)" ng-if="eventPaused && updateEventAble">
+          <span class="glyphicon glyphicon-play"> </span> Resume event
+        </a>
+        <a class="btn btn-default btn-sm" ng-click="muteAudio()" ng-if="!updateEventAble && eventLive && !muted">
+          <span class="glyphicon glyphicon-volume-up"> </span>
+        </a>
+        <a class="btn btn-default btn-sm" ng-click="muteAudio()" ng-if="!updateEventAble && eventLive && muted">
+          <span class="glyphicon glyphicon-volume-off"> </span>
+        </a>
+        <a class="btn btn-default btn-sm" ng-click="fullscreen()" ng-if="!firefox">
+          <span class="glyphicon glyphicon-fullscreen"> </span>
+        </a>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="endEvent()" ng-if="updateEventAble">
+          <span class="glyphicon glyphicon-stop"> </span>
+        </button>
+      </div>
+    </div>
+    <h1 class="hack-word">{{ event.name }}</h1>
+  </header> 
+  <div id="work_area" ng-if="!updateEventTrue">
+    <iframe src="{{baseUrl + '/events/' + event.id + '/live/' | trustAsResourceUrl}}" allowfullscreen id="presentation_live" > 
+    </iframe>
+
+    <div id="chat" ng-init="initChat()">
+      <header>Chat</header>
+
+      <div id="messages">
+        <div class="media" ng-repeat="message in messages track by $index" ng-init="initMessage()">
+          <div class="media-body">
+            <h4 class="media-heading"> {{ message.user }}
+              <span class="small pull-right"> {{ message.datetime }}</span>
+            </h4>
+             <p>{{ message.message }}</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <form role="form" ng-submit="sendInChat()" ng-if="$root.user && !eventFinished">
+          <textarea class="form-control message-text" ng-model="$ctrl.message" name="message" placeholder="Enter message..."></textarea>
+          <input type="submit" class="btn btn-default btn-block pull-right" value="Send" />
+        </form>
+      </footer>
+    </div>
+  </div>
+  <div ng-if="updateEventTrue" class="row">
+    <form class="col-md-4" ng-submit="updateEvent()" >
+      <div class="form-group">
+        <label for="event-name" class="control-label">Event name</label>
+        <input  class="form-control" type="text" name="name" maxlength="39" ng-model="name" id="event-name" required>
+      </div>
+      <div ng-if="error">
+        <p>{{error}}</p>
+      </div>
+      <div class="form-group">
+        <label for="dropdown1" class="control-label">Evant date</label>
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#">
+            <div class="input-group">
+              <input type="text" class="form-control" data-ng-model="date_planned" disabled/>
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <datetimepicker data-ng-model="date_planned"
+            data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
+          </ul>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary col-md-3" value="Update">
+        <a class="btn btn-default col-md-3 col-md-offset-1" ng-click="updateTrueEvent()">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+

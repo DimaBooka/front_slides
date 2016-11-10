@@ -1,0 +1,33 @@
+.presentation-block {
+	margin-bottom: 30px;
+}
+
+.presentation-image-block {
+	display: inline-block;
+	float: left;
+	text-align: center;
+	margin-right: 10px
+}
+
+.presentation-image { 
+	max-width: 80%;
+	max-height: 80%;
+}
+
+@media all and (max-width: 768px) {
+  .presentation-info {
+		margin-top: 20px;
+	}
+}
+
+
+
+
+.presentation-info {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.presentation-name {
+	margin-top: 0px;
+}

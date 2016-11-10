@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="components/event-list/event-list.styles.css">
+<ul class="nav nav-tabs">
+  <li ng-class="{active: !my && !history}"><a ui-sref="events">Events</a></li>
+  <li ng-class="{active: history}"><a ui-sref="historyEvents">History</a></li>
+  <li ng-class="{active: my}" ng-if="$root.user" ng-cloak><a ui-sref="myEvents">My events</a></li>
+</ul>
+<div id="event_list">
+ <p class="lead" ng-if="!events.length">There are no events yet</p>
+ <div ng-repeat="event in events">
+  <div class="thumbnail" ng-class="{live: event.date_started != null && !event.date_finished && !history}">
+    <div class="image">
+     <img ng-src="{{event.presentation_info.thumbnail}}" class="img-rounded" alt="Event thumbnail">
+   </div>
+   <div class="caption">
+    <h3 class="text-center hack-word">{{event.name}}</h3>
+    <p class="event-date" ng-if="!my && !history">Started at {{event.date_planned | date: "HH:mm dd.MM.yyyy"}}</p>
+    <p class="event-date" ng-if="my">
+      <span ng-if="!event.date_finished">Started at {{event.date_planned | date: "HH:mm dd.MM.yyyy"}}</span>
+      <span ng-if="event.date_finished">Finished at {{event.date_finished | date: "HH:mm dd.MM.yyyy"}}</span>
+    </p>
+    <p class="event-date" ng-if="history">Finished at {{event.date_finished | date: "HH:mm dd.MM.yyyy"}}</p>
+    <p>
+      <a ui-sref="event-detail({id: event.id})" class="btn btn-primary btn-block" role="button">Show event</a> 
+    </p>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<footer class="row text-center" ng-if="pages.length > 1">
+  <div class="btn-group" role="group">
+    <a class="btn btn-default" ng-repeat="page in pages track by $index" ui-sref="{page: '{{ page }}' }" ui-sref-active="active">{{ page }}</a>
+  </div>
+</footer>

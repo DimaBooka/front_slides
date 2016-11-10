@@ -1,0 +1,81 @@
+<h1 class="page-header">Your information:</h1>
+<div class="col-md-4"  ng-if="!$root.change">
+  <div class="form-group">
+    <label class="control-label">Username:</label>
+    <p class="form-control">{{user.username}}</p>
+  </div>
+  <div class="form-group">
+    <label class="control-label">First name:</label>
+    <p class="form-control">{{user.first_name}}</p>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Last name:</label>
+    <p class="form-control">{{user.last_name}}</p>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Email:</label>
+    <p class="form-control">{{user.email}}</p>
+  </div>
+   <div class="form-group">
+    <label class="control-label">Birth date:</label>
+    <p class="form-control">{{user.birth_date | date: "yyyy MM dd"}}</p>
+  </div>
+   <div class="form-group">
+      <label class="control-label">Gender:</label>
+      <label for="gender3">
+      <input type="radio" name="gender" value="1" id="gender3" ng-model="user.gender" disabled>Male</label>
+      <label for="gender4">
+      <input type="radio" name="gender" value="2" id="gender4" ng-model="user.gender" disabled>Female</label>
+    </div>
+  <a class="btn btn-primary" ng-click="$ctrl.changeOn()">Update information</a>
+</div>
+<div ng-if="$root.change">
+  <form class="col-md-4" ng-submit="updateUserInfo()" >
+    <div ng-if="$ctrl.error">
+      <p>{{ $ctrl.errorMes }}</p>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Username:</label>
+      <input class="form-control" type="text" name="username" pattern="[A-Za-z0-9]+" maxlength="30" ng-model="$ctrl.username" disabled/>
+    </div>
+    <div class="form-group">
+      <label class="control-label">First name:</label>
+      <input class="form-control" type="text" name="first_name" pattern="[A-Za-zА-Яа-я]+" maxlength="30" ng-model="$ctrl.first_name"/>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Last name:</label>
+      <input class="form-control" type="text" name="last_name" pattern="[A-Za-zА-Яа-я]+" maxlength="30" ng-model="$ctrl.last_name"/>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Email:</label>
+      <input class="form-control" type="email" name="email" maxlength="100" ng-model="$ctrl.email"/>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Birth date:</label>
+      <div class="dropdown">
+        <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#">
+          <div class="input-group">
+            <input type="text" class="form-control" value="{{$ctrl.birth_date | date: 'yyyy MM dd' }}" disabled/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <datetimepicker data-ng-model="$ctrl.birth_date"
+                          data-datetimepicker-config="{ dropdownSelector: '#dropdown1', startView: 'year',
+            minView: 'day', }"></datetimepicker>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Gender:</label>
+      <label for="gender1">
+      <input type="radio" name="gender" value="1" id="gender1" ng-model="user.gender">Male</label>
+      <label for="gender2">
+      <input type="radio" name="gender" value="2" id="gender2" ng-model="user.gender">Female</label>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" value="Save">
+    </div>
+  </form>
+</div>
+<change-password></change-password>

@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="components/presentation-comments/presentation-comments.styles.css">
+
+<div class="row"  style="margin-top: 30px;">
+  <div class="well col-md-6">
+    <h3>Comments</h3>
+    <hr>
+    <p class="lead" ng-if="!comments.length">There are no comment yet</p>
+    <div class="media" ng-repeat="comment in comments">
+      <div>
+        <h4 class="media-heading">{{comment.author_info.username}} <small>{{comment.date_created | date: "dd.MM.yyyy HH:mm"}}</small><a class="pull-right btn btn-danger btn-xs" ng-click="deleteComment(comment.id)" ng-if="currentUserId == comment.author_info.id" style="cursor: pointer; "><span class="glyphicon glyphicon-trash"></span></a>
+        </h4>
+        <p class="hack-word">{{comment.text}}</p>
+      </div>
+      <hr>
+    </div>
+    <footer class="row text-center" ng-if="pages.length > 1">
+      <div class="btn-group" role="group">
+        <a class="btn btn-default" ng-repeat="page in pages track by $index" ng-click="getComments(page)" ng-class="{'active': cur_page == page}">{{ page }}</a>
+      </div>
+    </footer>
+  </div>
+  <div class="well col-md-5 col-md-offset-1" ng-if="$root.user">
+    <h3 class="page-header">Leave a comment:</h3>
+    <form role="form" ng-submit="addComment()">
+      <div class="form-group">
+        <textarea class="form-control" rows="3" name="text" maxlength="250" ng-model="text" id="presentation-name" required></textarea>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Add comment" />
+    </form>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="components/presentation-detail/presentation-detail.styles.css">
+<div class="container" id="presentation_detail">
+  <header class="page-header">
+    <div ng-if="$ctrl.updateAble" class="pull-right">
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default btn-sm" ng-click="trueCreate()">
+          <span class="glyphicon glyphicon-plus" > </span>
+          <span class="hidden-xs">Create event</span>
+        </button>
+        <button type="button" class="btn btn-default btn-sm" ng-click="trueUpdate()">
+          <span class="glyphicon glyphicon-pencil" > </span>
+        </button>
+        <button type="button" class="btn btn-default btn-sm btn-danger" ng-click="deletePr()">
+          <span class="glyphicon glyphicon-trash"> </span>
+        </button>
+      </div>
+    </div>
+    <h1 class="hack-word">{{presentation.name}}</h1>
+  </header> 
+  <div class="row">
+    <div class="presentation-image-block col-md-3 col-lg-3 col-sm-4 col-xs-12">
+      <img class="presentation-image" ng-src="{{presentation.thumbnail}}" alt="Presentation thumbnail">
+    </div>
+    <div class="col-md-5 col-lg-4 col-sm-6 col-xs-12 presentation-info">
+      <p class="presentation-author-date"><b>Creator:</b> {{presentation.creator_info.username}}</p>
+      <p><b>Date created:</b> {{presentation.date_created | date: "dd.MM.yyyy HH:mm"}}
+        <p class="presentation-description hack-word"><b>Description: </b>{{presentation.description}}
+        </p>
+    </div>
+  </div>
+  <hr>
+  <div ng-if="$ctrl.updateAble" ng-show="updateTrue" class="row">
+    <div class="well col-md-12">
+      <h3 class="page-header">Edit presentation</h3>
+      <form ng-submit="redactor()" class="col-md-6">
+        <div ng-if="error">
+          <p>{{error}}</p>
+        </div>
+        <div class="form-group">
+          <label for="presentation-name" class="control-label">Presentation name</label>
+          <input  class="form-control" type="text" name="name" ng-model="name" maxlength="39" id="presentation-name" required>
+        </div>
+        <div class="form-group">
+          <label for="presentation-slides" class="control-label">Markdown file</label><br>
+          <label class="btn btn-default btn-file">
+            Browse <input type="file" name="slides" file-model = "slides" ng-model="slides" accept=".md" id="presentation-slides">
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="presentation-thumb" class="control-label">Thumbnail</label><br>
+          <label class="btn btn-default btn-file">
+            Browse <input type="file" name="thumbnail" file-model = "thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb">
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="presentation-desc" class="control-label">Description</label>
+          <textarea class="form-control" name="desc" ng-model="description" maxlength="500" id="presentation-desc" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="published" class="control-label">Public
+            <input type="checkbox" name="published" ng-model="published" id="published"></label>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary col-md-3" value="Update">
+            <a class="btn btn-default col-md-3 col-md-offset-1" ng-click="trueUpdate()">Cancel</a>
+         </div>
+       </form>
+    </div>
+  </div>
+  <div ng-if="createTrue">
+    <create-event></create-event>
+  </div>
+  <div ng-if="presentation">  <!-- ng-show="!createTrue && !updateTrue" -->
+    <presentation-comments id="{{presentationId}}"></presentation-comments>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="SlidesApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="SlidesApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="SlidesApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="SlidesApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Light slides</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+
+  <link rel="stylesheet" href="app.css">
+</head>
+<body ng-cloak>
+
+  <nav class="navbar navbar-inverse navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header disabled">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ui-sref="presentations">Light slides</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="events">Events</a></li>
+            <li><a ui-sref="presentations">Presentations</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-if="!$root.user" ng-cloak><a ui-sref="login">Login</a></li>
+            <li ng-if="!$root.user" ng-cloak><a ui-sref="registration">Register</a></li>
+            <li ng-if="$root.user" ng-click="$root.profilePageClear()" ng-cloak><a ui-sref="profile">Profile</a></li>
+            <li ng-if="$root.user" ng-cloak><a ui-sref="logout">Logout</a></li>
+          </ul>
+        </div>
+    </div>
+    </nav>
+  <div class="container">
+    <ui-view ng-cloak></ui-view>
+    </div>
+
+  <script src="//apis.google.com/js/api.js"></script>
+  <script src="//connect.facebook.net/en_US/all.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/jquery-1.12.0.min.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+  <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
+  <script src="bower_components/angular-date-time-input/src/dateTimeInput.js"></script>
+  <script src="bower_components/angular-websocket/dist/angular-websocket.js"></script>
+  <script src="app.js"></script>
+  <script src="app.constant.js"></script>
+  <script src="services/auth.service.js"></script>
+  <script src="services/presentation.service.js"></script>
+  <script src="services/event.service.js"></script>
+  <script src="services/socket.service.js"></script>
+  <script src="services/presentation.service.js"></script>
+  <script src="services/uploader-presentation-services.js"></script>
+  <script src="services/comment.service.js"></script>
+  <script src="services/facebook.service.js"></script>
+  <script src="services/google.service.js"></script>
+  <script src="services/setEmail.service.js"></script>
+  <script src="components/not-found/not-found.component.js"></script>
+  <script src="components/main/main.component.js"></script>
+  <script src="components/profile-page/profile-page.component.js"></script>
+  <script src="components/create-event/create-event.component.js"></script>
+  <script src="components/presentation-list/presentation-list.component.js"></script>
+  <script src="components/presentation-detail/presentation-detail.component.js"></script>
+  <script src="components/add-presentation/add-presentation.component.js"></script>
+  <script src="components/presentation-comments/presentation-comments.component.js"></script>
+  <script src="components/event-list/event-list.component.js"></script>
+  <script src="components/event-detail/event-detail.component.js"></script>
+  <script src="components/change-password/change-password.component.js"></script>
+  <script src="components/registration-page/registration-page.component.js"></script>
+  <script src="components/login-page/login-page.component.js"></script>
+  <script src="components/restore-password/restore-password.component.js"></script>
+  <script src="components/password-reset/password-reset.component.js"></script>
+  <script src="components/logout-page/logout-page.component.js"></script>
+  <script src="components/confirm-email/confirm-email.component.js"></script>
+  <script src="components/set-email/set-email.component.js"></script>
+  <script src="components/validate-password/validate-password.component.js"></script>
+</body>
+</html>
