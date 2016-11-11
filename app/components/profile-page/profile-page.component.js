@@ -37,8 +37,8 @@ angular.
         $scope.updateUserInfo = function () {
           self.error = false;
           if (new Date() / 1 > self.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < self.birth_date.getTime()) {
-            var birth_date = self.birth_date.toLocaleDateString().split('.');
-            birth_date = birth_date.reverse().join('-');
+            var birth_date = self.birth_date;
+            birth_date = [birth_date.getUTCFullYear(), birth_date.getMonth() + 1, birth_date.getDate()].join('-');
             Auth.updateUser({}, {
               username: self.username,
               first_name: self.first_name,
