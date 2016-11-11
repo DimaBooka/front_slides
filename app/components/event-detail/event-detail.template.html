@@ -16,16 +16,13 @@
     </div>
     <div ng-if="eventLive" class="pull-right">
       <div class="btn-group" role="group" aria-label="">
-        <a class="btn btn-default btn-sm" ng-click="muteAudio()" ng-if="updateEventAble && eventLive">
-          <span class="glyphicon" ng-class="{'glyphicon-volume-up': !muted, 'glyphicon-volume-off': muted}"></span>
-        </a>
         <a class="btn btn-default btn-sm" ng-click="pauseEvent(true)" ng-if="!eventPaused && updateEventAble">
           <span class="glyphicon glyphicon-pause"> </span> Pause event
         </a>
         <a class="btn btn-default btn-sm" ng-click="pauseEvent(false)" ng-if="eventPaused && updateEventAble">
           <span class="glyphicon glyphicon-play"> </span> Resume event
         </a>
-        <a class="btn btn-default btn-sm" ng-click="muteAudio()" ng-if="!updateEventAble && eventLive">
+        <a class="btn btn-default btn-sm" ng-click="muteAudio()" ng-if="eventLive">
           <span class="glyphicon" ng-class="{'glyphicon-volume-up': !muted, 'glyphicon-volume-off': muted}"></span>
         </a>
         <a class="btn btn-default btn-sm" ng-click="fullscreen()" ng-if="!firefox">
