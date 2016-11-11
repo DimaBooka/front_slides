@@ -2,16 +2,18 @@ angular.
   module('SlidesApp').
   component('validatePassword', {
     templateUrl: 'components/validate-password/validate-password.template.html',
-    controller: ['$rootScope', '$state', 'setEmailForUser', '$scope', 'currentUserService',
-      function ($rootScope, $state, setEmailForUser, $scope, currentUserService) {
+    controller: ['$rootScope', '$state', 'setEmailForUser', '$scope', 'currentUserService', 'FacebookAuth',
+      function ($rootScope, $state, setEmailForUser, $scope, currentUserService, FacebookAuth) {
         var self = this;
         $scope.password = '';
+        self.error = false;
         $scope.checkPassword = function () {
           setEmailForUser.save({}, {'password': $scope.password}).$promise
             .then(function (response) {
               if (response['success']) {
-                currentUserService.setToken(response['success']);
-                currentUserService.loadUserFromAPI();
+                currentUserService.unsetToken();
+                currentUserService.unsetUser();
+                FacebookAuth.watchLoginChange();
               }
             }).catch(function (error) {
               currentUserService.checkStatus(error);

@@ -10,6 +10,7 @@ component('eventDetail', {
     $scope.messages = new Array();
     $scope.room = $stateParams.id;
     $scope.muted = false;
+    $scope.chatAble = false;
     
     $scope.firefox = navigator.userAgent.indexOf('Firefox') != -1;
 
@@ -179,6 +180,7 @@ component('eventDetail', {
 
   $rootScope.$on('chatMessages' + $stateParams.id, function (event, messages) {
     $scope.messages = messages;
+    $scope.chatAble = true;
   });
 }
 ]
