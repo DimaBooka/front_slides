@@ -5,13 +5,12 @@ angular.
     controller: ['$rootScope', '$state', 'setEmailForUser', '$scope', 'currentUserService',
       function ($rootScope, $state, setEmailForUser, $scope, currentUserService) {
         $scope.email = '';
+        $scope.messageConfirmEmail = false;
         $scope.setEmail = function () {
-          setEmailForUser.save({}, {'email': $scope.email}).$promise.then(
+          setEmailForUser.save({}, {'email': this.email}).$promise.then(
             function (response) {
               if (response['success']) {
-                currentUserService.setToken(response['success']);
-                currentUserService.loadUserFromAPI();
-                $state.go('presentations');
+                $scope.messageConfirmEmail = response['success'];
               } else {
                 $state.go('validatePassword');
               }
