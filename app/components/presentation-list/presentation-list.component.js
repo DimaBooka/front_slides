@@ -6,6 +6,7 @@ angular.
       function (Presentation, currentUserService, $scope, $stateParams, $state, $rootScope, pageSize) {
         var query;
         var page = parseInt($stateParams.page);
+        $scope.public_presentations = true;
         $scope.getPresentations = function(page) {
         if ($stateParams.my) {
           if (!$rootScope.user){
@@ -26,6 +27,9 @@ angular.
           query.$promise.then(function (response) {
             $scope.pages = Array.apply(null, Array(Math.ceil(response.count / pageSize))).map(function (_, i) {return i + 1;});
             $scope.public_presentations = response.results;
+            if (!$scope.public_presentations.length) {
+              $scope.public_presentations = false;
+            }
           }).catch(function (error) {
             currentUserService.checkStatus(error);
           });
