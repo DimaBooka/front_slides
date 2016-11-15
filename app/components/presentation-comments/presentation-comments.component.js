@@ -10,7 +10,7 @@ angular.
         if ($rootScope.user) {
           $scope.currentUserId = $rootScope.user.id;
         }
-
+        $scope.comments = true;
         $scope.presentationId = this.id;
         if (!this.id) {
           $scope.presentationId = $stateParams.id;
@@ -21,6 +21,9 @@ angular.
             .then(
               function (response) {
                 $scope.comments = response.results;
+                if (!$scope.comments.length) {
+                  $scope.comments = false;
+                }
                 $scope.pages = Array.apply(null, Array(Math.ceil(response.count / pageSize))).map(function (_, i) {return i + 1;});
                 $scope.cur_page = page || 1;
               }

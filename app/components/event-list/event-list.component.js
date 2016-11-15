@@ -6,6 +6,7 @@ angular.
       function (Event, $scope, $stateParams, $rootScope, currentUserService, $state, pageSize) {
         var query;
         var page = parseInt($stateParams.page);
+        $scope.events = true;
         $scope.getEvents = function(page) {
           if ($stateParams.myEvents) {
             if (!$rootScope.user){
@@ -36,6 +37,9 @@ angular.
                 function (response) {
                   $scope.pages = Array.apply(null, Array(Math.ceil(response.count / pageSize))).map(function (_, i) {return i + 1;});
                   $scope.events = response.results;
+                  if (!$scope.events.length) {
+                    $scope.events = false;
+                  }
                 }).catch(function (error) {
                 currentUserService.checkStatus(error);
               }

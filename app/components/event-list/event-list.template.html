@@ -4,9 +4,9 @@
   <li ng-class="{active: history}"><a ui-sref="historyEvents">History</a></li>
   <li ng-class="{active: my}" ng-if="$root.user" ng-cloak><a ui-sref="myEvents">My events</a></li>
 </ul>
+<p class="lead" ng-show="!events">There are no events yet</p>
 <div id="event_list">
- <p class="lead" ng-if="!events.length">There are no events yet</p>
- <div ng-repeat="event in events">
+ <div class="item" ng-repeat="event in events">
   <div class="thumbnail" ng-class="{live: event.date_started != null && !event.date_finished && !history}">
     <div class="image">
      <img ng-src="{{event.presentation_info.thumbnail}}" class="img-rounded" alt="Event thumbnail">
@@ -24,8 +24,6 @@
     </p>
    </div>
  </div>
-</div>
-</div>
 </div>
 </div>
 <footer class="row text-center" ng-if="pages.length > 1">
