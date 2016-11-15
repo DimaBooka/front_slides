@@ -1,0 +1,13 @@
+.well {
+    margin: 0.75% 2%;
+}
+
+.user {
+    font-size: 17pt;
+}
+
+small {
+    font-size: small;
+    margin-right: 2%;
+    padding-top: 5px;
+}
