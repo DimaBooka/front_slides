@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="components/event-detail/event-detail.styles.css">
-<div class="container" id="event_detail" ng-if="event">
+<div class="" id="event_detail" ng-if="event">
   <header class="page-header">
     <div ng-if="updateEventAble && !eventLive" class="pull-right">
       <div class="btn-group" role="group" aria-label="">
@@ -33,7 +33,7 @@
         </button>
       </div>
     </div>
-    <h1 class="hack-word">{{ event.name }}</h1>
+    <h2 class="hack-word">{{ event.name }}</h2>
   </header> 
   <div id="work_area" ng-if="!updateEventTrue">
     <iframe src="{{baseUrl + '/events-frame/' + event.id + '/live/' | trustAsResourceUrl}}" allowfullscreen id="presentation_live" > 

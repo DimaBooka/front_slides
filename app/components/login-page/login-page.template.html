@@ -20,11 +20,12 @@
 	</div>
 	<div class="form-group">
 		<input class="btn btn-primary" type="submit" ng-click="$ctrl.login()" value="Sign in">
-		<button class="btn btn-primary" type="submit" ui-sref="restore">Forgot password?</button>
+		<button class="btn btn-primary" type="submit" ui-sref="restore">Reset password</button>
+        <div class="social-buttons">
+            <a class="fbbth btn btn-facebook pull-right" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook"></i></a>
+            <a class="gglbth btn btn-google pull-right" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()"><i class="fa fa-google"></i></a>
+        </div>
 	</div>
+
 </form>
-<div class="col-md-4">
-<label class="control-label">Login with social</label>
-  <a class="btn btn-primary btn-block btn-facebook" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a>
-  <button class="btn btn-primary btn-block btn-google" id="signin-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()"><i class="fa fa-google pull-left"></i>Sign in with Google</button>
-</div>
+

@@ -54,11 +54,6 @@
   background-color: #428bca;
 }
 
-
-/*
- * Main content
- */
-
 .main {
   padding: 20px;
 }
@@ -165,6 +160,7 @@
     padding-top: 3px;
 }
 
+
 .item.ng-move,
 .item.ng-enter,
 .item.ng-leave {
@@ -190,4 +186,83 @@
 }
 .box-one.ng-hide {
   opacity:0;
+
+body {
+    background: url(components/main/blognew.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 0;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 40px;
+    color: #181818;
+}
+
+h2, h3 {
+    margin-left: 1% !important;
+}
+
+.panel {
+    background-color: rgba(232, 232, 232, 0.66) !important;
+    padding: 2%;
+}
+
+.margin-base-vertical {
+    margin: 40px 0;
+}
+
+.container:nth-child(2) {
+    min-height: 500px !important;
+    background-color: rgba(255, 255, 255, 0.8)!important;
+    padding: 20px;
+    box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.31);
+    border-radius: 5px;
+}
+
+.lead {
+    margin: 1%;
+}
+
+p {
+    font-size: 15pt;
+}
+
+.main-refs:focus {
+    outline: 0;
+    text-decoration: none;
+    user-select: none;
+    user-focus: none;
+}
+
+.main-refs:hover {
+    text-decoration: none;
+    color: #86b1ff;
+    user-select: none;
+    user-focus: none;
+}
+
+.quickguide {
+    display: none;
+}
+
+.spoiler-close {
+    float: right;
+}
+
+.spoiler-close:hover {
+    cursor: pointer;
+}
+
+.gglbth, .fbbth {
+    width: 35px;
+    margin: 0 2px;
+}
+
+.social-buttons {
+    display: inline;
+    width: 100%;
 }
