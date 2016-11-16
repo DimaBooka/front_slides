@@ -1,33 +1,36 @@
-<h1 class="page-header">Your information:</h1>
+<h2 class="page-header">Your information:</h2>
 <div class="col-md-4"  ng-if="!$root.change">
-  <div class="form-group">
-    <label class="control-label">Username:</label>
-    <p class="form-control">{{user.username}}</p>
-  </div>
-  <div class="form-group">
-    <label class="control-label">First name:</label>
-    <p class="form-control">{{user.first_name}}</p>
-  </div>
-  <div class="form-group">
-    <label class="control-label">Last name:</label>
-    <p class="form-control">{{user.last_name}}</p>
-  </div>
-  <div class="form-group">
-    <label class="control-label">Email:</label>
-    <p class="form-control">{{user.email}}</p>
-  </div>
-   <div class="form-group">
-    <label class="control-label">Birth date:</label>
-    <p class="form-control">{{user.birth_date | date: "yyyy MM dd"}}</p>
-  </div>
-   <div class="form-group">
-      <label class="control-label">Gender:</label>
-      <label for="gender3">
-      <input type="radio" name="gender" value="1" id="gender3" ng-model="user.gender" disabled>Male</label>
-      <label for="gender4">
-      <input type="radio" name="gender" value="2" id="gender4" ng-model="user.gender" disabled>Female</label>
-    </div>
+<table class="table">
+  <tbody>
+  <tr>
+    <td>Username:</td>
+    <td>{{user.username}}</td>
+  </tr>
+  <tr ng-if="user.first_name">
+    <td>First name:</td>
+    <td>{{user.first_name}}</td>
+  </tr>
+  <tr ng-if="user.last_name">
+    <td>Last name:</td>
+    <td>{{user.last_name}}</td>
+  </tr>
+  <tr>
+    <td>Email:</td>
+    <td>{{user.email}}</td>
+  </tr>
+  <tr ng-if="user.birth_date">
+    <td>Birth date:</td>
+    <td>{{user.birth_date | date: "yyyy MM dd"}}</td>
+  </tr>
+  <tr ng-if="user.gender">
+    <td>Gender:</td>
+    <td ng-if="user.gender == 1">Male</td>
+    <td ng-if="user.gender == 2">Female</td>
+  </tr>
+  </tbody>
+</table>
   <a class="btn btn-primary" ng-click="$ctrl.changeOn()">Update information</a>
+  <a class="btn btn-primary" ui-sref="changePassword">Change password</a>
 </div>
 <div ng-if="$root.change">
   <form class="col-md-4" ng-submit="updateUserInfo()" >
@@ -75,7 +78,7 @@
     </div>
     <div class="form-group">
       <input type="submit" class="btn btn-primary" value="Save">
+      <a type="button" ng-click="$root.profilePageClear()" class="btn btn-danger">Cancel</a>
     </div>
   </form>
 </div>
-<change-password></change-password>
