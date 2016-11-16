@@ -36,8 +36,10 @@ angular.
         };
         $scope.updateUserInfo = function () {
           self.error = false;
+          self.emailChange = false;
           if (new Date() / 1 > self.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < self.birth_date.getTime()) {
             var birth_date = self.birth_date;
+            var old_email = this.user.email;
             birth_date = [birth_date.getUTCFullYear(), birth_date.getMonth() + 1, birth_date.getDate()].join('-');
             Auth.updateUser({}, {
               username: self.username,
@@ -47,6 +49,9 @@ angular.
               birth_date: birth_date,
               gender: self.gender
             }).$promise.then(function (response) {
+              if (self.email != old_email) {
+                self.emailChange = 'Check your email to confirmation your new email address';
+              }
               $rootScope.change = false;
               self.getUserProfile();
             }).catch(function (error) {
