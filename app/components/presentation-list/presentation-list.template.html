@@ -10,10 +10,10 @@
 </ul>
 </div> 
 
-<p class="lead" ng-if="!public_presentations.length">There are no presentations yet</p>
+<p class="lead" ng-if="!public_presentations">There are no presentations yet</p>
 
 <div id="presentation_list">
-  <div ng-repeat="presentation in public_presentations" >
+  <div class="item" ng-repeat="presentation in public_presentations" >
     <div class="thumbnail">
       <div class="image">
       	<img ng-src="{{presentation.thumbnail}}" class="img-rounded">

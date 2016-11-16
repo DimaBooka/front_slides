@@ -9,6 +9,8 @@ angular.
         } else {
           $rootScope.facebookErrors = false;
           var self = this;
+          currentUserService.unsetToken();
+          currentUserService.unsetUser();
           self.error = false;
           FacebookAuth.fbInit();
           this.login = function () {
