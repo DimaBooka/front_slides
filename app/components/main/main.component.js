@@ -7,13 +7,6 @@ angular.
         $scope.showGuide = false;
         $scope.toggle = function () {
           $scope.showGuide = !$scope.showGuide;
-          $(function () {
-            if ($scope.showGuide) {
-              $(".quickguide").slideDown(1500);
-            } else {
-              $(".showGuide").slideUp(1000);
-            }
-          })
         };
       }
     ]

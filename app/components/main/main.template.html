@@ -9,9 +9,10 @@
             This is key to success in your business.
         </p>
         <p>
-            To display a presentation you need to <a class="main-refs" href="/registration/" >register</a> or <a class="main-refs" href="/login/" >login</a>. Also you can go through a <a class="main-refs" id="toggle" href="" ng-click="toggle()" >quickguide</a> to create presentations.
+            To display a presentation you need to <a class="main-refs" href="/registration/" >register</a> or <a class="main-refs" href="/login/" >login</a>. Also you can go through a <a class="main-refs" id="slideout" href="" ng-click="toggle()" >quickguide</a> to create presentations.
         </p>
-        <div class="panel" ng-class="{showGuide: showGuide, quickguide:!showGuide}">
+
+        <div class="panel" id="slideout_inner" ng-class="{slideout_inner: showGuide, quickguide:!showGuide}">
             <span ng-click="toggle()" class="spoiler-close glyphicon glyphicon-chevron-up"></span>
             <div id="overview" class="section level2">
 <h2>Overview</h2>
