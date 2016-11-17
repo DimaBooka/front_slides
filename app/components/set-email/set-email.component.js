@@ -11,13 +11,13 @@ angular.
           $scope.messageConfirmEmail = false;
           $scope.setEmail = function () {
             setEmailForUser.save({}, {'email': this.email}).$promise.then(
-                function (response) {
-                  if (response['success']) {
-                    $scope.messageConfirmEmail = response['success'];
-                  } else {
-                    $state.go('validatePassword');
-                  }
+              function (response) {
+                if (response['success']) {
+                  $scope.messageConfirmEmail = response['success'];
+                } else {
+                  $state.go('validatePassword');
                 }
+              }
             )
           }
         }
