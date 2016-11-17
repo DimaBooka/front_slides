@@ -15,6 +15,9 @@ angular.module('googleService', [])
            scope: scopes
        });
        var signinButton = document.getElementById('signin-button');
+       if ($(signinButton).is(':hidden')) {
+         signinButton = document.getElementById('signin-sm-button')
+       }
        signinButton.addEventListener("click", auth);
      }
      function auth() {

@@ -267,3 +267,15 @@ h2, h3 {
     color: red;
     margin-left: 1%;
 }
+
+.sm-button {
+    float: none !important;
+    display: block;
+    margin: 1% 0;
+    width: 200px;
+}
+
+.profile-btn {
+    width: 140px;
+    margin-top: 1%;
+}
