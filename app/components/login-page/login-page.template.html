@@ -2,7 +2,7 @@
 <div id="fb-root"></div>
 
 <h2 class="page-header">Please sign in</h2>
-<div ng-if="$ctrl.error" ng-repeat="errorMes in $ctrl.errors">
+<div class="error" ng-if="$ctrl.error" ng-repeat="errorMes in $ctrl.errors">
 	<p>{{ errorMes }}</p>
 </div>
 <div ng-if="$root.facebookErrors">
@@ -12,7 +12,7 @@
 <form class="col-md-4">
 	<div class="form-group">
 		<label class="control-label">Username</label>
-		<input class="form-control" type="text" name="username" maxlength="30" ng-model="$ctrl.username" required>
+		<input class="form-control" type="text" name="username" maxlength="30" minlength="3" ng-model="$ctrl.username" required>
 	</div>
 	<div class="form-group">
 		<label class="control-label">Password</label>

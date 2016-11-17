@@ -228,10 +228,6 @@ h2, h3 {
     margin: 1%;
 }
 
-p {
-    font-size: 15pt;
-}
-
 .main-refs:focus {
     outline: 0;
     text-decoration: none;
@@ -266,4 +262,8 @@ p {
 .social-buttons {
     display: inline;
     width: 100%;
+}
+.error {
+    color: red;
+    margin-left: 1%;
 }

@@ -120,12 +120,17 @@ angular.module('authService', [])
        }.bind(this));
      };
 
-     this.register = function(username, password1, password2, email) {
+     this.register = function(username, password1, password2, email, birth_date, gender, first_name, last_name) {
        return Auth.register({}, {
             'username': username,
             'password1': password1,
             'password2': password2,
-            'email': email
+            'email': email,
+            'first_name': first_name,
+            'last_name': last_name,
+            'birth_date': birth_date,
+            'gender': gender,
+            'all_fields_completed': true
           }).$promise;
      };
 
