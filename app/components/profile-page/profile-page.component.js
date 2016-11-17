@@ -14,16 +14,19 @@ angular.
         self.successUpdeate = false;
         $rootScope.change = false;
         self.error = false;
+        self.emailChange = false;
         this.getUserProfile = function () {
           Auth.currentUser().$promise.then(
             function (response) {
               $scope.user = response;
-              $scope.user.birth_date = new Date(response.birth_date);
+              if (Date.parse(response.birth_date)) {
+                $scope.user.birth_date = new Date(response.birth_date);
+                self.birth_date = $scope.user.birth_date;
+              }
               self.username = $scope.user.username;
               self.first_name = $scope.user.first_name;
               self.last_name = $scope.user.last_name;
               self.email = $scope.user.email;
-              self.birth_date = $scope.user.birth_date;
               self.gender = $scope.user.gender;
             }
           ).catch(function (error) {
@@ -32,6 +35,7 @@ angular.
         };
         this.getUserProfile();
         self.changeOn = function () {
+          self.emailChange = false;
           $rootScope.change = !$rootScope.change;
         };
         $scope.updateUserInfo = function () {

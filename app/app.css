@@ -202,8 +202,7 @@ h1 {
     font-size: 40px;
     color: #181818;
 }
-
-h2, h3 {
+.shift-right {
     margin-left: 1% !important;
 }
 
@@ -240,6 +239,7 @@ h2, h3 {
     color: #86b1ff;
     user-select: none;
     user-focus: none;
+    cursor: pointer;
 }
 
 .quickguide {
@@ -266,6 +266,10 @@ h2, h3 {
 .error {
     color: red;
     margin-left: 1%;
+}
+
+.downSpace {
+    margin-bottom: 25px;
 }
 
 .sm-button {
