@@ -1,4 +1,4 @@
-<h2 class="page-header">Your information:</h2>
+<h2 class="page-header shift-right">Your information:</h2>
 <div  class="col-md-8" ng-if="$ctrl.emailChange">
   <p>{{ $ctrl.emailChange }}</p>
 </div>
@@ -32,12 +32,12 @@
   </tr>
   </tbody>
 </table>
-  <a class="btn btn-primary" ng-click="$ctrl.changeOn()">Update information</a>
-  <a class="btn btn-primary" ui-sref="changePassword">Change password</a>
+  <a class="btn btn-primary profile-btn" ng-click="$ctrl.changeOn()">Update information</a>
+  <a class="btn btn-primary profile-btn" ui-sref="changePassword">Change password</a>
 </div>
 <div ng-if="$root.change">
   <form class="col-md-4" ng-submit="updateUserInfo()" >
-    <div ng-if="$ctrl.error">
+    <div class="error" ng-if="$ctrl.error">
       <p>{{ $ctrl.errorMes }}</p>
     </div>
     <div class="form-group">

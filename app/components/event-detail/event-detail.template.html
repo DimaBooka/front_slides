@@ -33,35 +33,9 @@
         </button>
       </div>
     </div>
-    <h2 class="hack-word">{{ event.name }}</h2>
-  </header> 
-  <div id="work_area" ng-if="!updateEventTrue">
-    <iframe src="{{baseUrl + '/events-frame/' + event.id + '/live/' | trustAsResourceUrl}}" allowfullscreen id="presentation_live" > 
-    </iframe>
-
-    <div id="chat" ng-init="initChat()">
-      <header>Chat</header>
-
-      <div id="messages">
-        <div class="media" ng-repeat="message in messages track by $index" ng-init="initMessage()">
-          <div class="media-body">
-            <h4 class="media-heading"> {{ message.user }}
-              <span class="small pull-right"> {{ message.datetime }}</span>
-            </h4>
-             <p>{{ message.message }}</p>
-          </div>
-        </div>
-      </div>
-
-      <footer>
-        <form role="form" ng-submit="sendInChat()" ng-if="$root.user && !eventFinished && chatAble">
-          <textarea class="form-control message-text" ng-model="$ctrl.message" maxlength="120" name="message" placeholder="Enter message..." ng-keypress="typeKeyHandler($event)"></textarea>
-          <input type="submit" class="btn btn-default btn-block pull-right" value="Send" />
-        </form>
-      </footer>
-    </div>
-  </div>
-  <div ng-if="updateEventTrue" class="row">
+    <h2 class="hack-word shift-right">{{ event.name }}</h2>
+  </header>
+  <div uib-collapse="!updateEventTrue" class="row downSpace">
     <form class="col-md-4" ng-submit="updateEvent()" >
       <div class="form-group">
         <label for="event-name" class="control-label">Event name</label>
@@ -90,6 +64,32 @@
         <a class="btn btn-default col-md-3 col-md-offset-1" ng-click="updateTrueEvent()">Cancel</a>
       </div>
     </form>
+  </div>
+  <div id="work_area">
+    <iframe src="{{baseUrl + '/events-frame/' + event.id + '/live/' | trustAsResourceUrl}}" allowfullscreen id="presentation_live" > 
+    </iframe>
+
+    <div id="chat" ng-init="initChat()">
+      <header>Chat</header>
+
+      <div id="messages">
+        <div class="media" ng-repeat="message in messages track by $index" ng-init="initMessage()">
+          <div class="media-body">
+            <h4 class="media-heading"> {{ message.user }}
+              <span class="small pull-right"> {{ message.datetime }}</span>
+            </h4>
+             <p>{{ message.message }}</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <form role="form" ng-submit="sendInChat()" ng-if="$root.user && !eventFinished && chatAble">
+          <textarea class="form-control message-text" ng-model="$ctrl.message" maxlength="120" name="message" placeholder="Enter message..." ng-keypress="typeKeyHandler($event)"></textarea>
+          <input type="submit" class="btn btn-default btn-block pull-right" value="Send" />
+        </form>
+      </footer>
+    </div>
   </div>
 </div>
 

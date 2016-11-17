@@ -202,8 +202,7 @@ h1 {
     font-size: 40px;
     color: #181818;
 }
-
-h2, h3 {
+.shift-right {
     margin-left: 1% !important;
 }
 
@@ -228,10 +227,6 @@ h2, h3 {
     margin: 1%;
 }
 
-p {
-    font-size: 15pt;
-}
-
 .main-refs:focus {
     outline: 0;
     text-decoration: none;
@@ -244,6 +239,7 @@ p {
     color: #86b1ff;
     user-select: none;
     user-focus: none;
+    cursor: pointer;
 }
 
 .quickguide {
@@ -266,4 +262,24 @@ p {
 .social-buttons {
     display: inline;
     width: 100%;
+}
+.error {
+    color: red;
+    margin-left: 1%;
+}
+
+.downSpace {
+    margin-bottom: 25px;
+}
+
+.sm-button {
+    float: none !important;
+    display: block;
+    margin: 1% 0;
+    width: 200px;
+}
+
+.profile-btn {
+    width: 140px;
+    margin-top: 1%;
 }

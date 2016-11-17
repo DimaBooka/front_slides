@@ -6,6 +6,7 @@ angular.module('SlidesApp', [
   'ngResource',
   'ngAnimate',
   'ui.router',
+  'ui.bootstrap',
   'ui.bootstrap.datetimepicker',
   'ngWebSocket',
   'authService',
@@ -179,6 +180,12 @@ angular.module('SlidesApp', [
           name: 'validatePassword',
           url: '/validate-account/',
           component: 'validatePassword',
+        })
+      .state(
+        {
+          name: 'optionallyFields',
+          url: '/optional-fields/',
+          component: 'optionalFields',
         });
     }]).run(function ($rootScope, currentUserService, $state) {
       currentUserService.loadTokenFromLS();
