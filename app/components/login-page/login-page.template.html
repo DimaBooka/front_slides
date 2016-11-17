@@ -22,8 +22,10 @@
 		<input class="btn btn-primary" type="submit" ng-click="$ctrl.login()" value="Sign in">
 		<button class="btn btn-primary" type="submit" ui-sref="restore">Reset password</button>
         <div class="social-buttons">
-            <a class="fbbth btn btn-facebook pull-right" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook"></i></a>
-            <a class="gglbth btn btn-google pull-right" id="signin-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()"><i class="fa fa-google"></i></a>
+            <a class="fbbth btn btn-facebook pull-right hidden-xs" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook"></i></a>
+            <a class="gglbth btn btn-google pull-right hidden-xs" id="signin-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()"><i class="fa fa-google"></i></a>
+            <a class="sm-button btn btn-facebook pull-right hidden-md hidden-lg hidden-sm" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
+            <a class="sm-button btn btn-google pull-right hidden-md hidden-lg hidden-sm" id="signin-sm-button" ng-init="$ctrl.googleLogin()" ng-click="$ctrl.googleLogin()"><i class="fa fa-google"></i> Sign in with Google</a>
         </div>
 	</div>
 
