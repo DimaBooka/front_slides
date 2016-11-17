@@ -2,7 +2,7 @@
   <div ng-if="!created" class="well col-md-12">
   <h3 class="page-header">Create event</h3>
     <form ng-submit="createEventNew()" class="col-md-6">
-      <div ng-if="error">
+      <div class="error" ng-if="error">
         <p>{{error}}</p>
       </div>
       <div class="form-group">

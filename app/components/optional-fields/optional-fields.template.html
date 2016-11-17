@@ -1,0 +1,43 @@
+<h2 class="page-header">The following fields were not completed:</h2>
+<div>
+  <form class="col-md-4" ng-submit="updateUserInfo()" >
+    <div ng-if="$ctrl.error">
+      <p>{{ $ctrl.errorMes }}</p>
+    </div>
+    <div class="form-group" ng-if="!user.first_name">
+      <label class="control-label">First name:</label>
+      <input class="form-control" type="text" name="first_name" pattern="[A-Za-zА-Яа-я]+" maxlength="30" ng-model="$ctrl.userInfo.first_name"/>
+    </div>
+    <div class="form-group" ng-if="!user.last_name">
+      <label class="control-label">Last name:</label>
+      <input class="form-control" type="text" name="last_name" pattern="[A-Za-zА-Яа-я]+" maxlength="30" ng-model="$ctrl.userInfo.last_name"/>
+    </div>
+    <div class="form-group" ng-if="!user.birth_date">
+      <label class="control-label">Birth date:</label>
+      <div class="dropdown">
+        <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#">
+          <div class="input-group">
+            <input type="text" class="form-control" value="{{$ctrl.userInfo.birth_date | date: 'yyyy MM dd' }}" disabled/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <datetimepicker data-ng-model="$ctrl.userInfo.birth_date"
+                          data-datetimepicker-config="{ dropdownSelector: '#dropdown1', startView: 'year',
+            minView: 'day', }"></datetimepicker>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group" ng-if="user.gender == 3">
+      <label class="control-label">Gender:</label>
+      <label for="gender1">
+      <input type="radio" name="gender" value="1" id="gender1" ng-model="$ctrl.userInfo.gender">Male</label>
+      <label for="gender2">
+      <input type="radio" name="gender" value="2" id="gender2" ng-model="$ctrl.userInfo.gender">Female</label>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" value="Save">
+      <a type="button" ng-click="completeFunc()" class="btn btn-default">Skip</a>
+    </div>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 <div ng-if="!uploaded">
   <h2 class="page-header">Add presentation</h2>
   <form class="col-md-4" ng-submit="uploadFile()">
-    <div ng-if="error">
+    <div class="error" ng-if="error">
       <p>{{error}}</p>
     </div>
     <div class="form-group">

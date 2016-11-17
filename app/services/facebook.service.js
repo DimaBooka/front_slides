@@ -23,7 +23,37 @@ angular.module('facebookService', [])
            currentUserService.setToken(data.key);
            currentUserService.loadUserFromAPI();
            _self.getUserInfo();
-           $state.go('presentations');
+           Auth.currentUser().$promise.then(
+             function (response) {
+               if (!response.all_fields_completed) {
+                var userInfo = {};
+                if (Date.parse(response.birth_date)) {
+                  response.birth_date = new Date(response.birth_date);
+                  userInfo.birth_date = response.birth_date;
+                } else {
+                  userInfo.birth_date = null;
+                }
+                userInfo.first_name = response.first_name;
+                userInfo.last_name = response.last_name;
+                userInfo.gender = response.gender;
+                var isFalse = false;
+                for (var key in userInfo) {
+                  if (!userInfo[key]) {
+                    isFalse = true;
+                  }
+                }
+                if (!isFalse) {
+                  $state.go('presentations');
+                } else {
+                      $state.go('optionallyFields');
+                }
+              } else {
+                 $state.go('presentations');
+               }
+             }
+           ).catch(function (error) {
+             currentUserService.checkStatus(error);
+           });
            return data;
          }).catch(function (error) {
             currentUserService.checkStatus(error);
