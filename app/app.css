@@ -283,3 +283,11 @@ h1 {
     width: 140px;
     margin-top: 1%;
 }
+
+.presentation-buttons {
+    width: 50px;
+}
+
+.presentation-buttons:hover {
+    cursor: pointer;
+}

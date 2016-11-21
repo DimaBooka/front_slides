@@ -8,12 +8,29 @@
       <label for="presentation-name" class="control-label">Presentation name</label>
       <input  class="form-control" type="text" name="name" maxlength="39" ng-model="name" id="presentation-name" required>
     </div>
+
     <div class="form-group">
+      <label>Make a choice: link on raw view of markdown file or upload markdown file</label>
+      <div class="presentation-buttons">
+        <span class="input-group-addon input-group-sm" ng-click="$ctrl.fileOrLink = 1"><i class="glyphicon glyphicon-link"></i></span>
+        <span class="input-group-addon input-group-sm" ng-click="$ctrl.fileOrLink = 2"><i class="glyphicon glyphicon-file"></i></span>
+      </div>
+    </div>
+
+    <div class="form-group" uib-collapse="$ctrl.fileOrLink == 1 || !$ctrl.fileOrLink">
       <label for="presentation-file" class="control-label">Markdown file</label><br>
       <label class="btn btn-default btn-file">
-        Browse <input type="file" name="slides" file-model = "slides" id="presentation-file" accept=".md" required>
+        Browse <input type="file" ng-if="$ctrl.fileOrLink == 2" file-model = "$ctrl.file" id="presentation-file" accept=".md">
       </label>
     </div>
+
+    <div class="form-group" uib-collapse="$ctrl.fileOrLink == 2 || !$ctrl.fileOrLink">
+      <label for="presentation-file" class="control-label">Link to markdown file</label><br>
+      <label>
+        <input class="form-control" ng-if="$ctrl.fileOrLink == 1" type="url" ng-model = "$ctrl.link">
+      </label>
+    </div>
+
     <div class="form-group">
       <label for="presentation-thumb" class="control-label">Thumbnail</label><br>
       <label class="btn btn-default btn-file">
