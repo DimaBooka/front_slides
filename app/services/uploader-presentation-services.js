@@ -25,19 +25,13 @@ angular.
         fd.append('name', name);
         fd.append('description', description);
         fd.append('published', isPublic);
-        $http.post(uploadUrl, fd, {
+        return $http.post(uploadUrl, fd, {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
-        })
-        .success(function(){
-        })
-        .error(function(error){
-          currentUserService.checkStatus(error);
-          scope = error;
         });
       }
     }])
-    .service('fileUpdate', ['$http', '$state', 'currentUserService', function ($http, currentUserService) {
+    .service('fileUpdate', ['$http', function ($http) {
       this.updateToUrl = function(slides, thumbnail, name, isPublic, description, uploadUrl, reload){
         var fd = new FormData();
         if (slides) {
@@ -49,15 +43,9 @@ angular.
         fd.append('name', name);
         fd.append('description', description);
         fd.append('published', isPublic);
-        $http.patch(uploadUrl, fd, {
+        return $http.patch(uploadUrl, fd, {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
-        })
-        .success(function(){
-          reload();
-        })
-        .error(function(error){
-          currentUserService.checkStatus(error);
         });
       }
     }]);

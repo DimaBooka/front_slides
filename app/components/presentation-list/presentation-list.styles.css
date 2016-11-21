@@ -8,7 +8,7 @@
 	padding: 12px;
 }
 
-@media all and (min-width: 767px) { //480
+@media all and (min-width: 767px) {
 	#presentation_list > div {
 			width: 50%;
 	}
