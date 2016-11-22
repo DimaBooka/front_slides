@@ -8,6 +8,7 @@ angular.
           $state.go('presentations');
         }
         var self = this;
+        self.timezone = "Europe/Kiev";
         self.registred = false;
         this.registration = function () {
           self.error = false;
@@ -23,7 +24,7 @@ angular.
             }
           }
           if (!self.error) {
-            currentUserService.register(this.username, this.password1, this.password2, this.email, birth_date, this.gender, this.first_name, this.last_name).then(
+            currentUserService.register(this.username, this.password1, this.password2, this.email, birth_date, this.gender, this.first_name, this.last_name, this.timezone).then(
                 function () {
                   self.registred = true;
                 }).catch(function (error) {
