@@ -28,6 +28,7 @@ angular.
               self.last_name = $scope.user.last_name;
               self.email = $scope.user.email;
               self.gender = $scope.user.gender;
+              self.timezone = $scope.user.timezone;
             }
           ).catch(function (error) {
             currentUserService.checkStatus(error);
@@ -41,17 +42,23 @@ angular.
         $scope.updateUserInfo = function () {
           self.error = false;
           self.emailChange = false;
-          if (new Date() / 1 > self.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < self.birth_date.getTime()) {
+          if (!self.birth_date) {
+            self.birth_date = null
+          }
+          if (self.birth_date == null || new Date() / 1 > self.birth_date.getTime() && new Date(1900, 1 , 1) / 1 < self.birth_date.getTime()) {
             var birth_date = self.birth_date;
             var old_email = this.user.email;
-            birth_date = [birth_date.getUTCFullYear(), birth_date.getMonth() + 1, birth_date.getDate()].join('-');
+            if (birth_date != null) {
+              birth_date = [birth_date.getUTCFullYear(), birth_date.getMonth() + 1, birth_date.getDate()].join('-');
+            }
             Auth.updateUser({}, {
               username: self.username,
               first_name: self.first_name,
               last_name: self.last_name,
               email: self.email,
               birth_date: birth_date,
-              gender: self.gender
+              gender: self.gender,
+              timezone: self.timezone
             }).$promise.then(function (response) {
               if (self.email != old_email) {
                 self.emailChange = 'Check your email to confirmation your new email address';
