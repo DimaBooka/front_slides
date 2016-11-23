@@ -20,7 +20,7 @@
     </p>
     <p class="event-date" ng-if="history">Finished at {{event.date_finished | date: "HH:mm dd.MM.yyyy"}}</p>
     <p>
-      <a ui-sref="event-detail({id: event.id})" class="btn btn-primary btn-block" role="button">Show event</a> 
+      <a ng-if="!event.date_finished" ui-sref="event-detail({id: event.id})" class="btn btn-primary btn-block" role="button">Show event</a>
     </p>
    </div>
  </div>
