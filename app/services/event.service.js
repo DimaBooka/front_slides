@@ -6,7 +6,9 @@ angular.module('eventService', [])
           method: 'GET',
           params: {
             id: '@id',
+            ordering: date_planned,
           },
+
         },
         query: {
           method: 'GET',

@@ -20,11 +20,11 @@
     </div>
     <div class="form-group">
       <label class="control-label">Password<sup>*</sup></label>
-      <input class="form-control" type="password" name="password1"  pattern="[A-Za-z0-9]+" maxlength="30" ng-model="$ctrl.password1" required>
+      <input class="form-control" type="password" name="password1"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="30" ng-model="$ctrl.password1" required>
     </div>
     <div class="form-group">
       <label class="control-label">Confirm password<sup>*</sup></label>
-      <input class="form-control" type="password" name="password2" pattern="[A-Za-z0-9]+" maxlength="30" ng-model="$ctrl.password2" required>
+      <input class="form-control" type="password" name="password2" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="30" ng-model="$ctrl.password2" required>
     </div>
     <div class="form-group">
       <label class="control-label">Email<sup>*</sup></label>
