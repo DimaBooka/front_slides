@@ -89,6 +89,7 @@ component('eventDetail', {
   };
 
   $scope.pauseEvent = function (state) {
+    if ($scope.muted) { $scope.muteAudio() }
     liveFrame = document.getElementById('presentation_live');
     liveFrame.contentWindow.postMessage(JSON.stringify({method: 'togglePause', args: [] }), '*' );
     liveFrame.contentWindow.postMessage('mute', '*' );
