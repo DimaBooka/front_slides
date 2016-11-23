@@ -53,6 +53,7 @@
           <label class="btn btn-default btn-file">
             Browse <input type="file" ng-if="$ctrl.fileOrLink == 2" file-model = "$ctrl.file" id="presentation-file" accept=".md">
           </label>
+          <span ng-if="$ctrl.file.name">Selected file: {{$ctrl.file.name}}</span>
         </div>
 
         <div class="form-group" uib-collapse="$ctrl.fileOrLink == 2 || !$ctrl.fileOrLink">
@@ -67,6 +68,7 @@
           <label class="btn btn-default btn-file">
             Browse <input type="file" name="thumbnail" file-model = "thumbnail" ng-model="thumbnail" accept=".jpg, .jpeg, .png" id="presentation-thumb">
           </label>
+          <span ng-if="thumbnail.name">Selected image: {{thumbnail.name}}</span>
         </div>
         <div class="form-group">
           <label for="presentation-desc" class="control-label">Description</label>
