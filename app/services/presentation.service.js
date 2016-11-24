@@ -11,7 +11,7 @@ angular.module('presentationService', [])
         published: {
           method: 'GET',
           params: {
-            ordering: 'date_created',
+            ordering: '-date_created',
             published: 2,  // true
           },
         },
